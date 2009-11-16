@@ -28,20 +28,14 @@
 <hr />
 <div id="page">
 	<div id="content">
-					<div class="post">
-						<h1 class="title">关于我们</h1>
-						<div class="about_entry">
-							<p><strong><img src="images/about.jpg" alt="" width="131" height="131" class="left" />触景科技</strong> 是一家高科技上市公司，在过去的5年中我们引领中国Unity3D开发的潮流。在过去的5年中我们引领中国Unity3D开发的潮流。在过去的5年中我们引领中国Unity3D开发的潮流。在过去的5年中我们引领中国Unity3D开发的潮流。在过去的5年中我们引领中国Unity3D开发的潮流。在过去的5年中我们引领中国Unity3D开发的潮流。:)</p>
-						</div>
-					</div>
-                    <div class="post">
-						<h1 class="title">联系方式</h1>
-					 	<div class="about_entry">
-							<p>联&nbsp;系&nbsp;人： &nbsp;&nbsp;祁师兄&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E-mail：qishixiong@126.com </p>
-                            <p>联系地址：&nbsp;&nbsp;重大动力学院&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;联系电话：1388888888        </p>
-                            <p>传&nbsp;&nbsp;&nbsp;&nbsp;真：&nbsp;&nbsp;023-65666666&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;邮编：400044                </p>
-						</div>
-					</div>
+			<div class="post">
+				<h1 class="title">触景科技今天在创业板上市! </h1>
+				<p class="meta"> <a href="#">HHH</a>上传于 2009年11月11日
+			  &nbsp;&bull;&nbsp; <a href="#" class="comments">Comments </a> &nbsp;&bull;&nbsp; <a href="#" class="permalink">详细内容</a></p>
+				<div class="entry">
+					<p>触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家 :)				</p>
+				</div>
+			</div>
 				</div>
 	<!-- end #content -->
 	<div id="sidebar">

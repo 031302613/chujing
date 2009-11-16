@@ -205,6 +205,15 @@ hr {
 	padding: 10px 20px;
 }
 
+.post .about_entry {
+	margin: 10px 5px;
+	padding: 17px 20px 5px 0px;
+}
+img.left {
+	float: left;
+	margin: 3px 20px 30px 0px;
+}
+
 .post .entry .flash {
 	width:280px;
 	float:left;
@@ -363,7 +372,6 @@ hr {
 	background: #F5F5F5;
 	border-top: 1px solid #E9E9E9;
 	text-decoration: none;
-	text-transform: uppercase;
 	font-size: smaller;
 }
 
