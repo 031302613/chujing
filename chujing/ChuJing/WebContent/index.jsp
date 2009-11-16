@@ -16,7 +16,7 @@
 <div id="menu">
 	<ul>
 		<li class="current_page_item"><a href="index.jsp">首页</a></li>
-		<li><a href="#">新闻公告</a></li>
+		<li><a href="news.jsp">新闻公告</a></li>
 		<li><a href="case.jsp">案例介绍</a></li>
 		<li><a href="#">人才招聘</a></li>
 		<li><a href="about.jsp">联系我们</a></li>

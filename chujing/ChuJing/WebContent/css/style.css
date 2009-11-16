@@ -204,7 +204,10 @@ hr {
 .post .entry {
 	padding: 10px 20px;
 }
-
+.post .news_entry {
+	margin-top: 25px;
+	padding: 10px 20px;
+}
 .post .about_entry {
 	margin: 10px 5px;
 	padding: 17px 20px 5px 0px;
@@ -373,6 +376,7 @@ img.left {
 	border-top: 1px solid #E9E9E9;
 	text-decoration: none;
 	font-size: smaller;
+	padding: 0px 20px;
 }
 
 .post .posted {
@@ -381,13 +385,10 @@ img.left {
 	padding: 5px 20px;
 }
 
-.post .permalink, .post .comments {
+.post .meta .permalink, .post .meta .comments {
 	float: right;
 	height: 16px;
 	padding: 5px 20px;
-}
-
-.post .permalink {
 }
 
 /* Sidebar */
