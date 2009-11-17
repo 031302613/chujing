@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" import="java.sql.*" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -10,6 +10,20 @@
 <link href="css/style.css" rel="stylesheet" type="text/css" media="screen" />
 </head>
 <body>
+<% 
+	//jsp for get top four news from db
+	String DBDIVER = "com.mysql.jdbc.Driver";
+	String DBUSER = "root";
+	String DBPASSWORD = "123456";
+	String DBURL = "jdbc:mysql://localhost:3306/chujing";
+	
+	Class.forName(DBDIVER);
+	Connection conn = DriverManager.getConnection(DBURL,DBUSER,DBPASSWORD);
+	Statement stmt = conn.createStatement();
+	ResultSet rs = stmt.executeQuery("select * from t_news LIMIT 4");
+	
+
+%>
 <div id="logo">
 	<h1><a href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></h1>
 </div>
@@ -32,13 +46,29 @@
 				<h1 class="title">触景科技今天在创业板上市! </h1>
 				
 				<div class="news_entry">
-					<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家 :)				</p>
-					<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家 :)				</p>
-					<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家 :)				</p>
+					<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科</p>
 				</div>
-				<p class="meta">上传者 <a href="#">HHH</a> 于 2009年11月11日&nbsp;&bull;&nbsp;</p>
+				<p class="meta">上传者 <a href="#">HHH</a> 于 2009年11月11日&nbsp;&bull;&nbsp;<a href="#" class="permalink">Read more</a></p>
 			</div>
+			<% 
+				String newsTitle;
+				String newsContent;
+				while(rs.next()){
+					newsTitle = rs.getString("NEWS_TITLE");
+					newsContent = rs.getString("NEWS_CONTENT");
+			%>
+			<div class="post">
+				<h1 class="title"><%=newsTitle %> </h1>
+				
+				<div class="news_entry">
+				<%=newsContent %>
 				</div>
+				<p class="meta">上传者 <a href="#">HHH</a> 于 2009年11月11日&nbsp;&bull;&nbsp;<a href="#" class="permalink">Read more</a></p>
+			</div>
+			<%
+				}
+			%>
+	</div>
 	<!-- end #content -->
 	<div id="sidebar">
 		<ul>
