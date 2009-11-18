@@ -22,6 +22,7 @@
 	Statement stmt = conn.createStatement();
 	ResultSet rs = stmt.executeQuery("select * from t_news LIMIT 4");
 	
+	
 
 %>
 <div id="logo">
@@ -53,7 +54,10 @@
 			<% 
 				String newsTitle;
 				String newsContent;
+				String newsID;
 				while(rs.next()){
+					newsID = rs.getString("NEWS_ID");
+					
 					newsTitle = rs.getString("NEWS_TITLE");
 					newsContent = rs.getString("NEWS_CONTENT");
 			%>
@@ -63,7 +67,7 @@
 				<div class="news_entry">
 				<%=newsContent %>
 				</div>
-				<p class="meta">上传者 <a href="#">HHH</a> 于 2009年11月11日&nbsp;&bull;&nbsp;<a href="#" class="permalink">Read more</a></p>
+				<p class="meta">上传者 <a href="#">HHH</a> 于 2009年11月11日&nbsp;&bull;&nbsp;<a href="newsContent.jsp?newsID=<%=newsID %>" class="permalink">Read more</a></p>
 			</div>
 			<%
 				}
@@ -126,5 +130,8 @@
 	<p id="legal">Copyright (c) 2009 www.chujing.com. All rights reserved. Design by <a href="#">XXX团队</a>.</p>
 	<p id="links"><a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a></p>
 </div>
+<%
+	conn.close();
+%>
 </body>
 </html>
