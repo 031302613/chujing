@@ -33,7 +33,7 @@
 		<li><a href="index.jsp">首页</a></li>
 		<li class="current_page_item"><a href="news.jsp">新闻公告</a></li>
 		<li><a href="case.jsp">案例介绍</a></li>
-		<li><a href="#">人才招聘</a></li>
+		<li><a href="job.jsp">人才招聘</a></li>
 		<li><a href="about.jsp">联系我们</a></li>
 	</ul>
 </div>
@@ -43,14 +43,6 @@
 <hr />
 <div id="page">
 	<div id="content">
-			<div class="post">
-				<h1 class="title">触景科技今天在创业板上市! </h1>
-				
-				<div class="news_entry">
-					<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科技是一家触景科</p>
-				</div>
-				<p class="meta">上传者 <a href="#">HHH</a> 于 2009年11月11日&nbsp;&bull;&nbsp;<a href="#" class="permalink">Read more</a></p>
-			</div>
 			<% 
 				String newsTitle;
 				String newsContent;

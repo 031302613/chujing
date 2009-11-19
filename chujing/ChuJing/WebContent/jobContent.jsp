@@ -11,24 +11,26 @@
 	media="screen" />
 </head>
 <body>
-<% 
+<%
 	//jsp for get top four news from db
 	String DBDIVER = "com.mysql.jdbc.Driver";
 	String DBUSER = "root";
 	String DBPASSWORD = "123456";
 	String DBURL = "jdbc:mysql://localhost:3306/chujing";
-	String newsID =	(String)request.getParameter("newsID");
-	
+	String jobID = (String) request.getParameter("jobID");
+
 	Class.forName(DBDIVER);
-	Connection conn = DriverManager.getConnection(DBURL,DBUSER,DBPASSWORD);
+	Connection conn = DriverManager.getConnection(DBURL, DBUSER,
+			DBPASSWORD);
 	Statement stmt = conn.createStatement();
-	ResultSet rs = stmt.executeQuery("select * from t_news where NEWS_ID = "+newsID);
-	//System.out.println(newsID);
-	String newsTitle = "";
-	String newsContent = "";
-	if(rs.next()){
-		newsTitle = rs.getString("NEWS_TITLE");
-		newsContent = rs.getString("NEWS_CONTENT");
+	ResultSet rs = stmt
+			.executeQuery("select * from t_job where job_ID = " + jobID);
+	//System.out.println(jobID);
+	String jobTitle = "";
+	String jobContent = "";
+	if (rs.next()) {
+		jobTitle = rs.getString("JOB_TITLE");
+		jobContent = rs.getString("JOB_CONTENT");
 	}
 	conn.close();
 %>
@@ -38,9 +40,9 @@
 <div id="menu">
 <ul>
 	<li><a href="index.jsp">首页</a></li>
-	<li class="current_page_item"><a href="news.jsp">新闻公告</a></li>
+	<li><a href="news.jsp">新闻公告</a></li>
 	<li><a href="case.jsp">案例介绍</a></li>
-	<li><a href="job.jsp">人才招聘</a></li>
+	<li class="current_page_item"><a href="job.jsp">人才招聘</a></li>
 	<li><a href="about.jsp">联系我们</a></li>
 </ul>
 </div>
@@ -49,9 +51,9 @@
 <div id="page">
 <div id="content">
 <div class="post">
-<h1 class="title"><%=newsTitle %></h1>
+<h1 class="title"><%=jobTitle%></h1>
 
-<div class="news_entry"><%=newsContent %></div>
+<div class="news_entry"><%=jobContent%></div>
 <p class="meta">上传者 <a href="#">HHH</a> 于
 2009年11月11日&nbsp;&bull;&nbsp;</p>
 </div>
