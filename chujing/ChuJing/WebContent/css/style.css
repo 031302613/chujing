@@ -45,14 +45,14 @@ ul, ol {
 blockquote {
 }
 
-a {
+a:link,a:visited {
 	color: #414141;
+	text-decoration:none;
 }
 
 a:hover {
-	text-decoration: none;
+	text-decoration:underline;
 }
-
 hr {
 	display: none;
 }
@@ -174,31 +174,19 @@ hr {
 .post .title {
 	width:680px;
 	height:24px;
-	float:left;
-	margin: 1px;
-	padding: 0px 0px;
+	padding: 0px;
 	letter-spacing: -2px;
 	border-bottom: 1px dashed #B9B9B9;
 	font-size: 1.5em;
 	font-weight:bold;
 }
 .post .title a {
+	text-decoration: none;
 	float:right;
 	font-size: 12px;
+	font-weight: normal;
 	letter-spacing: 1px;
 	font-family:"Times New Roman", Times, serif
-}
-.post .title a:link  {
-	text-decoration: none;
-}
-.post .title a:active  {
-	text-decoration: none;
-}
-.post .title a:hover  {
-	text-decoration: none;
-}
-.post .title a:visited  {
-	text-decoration: none;
 }
 
 .post .entry {
@@ -258,6 +246,19 @@ img.left {
 	line-height: 21px;
 	text-decoration: none;
 }
+
+//case_list
+.post .case_list{
+	margin:0px auto; min-width:200px;
+}
+.post .case_list dl {line-height:15px;text-align:left;margin-bottom: 10px; display:block; float:left; width:166px;
+}
+.post .case_list dl dt{
+	width:164px; overflow:hidden;
+}
+.post .case_list img {border:5px solid #F0F0F0; padding:2px;display:block;background-color:#F8F8F8;}
+.post .case_list dt {color:#333;font-size:12px;height:18px;line-height:18px;margin:0;padding-left: 2px; }
+
 .post .case{
 	margin-top:10px;
 }
@@ -371,11 +372,13 @@ img.left {
 	background-repeat:no-repeat;
 }
 .post .meta {
+	float: right;
 	height: 26px;
+	width:640px;
 	background: #F5F5F5;
 	border-top: 1px solid #E9E9E9;
 	text-decoration: none;
-	font-size: smaller;
+	font-size: normal;
 	padding: 0px 20px;
 }
 
@@ -386,9 +389,6 @@ img.left {
 }
 
 .post .meta .permalink, .post .meta .comments {
-	float: right;
-	height: 16px;
-	padding: 5px 20px;
 }
 
 /* Sidebar */

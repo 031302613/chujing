@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.sql.*" contentType="text/html; charset=UTF-8"
+<%@ page language="java" import="com.Dao.impl.NewsDao,java.util.List,com.javaBean.News" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -11,119 +11,35 @@
 </head>
 <body>
 <% 
-	//jsp for get top four news from db
-	String DBDIVER = "com.mysql.jdbc.Driver";
-	String DBUSER = "root";
-	String DBPASSWORD = "123456";
-	String DBURL = "jdbc:mysql://localhost:3306/chujing";
-	
-	Class.forName(DBDIVER);
-	Connection conn = DriverManager.getConnection(DBURL,DBUSER,DBPASSWORD);
-	Statement stmt = conn.createStatement();
-	ResultSet rs = stmt.executeQuery("select * from t_news LIMIT 4");
-	
-	
-
+	NewsDao dao = new NewsDao();
+	String sql = "select * from t_news limit 4";
+	List list = dao.getListBySQL(sql);
+	News news;
 %>
-<div id="logo">
-	<h1><a href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></h1>
-</div>
-<div id="menu">
-	<ul>
-		<li><a href="index.jsp">首页</a></li>
-		<li class="current_page_item"><a href="news.jsp">新闻公告</a></li>
-		<li><a href="case.jsp">案例介绍</a></li>
-		<li><a href="job.jsp">人才招聘</a></li>
-		<li><a href="about.jsp">联系我们</a></li>
-	</ul>
-</div>
-<div id="splash">
-	<img src="images/img05.jpg" alt="" />
-</div>
-<hr />
+<jsp:include page="include/header.jsp" />
 <div id="page">
 	<div id="content">
+	
 			<% 
-				String newsTitle;
-				String newsContent;
-				String newsID;
-				while(rs.next()){
-					newsID = rs.getString("NEWS_ID");
-					
-					newsTitle = rs.getString("NEWS_TITLE");
-					newsContent = rs.getString("NEWS_CONTENT");
+			for(int i=0;i<list.size();i++){
+				news = (News)list.get(i);
 			%>
 			<div class="post">
-				<h1 class="title"><%=newsTitle %> </h1>
+				<a href="newsContent.jsp?newsID=<%=news.getNewsId() %>"><h1 class="title"><%=news.getNewsTitle() %>"</h1></a>
 				
 				<div class="news_entry">
-				<%=newsContent %>
+				<%= news.getNewsContent()%>
 				</div>
-				<p class="meta">上传者 <a href="#">HHH</a> 于 2009年11月11日&nbsp;&bull;&nbsp;<a href="newsContent.jsp?newsID=<%=newsID %>" class="permalink">Read more</a></p>
+				<p class="meta"><span>触景科技</span> 发布于  <%=news.getNewsPublishTime() %>&nbsp;&bull;&nbsp; <a href="newsContent.jsp?newsID=<%=news.getNewsId() %>" class="permalink">详细信息</a></p>
 			</div>
 			<%
 				}
 			%>
 	</div>
 	<!-- end #content -->
-	<div id="sidebar">
-		<ul>
-				<li>
-					<h2>最新案例</h2>
-					<ul>
-						<li>
-                        	<div class="sidebar_content">
-                                <div class="sidebar_image">
-                                    <a href="#" ><img src="images/test1.jpg" alt="" border="0" height="93" width="138" /></a>	
-                                </div>
-                                <a href="#" class="sidebar_title" >虚拟家居-互动看房</a>
-                                <br />
-                                <span class="sidebar_author">作者:薛建良 </span>
-                            </div>
-                        </li>
-						<li>
-                        	<div class="sidebar_content">
-                                <div class="sidebar_image">
-                                    <a href="#" ><img src="images/test1.jpg" alt="" border="0" height="93" width="138" /></a>	
-                                </div>
-                                <a href="#" class="sidebar_title" >虚拟家居-互动看房</a>
-                                <br />
-                                <span class="sidebar_author">作者:薛建良 </span>
-                            </div>
-                        </li>
-						<li>
-                        	<div class="sidebar_content">
-                                <div class="sidebar_image">
-                                    <a href="#" ><img src="images/test1.jpg" alt="" border="0" height="93" width="138" /></a>	
-                                </div>
-                                <a href="#" class="sidebar_title" >虚拟家居-互动看房</a>
-                                <br />
-                                <span class="sidebar_author">作者:薛建良 </span>
-                            </div>
-                        </li>
-						<li>
-                        	<div class="sidebar_content">
-                                <div class="sidebar_image">
-                                    <a href="#" ><img src="images/test1.jpg" alt="" border="0" height="93" width="138" /></a>	
-                                </div>
-                                <a href="#" class="sidebar_title" >虚拟家居-互动看房</a>
-                                <br />
-                                <span class="sidebar_author">作者:薛建良 </span>
-                            </div>
-                        </li>
-					</ul>
-				</li>
-		</ul>
-	</div>
-	<!-- end #sidebar -->
+<jsp:include page="include/sidebar.jsp" /> 
 </div>
 <!-- end #page -->
-<div id="footer">
-	<p id="legal">Copyright (c) 2009 www.chujing.com. All rights reserved. Design by <a href="#">XXX团队</a>.</p>
-	<p id="links"><a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a></p>
-</div>
-<%
-	conn.close();
-%>
+<jsp:include page="include/footer.jsp" /> 
 </body>
 </html>

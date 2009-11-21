@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" import="java.sql.*" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -12,129 +12,70 @@
 <script language='javascript' src='js/common.js'></script>
 </head>
 <body>
-<div id="logo">
-	<h1><a href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></h1>
-</div>
-<div id="menu">
-	<ul>
-		<li><a href="index.jsp">首页</a></li>
-		<li><a href="news.jsp">新闻公告</a></li>
-		<li class="current_page_item"><a href="case.jsp">案例介绍</a></li>
-		<li><a href="job.jsp">人才招聘</a></li>
-		<li><a href="about.jsp">联系我们</a></li>
-	</ul>
-</div>
-<div id="splash">
-	<img src="images/img05.jpg" alt="" />
-</div>
-<hr />
-<script type="javascript">
-                	function PhotoPreView(obj,action){
-						alert('2');
-						//objects.innerHTML="<iframe id='PhotoViewer' width='980' height='640' scrolling='no' src='' frameborder='0' style='border:0px' allowtransparency='true'></iframe>";
-					}
-                </script>
+<% 
+	//jsp for get top four news from db
+	String DBDIVER = "com.mysql.jdbc.Driver";
+	String DBUSER = "root";
+	String DBPASSWORD = "123456";
+	String DBURL = "jdbc:mysql://localhost:3306/chujing";
+	
+	Class.forName(DBDIVER);
+	Connection conn = DriverManager.getConnection(DBURL,DBUSER,DBPASSWORD);
+	Statement stmt = conn.createStatement();
+	ResultSet rs = stmt.executeQuery("select * from t_case LIMIT 8");
+%>
+<jsp:include page="include/header.jsp" />
 <div id="page">
 	<div id="content">
         <div class="post">
-        	<div class="title">案例介绍<a href="#">more</a></div> 
-	          <div class="case">
-	                <div class="case_flash">
-	                	<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,0,0" width="350" height="250" align="middle"> 
-								<param name="allowScriptAccess" value="sameDomain" /> 
-								<param name="movie" value="images/PhotoPreView.swf?
-								picurl1=images/1.jpg&
-								picurl2=images/2.jpg&
-								picurl3=images/3.jpg&
-								picurl4=images/4.jpg&
-								picurl5=images/5.jpg&
-								"/>
-								<param name="menu" value="false" />
-								<param name="quality" value="high" />
-								<param name="bgcolor" value="#333333" />
-								<embed src="images/PhotoPreView.swf?picurl1=images/1.jpg&
-								picurl2=images/2.jpg&
-								picurl3=images/3.jpg&
-								picurl4=images/4.jpg&
-								picurl5=images/5.jpg" menu="false" quality="high" bgcolor="#333333" width="350" height="250" wmode="Transparent" name="mainflash" 
-								
-								align="middle" allowScriptAccess="sameDomain" type="application/x-shockwave-flash" 
-								
-								pluginspage="http://www.macromedia.com/go/getflashplayer" /> 
-						</object>
-				</div>
-				<div class="case_flash_content">
-               		<span class="case_star">★★★★☆ </span>
-                    <span class="case_title"><a href="#" >虚拟家居-互动看房</a></span>
-                    <br />
-					<span style="font-weight:bold;">作品介绍:</span>
-					<div class="case_intro">&nbsp;&nbsp;&nbsp;&nbsp;虚拟家居是一个非一般的网上互动看房程序，玩者可以通过点击相应的按钮从而改变可以改变家居布局、功用及装修用色等,在漫游功能方面我用了FPS游戏式的镜头，如当走到门前时加入了开门动作的互动效果，个人的体验。镜头，如当走到门前时加入了开门动作的互动效果，个人的体验。镜头，如当走到门前时加入了开门动作的互动效果，个人的体验。镜头，如当走到门前时加入了开门动作的互动效果，个人的体验。镜头，如当走到门前时加入了开门动作的互动效果，个人的体验。</div> 
-				</div>
-				<div class="case_commments">0条评论</div>
-                <div class="case_author">作者:薛建良 </div>
-                <div class="case_hits"> 256 位访客</div>
-                
-                <% String resourceName="test.unity3d"; %>
-                <input type="checkbox" onclick="var DivWindow = new DivModelWindow('DivWindow','虚拟家居-互动看房','casePlay.jsp?resourceName=<%=resourceName %>',620,470,null);" >play</input>
-		  </div>
+        	<div class="title">案例介绍</div> 
+	        <div class="case">
+	        	<div class="case_list">
+	        		<br/>
+	        		<% 
+	        		String caseTitle;
+					String caseIntroduction;
+					String caseID;
+					String caseCustomer;
+					String pic1;
+					int caseRARSize;
+					int case3DSize;
+					int caseStar;
+					while(rs.next()){
+						caseID = rs.getString("CASE_ID");
+						caseCustomer = rs.getString("CASE_CUSTOMER");
+						caseTitle = rs.getString("CASE_TITLE");
+						caseIntroduction = rs.getString("CASE_INTRODUCTION");
+						caseRARSize = rs.getInt("CASE_RAR_SIZE");
+						case3DSize = rs.getInt("CASE_3D_SIZE");
+						caseStar = rs.getInt("CASE_STAR");
+						pic1 = rs.getString("CASE_SCREENSHOT1");
+			%>
+	        		 <dl>
+						<a href="caseContent.jsp?caseID=<%=caseID %>" ><img src="images/<%=pic1 %>" alt="<%=caseTitle %>" height="93" width="138"></a>
+						<dt>
+						
+						<a href="caseContent.jsp?caseID=<%=caseID %>" title="<%=caseTitle %>"><%=caseTitle %></a>
+						<br>
+						</dt> 
+						<dt><span><font color="999999">客户：</font><%=caseCustomer %></span></dt>
+						<dt><span><font color="999999">文件大小：</font><%=case3DSize %>MB</span> </dt>
+						<dt><font color="999999">星级：</font><font color="red"><% for(int i=0;i<caseStar;i++) out.print("★"); %></font></dt>
+					</dl>
+					<%
+				}
+			%>
+	        	</div>
+	        </div>
 		</div>
 	</div>
 	<!-- end #content -->
-	<div id="sidebar">
-		<ul>
-				<li>
-					<h2>最新案例</h2>
-					<ul>
-						<li>
-                        	<div class="sidebar_content">
-                                <div class="sidebar_image">
-                                    <a href="#" ><img src="images/test1.jpg" alt="" border="0" height="93" width="138" /></a>	
-                                </div>
-                                <a href="#" class="sidebar_title" >虚拟家居-互动看房</a>
-                                <br />
-                                <span class="sidebar_author">作者:薛建良 </span>
-                            </div>
-                        </li>
-						<li>
-                        	<div class="sidebar_content">
-                                <div class="sidebar_image">
-                                    <a href="#" ><img src="images/test1.jpg" alt="" border="0" height="93" width="138" /></a>	
-                                </div>
-                                <a href="#" class="sidebar_title" >虚拟家居-互动看房</a>
-                                <br />
-                                <span class="sidebar_author">作者:薛建良 </span>
-                            </div>
-                        </li>
-						<li>
-                        	<div class="sidebar_content">
-                                <div class="sidebar_image">
-                                    <a href="#" ><img src="images/test1.jpg" alt="" border="0" height="93" width="138" /></a>	
-                                </div>
-                                <a href="#" class="sidebar_title" >虚拟家居-互动看房</a>
-                                <br />
-                                <span class="sidebar_author">作者:薛建良 </span>
-                            </div>
-                        </li>
-						<li>
-                        	<div class="sidebar_content">
-                                <div class="sidebar_image">
-                                    <a href="#" ><img src="images/test1.jpg" alt="" border="0" height="93" width="138" /></a>	
-                                </div>
-                                <a href="#" class="sidebar_title" >虚拟家居-互动看房</a>
-                                <br />
-                                <span class="sidebar_author">作者:薛建良 </span>
-                            </div>
-                        </li>
-					</ul>
-				</li>
-		</ul>
-	</div>
-	<!-- end #sidebar -->
+<jsp:include page="include/sidebar.jsp" /> 
 </div>
 <!-- end #page -->
-<div id="footer">
-	<p id="legal">Copyright (c) 2009 www.chujing.com. All rights reserved. Design by <a href="#">XXX团队</a>.</p>
-	<p id="links"><a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a></p>
-</div>
+<jsp:include page="include/footer.jsp" /> 
+<%
+	conn.close();
+%>
 </body>
 </html>
