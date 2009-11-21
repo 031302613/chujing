@@ -8,6 +8,8 @@
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 <link href="css/style.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="css/common.css" rel="stylesheet" type="text/css" media="screen" />
+<script language='javascript' src='js/common.js'></script>
 </head>
 <body>
 <div id="logo">
@@ -26,6 +28,12 @@
 	<img src="images/img05.jpg" alt="" />
 </div>
 <hr />
+<script type="javascript">
+                	function PhotoPreView(obj,action){
+						alert('2');
+						//objects.innerHTML="<iframe id='PhotoViewer' width='980' height='640' scrolling='no' src='' frameborder='0' style='border:0px' allowtransparency='true'></iframe>";
+					}
+                </script>
 <div id="page">
 	<div id="content">
         <div class="post">
@@ -65,6 +73,9 @@
 				<div class="case_commments">0条评论</div>
                 <div class="case_author">作者:薛建良 </div>
                 <div class="case_hits"> 256 位访客</div>
+                
+                <% String resourceName="test.unity3d"; %>
+                <input type="checkbox" onclick="var DivWindow = new DivModelWindow('DivWindow','虚拟家居-互动看房','casePlay.jsp?resourceName=<%=resourceName %>',620,470,null);" >play</input>
 		  </div>
 		</div>
 	</div>
