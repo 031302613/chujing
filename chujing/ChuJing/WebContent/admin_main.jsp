@@ -1,8 +1,9 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<%@ page language="java" import="java.sql.*" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
-<title>后台首页</title>
+<title>瑙︽櫙绉戞妧缃戠珯鍚庡彴</title>
 <style type="text/css">
 table{
 background-color:#000066;
@@ -30,12 +31,12 @@ cursor:pointer;
           <td height="70" colspan="8" background="images/admin_header.gif">&nbsp;</td>
         </tr>
         <tr>
-          <td><span class="menu_font">案例介绍模块</span></td>
-          <td><span class="menu_font">人才招聘模块</span></td>
-          <td><span class="menu_font">公司简介编辑</span></td>
-          <td><span class="menu_font">新闻公告模块</span></td>
-          <td><span class="menu_font">维护人员模块</span></td>
-          <td><span class="menu_font">维护人员登出</span></td>
+          <td><span class="menu_font">妗堜緥浠嬬粛妯″潡</span></td>
+          <td><span class="menu_font">鏂伴椈鍙戝竷妯″潡</span></td>
+          <td><span class="menu_font">鎷涜仒浜哄憳妯″潡</span></td>
+          <td><span class="menu_font">鍏徃绠�鍘嗘ā鍧�</span></td>
+          <td><span class="menu_font">缁存姢浜哄憳妯″潡</span></td>
+          <td><span class="menu_font">缁存姢浜哄憳鐧诲嚭</span></td>
           <td><span class="menu_font">&nbsp;</span></td>
           <td><span class="menu_font">&nbsp;</span></td>
         </tr>

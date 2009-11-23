@@ -1,9 +1,10 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@ page language="java" import="java.sql.*" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-<title>触景科技后台登入</title>
+<title>瑙︽櫙绉戞妧缃戠珯缁存姢鍚庡彴鍏ュ彛</title>
 <style type="text/css">
 td{
 height:28px;
@@ -23,16 +24,16 @@ background-color:#000066;
 <form>
   <table width="300" border="1" cellspacing="0" cellpadding="0">
     <tr>
-      <td align="center" valign="middle"><span style="font-size:18px; font-family:'宋体'; color:#ffffff; font-weight:bold">触景科技网站维护入口</span></td>
+      <td align="center" valign="middle"><span style="font-size:18px; color:#ffffff; font-weight:bold">瑙︽櫙绉戞妧缃戠珯缁存姢鍚庡彴鍏ュ彛</span></td>
     </tr>
     <tr>
       <td><table width="300" border="0">
         <tr>
-          <td width="20%" align="center" valign="middle"><span style="font-size:14px; font-family:'宋体'; color:#ffffff; font-weight:bold">用户名</span></td>
+          <td width="20%" align="center" valign="middle"><span style="font-size:14px; color:#ffffff; font-weight:bold">鐢ㄦ埛鍚�</span></td>
           <td width="80%"><input type="text" maxlength="20" /></td>
         </tr>
         <tr>
-          <td align="center" valign="middle"><span style="font-size:14px; font-family:'宋体'; color:#ffffff; font-weight:bold">密码</span></td>
+          <td align="center" valign="middle"><span style="font-size:14px; color:#ffffff; font-weight:bold">瀵嗙爜</span></td>
           <td><input type="password" maxlength="20" /></td>
         </tr>
       </table></td>
@@ -40,8 +41,8 @@ background-color:#000066;
     <tr>
       <td><table width="300" border="0">
   <tr>
-    <td align="center" valign="middle"><input type="submit" value="登入" /></td>
-    <td align="center" valign="middle"><input type="reset" value="重置" /></td>
+    <td align="center" valign="middle"><input type="submit" value="鐧诲叆" /></td>
+    <td align="center" valign="middle"><input type="reset" value="閲嶇疆" /></td>
   </tr>
 </table>
 </td>

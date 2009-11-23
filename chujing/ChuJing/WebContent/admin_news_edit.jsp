@@ -1,8 +1,9 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<%@ page language="java" import="java.sql.*" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
-<title>新闻修改</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>缂栬緫鏂伴椈</title>
 <style type="text/css">
 td{
 height:30px;
@@ -37,14 +38,14 @@ background-color:#66CCFF;
 <body>
 <table width="95%" border="1" align="center" bordercolor="#000066" cellspacing="0" cellpadding="0">
   <tr>
-    <td valign="middle" align="center" bgcolor="#000066"><span class="head_title_2">修改新闻</span></td>
+    <td valign="middle" align="center" bgcolor="#000066"><span class="head_title_2">缂栬緫鏂伴椈</span></td>
   </tr>
   <tr>
     <td class="td_forborder"></td>
   </tr>
   <tr>
     <td><table width="100%" height="100%" cellpadding="0px" cellspacing="0px" border="0px"><tr>
-      <th width="20%" bgcolor="#000066"><span class="head_title_3">新闻标题</span></th><td width="20px"></td>
+      <th width="20%" bgcolor="#000066"><span class="head_title_3">鏂伴椈鏍囬</span></th><td width="20px"></td>
       <td align="left"><input type="text" class='input_text' align="left"/></td></tr></table></td>
   </tr>
     <tr>
@@ -52,7 +53,7 @@ background-color:#66CCFF;
   </tr>
   <tr>
     <td><table width="100%" height="100%" cellpadding="0px" cellspacing="0px" border="0px"><tr>
-      <th width="20%" bgcolor="#000066"><span class="head_title_3">创建时间</span></th><td width="20px"></td>
+      <th width="20%" bgcolor="#000066"><span class="head_title_3">鍒涘缓鏃ユ湡</span></th><td width="20px"></td>
       <td>&nbsp;</td></tr></table></td>
   </tr>
     <tr>
@@ -60,7 +61,7 @@ background-color:#66CCFF;
   </tr>
   <tr>
     <td><table width="100%" height="100%" cellpadding="0px" cellspacing="0px" border="0px"><tr>
-      <th width="20%" bgcolor="#000066"><span class="head_title_3">最后一次修改时间</span></th>
+      <th width="20%" bgcolor="#000066"><span class="head_title_3">淇敼鏃ユ湡</span></th>
       <td width="20px"></td>
       <td>&nbsp;</td></tr></table></td>
   </tr>
@@ -68,7 +69,7 @@ background-color:#66CCFF;
     <td class="td_forborder"></td>
   </tr>
    <tr>
-    <td bgcolor="#000066" align="center"><span class="head_title_3">新闻内容</span></td>
+    <td bgcolor="#000066" align="center"><span class="head_title_3">鏂伴椈鍐呭</span></td>
   </tr>
   <tr>
     <td><table border="0" cellpadding="0" cellspacing="0" width="100%" height="500">
@@ -83,8 +84,8 @@ background-color:#66CCFF;
     <tr>
     <td><table border="0" cellpadding="0" cellspacing="0" bgcolor="#000066" width="100%" height="100%">
   <tr>
-    <td align="center"><input type="submit" value="保存" /></td>
-    <td align="center"><input type="reset" value="重置" /></td>
+    <td align="center"><input type="submit" value="淇濆瓨" /></td>
+    <td align="center"><input type="reset" value="鍙栨秷" /></td>
   </tr>
 </table>
 </td>
