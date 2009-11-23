@@ -301,21 +301,21 @@ img.left {
 	float:left;
 	color:#333;
 	padding:0px 25px 0px 25px;
-	background-image:url(../images/comments.gif);
+	background-image:url(../images/play.gif);
 	background-repeat:no-repeat;
 }
 .post .case .case_author{
 	float:left;
 	color:#333;
 	padding:0px 25px 0px 25px;
-	background-image:url(../images/up.gif);
+	background-image:url(../images/vip.gif);
 	background-repeat:no-repeat;
 }
 .post .case .case_hits{
 	float:left;
 	color:#333;
 	padding:0px 25px 0px 25px;
-	background-image:url(../images/hits.gif);
+	background-image:url(../images/download.gif);
 	background-repeat:no-repeat;
 }
 .post .case .case_flash_content .case_title{
@@ -455,7 +455,7 @@ img.left {
 #sidebar ul li .sidebar_content .sidebar_author{
 	text-decoration:none;
 	padding-left: 30px;
-	background: url(../images/up.gif) no-repeat;
+	background: url(../images/vip.gif) no-repeat;
 }
 
 #sidebar p {

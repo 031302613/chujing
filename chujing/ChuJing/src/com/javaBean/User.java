@@ -1,10 +1,10 @@
 package com.javaBean;
 
 public class User {
-	public String getUserId() {
+	public int getUserId() {
 		return userId;
 	}
-	public void setUserId(String userId) {
+	public void setUserId(int userId) {
 		this.userId = userId;
 	}
 	public String getUserName() {
@@ -19,7 +19,7 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	private String userId;
+	private int userId;
 	private String userName;
 	private String password;
 	

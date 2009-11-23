@@ -26,15 +26,15 @@ public class Job {
 	public void setJobPublishTime(Date jobPublishTime) {
 		this.jobPublishTime = jobPublishTime;
 	}
-	public String getJobAvailableTime() {
+	public Date getJobAvailableTime() {
 		return jobAvailableTime;
 	}
-	public void setJobAvailableTime(String jobAvailableTime) {
+	public void setJobAvailableTime(Date jobAvailableTime) {
 		this.jobAvailableTime = jobAvailableTime;
 	}
 	private String jobId;
 	private String jobTitle;
 	private String jobContent;
 	private Date jobPublishTime;
-	private String jobAvailableTime;
+	private Date jobAvailableTime;
 }

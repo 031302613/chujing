@@ -70,23 +70,23 @@ public class Case {
 	public void setCaseScreenshot2(String caseScreenshot2) {
 		this.caseScreenshot2 = caseScreenshot2;
 	}
-	public String getCaseCcreenshot3() {
-		return caseCcreenshot3;
+	public String getCaseScreenshot3() {
+		return caseScreenshot3;
 	}
-	public void setCaseCcreenshot3(String caseCcreenshot3) {
-		this.caseCcreenshot3 = caseCcreenshot3;
+	public void setCaseScreenshot3(String caseScreenshot3) {
+		this.caseScreenshot3 = caseScreenshot3;
 	}
-	public String getCaseCcreenshot4() {
-		return caseCcreenshot4;
+	public String getCaseScreenshot4() {
+		return caseScreenshot4;
 	}
-	public void setCaseCcreenshot4(String caseCcreenshot4) {
-		this.caseCcreenshot4 = caseCcreenshot4;
+	public void setCaseScreenshot4(String caseScreenshot4) {
+		this.caseScreenshot4 = caseScreenshot4;
 	}
-	public String getCaseCcreenshot5() {
-		return caseCcreenshot5;
+	public String getCaseScreenshot5() {
+		return caseScreenshot5;
 	}
-	public void setCaseCcreenshot5(String caseCcreenshot5) {
-		this.caseCcreenshot5 = caseCcreenshot5;
+	public void setCaseScreenshot5(String caseScreenshot5) {
+		this.caseScreenshot5 = caseScreenshot5;
 	}
 	private String caseTitle;
 	private String caseIntroduction;
@@ -98,7 +98,14 @@ public class Case {
 	private String caseRARSize;
 	private String caseScreenshot1;
 	private String caseScreenshot2;
-	private String caseCcreenshot3;
-	private String caseCcreenshot4;
-	private String caseCcreenshot5;
+	private String caseScreenshot3;
+	private String caseScreenshot4;
+	private String caseScreenshot5;
+	private int caseStar;
+	public int getCaseStar() {
+		return caseStar;
+	}
+	public void setCaseStar(int caseStar) {
+		this.caseStar = caseStar;
+	}
 }

@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.sql.*" contentType="text/html; charset=UTF-8"
+<%@ page language="java" import="com.javaBean.Case,com.Dao.impl.CaseDao,java.util.List" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -13,16 +13,10 @@
 </head>
 <body>
 <% 
-	//jsp for get top four news from db
-	String DBDIVER = "com.mysql.jdbc.Driver";
-	String DBUSER = "root";
-	String DBPASSWORD = "123456";
-	String DBURL = "jdbc:mysql://localhost:3306/chujing";
-	
-	Class.forName(DBDIVER);
-	Connection conn = DriverManager.getConnection(DBURL,DBUSER,DBPASSWORD);
-	Statement stmt = conn.createStatement();
-	ResultSet rs = stmt.executeQuery("select * from t_case LIMIT 8");
+	CaseDao dao = new CaseDao();
+	String sql = "select * from t_case LIMIT 8";
+	List list = dao.getListBySQL(sql);
+	Case _case;
 %>
 <jsp:include page="include/header.jsp" />
 <div id="page">
@@ -33,38 +27,23 @@
 	        	<div class="case_list">
 	        		<br/>
 	        		<% 
-	        		String caseTitle;
-					String caseIntroduction;
-					String caseID;
-					String caseCustomer;
-					String pic1;
-					int caseRARSize;
-					int case3DSize;
-					int caseStar;
-					while(rs.next()){
-						caseID = rs.getString("CASE_ID");
-						caseCustomer = rs.getString("CASE_CUSTOMER");
-						caseTitle = rs.getString("CASE_TITLE");
-						caseIntroduction = rs.getString("CASE_INTRODUCTION");
-						caseRARSize = rs.getInt("CASE_RAR_SIZE");
-						case3DSize = rs.getInt("CASE_3D_SIZE");
-						caseStar = rs.getInt("CASE_STAR");
-						pic1 = rs.getString("CASE_SCREENSHOT1");
-			%>
+	        		for(int i=0;i<list.size();i++){
+	    				_case = (Case)list.get(i);
+					%>
 	        		 <dl>
-						<a href="caseContent.jsp?caseID=<%=caseID %>" ><img src="images/<%=pic1 %>" alt="<%=caseTitle %>" height="93" width="138"></a>
+						<a href="caseContent.jsp?caseID=<%=_case.getCaseId() %>" ><img src="images/<%=_case.getCaseScreenshot1() %>" alt="<%=_case.getCaseTitle() %>" height="93" width="138"></a>
 						<dt>
 						
-						<a href="caseContent.jsp?caseID=<%=caseID %>" title="<%=caseTitle %>"><%=caseTitle %></a>
+						<a href="caseContent.jsp?caseID=<%=_case.getCaseId() %>" title="<%=_case.getCaseTitle() %>"><%=_case.getCaseTitle() %></a>
 						<br>
 						</dt> 
-						<dt><span><font color="999999">客户：</font><%=caseCustomer %></span></dt>
-						<dt><span><font color="999999">文件大小：</font><%=case3DSize %>MB</span> </dt>
-						<dt><font color="999999">星级：</font><font color="red"><% for(int i=0;i<caseStar;i++) out.print("★"); %></font></dt>
+						<dt><span><font color="999999">客户：</font><%=_case.getCaseCustomer() %></span></dt>
+						<dt><span><font color="999999">文件大小：</font><%=_case.getCase3DSize() %>MB</span> </dt>
+						<dt><font color="999999">星级：</font><font color="red"><% for(int j=0;j < _case.getCaseStar();j++) out.print("★"); %></font></dt>
 					</dl>
 					<%
-				}
-			%>
+						}
+					%>
 	        	</div>
 	        </div>
 		</div>
@@ -74,8 +53,5 @@
 </div>
 <!-- end #page -->
 <jsp:include page="include/footer.jsp" /> 
-<%
-	conn.close();
-%>
 </body>
 </html>
