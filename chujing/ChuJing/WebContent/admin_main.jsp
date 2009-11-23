@@ -4,6 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 <title>触景科技网站后台</title>
+<link href="css/admin_style.css" rel="stylesheet" type="text/css" media="screen" />
 <style type="text/css">
 table{
 background-color:#000066;
@@ -13,11 +14,6 @@ vertical-align:middle;
 text-align:center;
 width:12.5%;
 
-}
-.menu_font{
-font-size:14px;
-color:#FFFFFF;
-cursor:pointer;
 }
 </style>
 </head>

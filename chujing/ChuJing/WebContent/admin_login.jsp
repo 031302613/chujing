@@ -5,6 +5,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
 <title>触景科技网站维护后台入口</title>
+<link href="css/admin_style.css" rel="stylesheet" type="text/css" media="screen" />
 <style type="text/css">
 td{
 height:28px;
