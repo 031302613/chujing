@@ -2,8 +2,8 @@
     pageEncoding="UTF-8"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>пбнеап╠М</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+<title>О©╫О©╫О©╫О©╫О©╫п╠О©╫Ф√╟И≈╩Е┬≈Х║╗</title>
 <link href="css/admin_style.css" rel="stylesheet" type="text/css" media="screen" />
 </head>
 
@@ -11,24 +11,24 @@
 <form>
 <table border="1" align="center" cellpadding="0" cellspacing="0" bordercolor="#000066" width="90%">
   <tr>
-    <td width="20%" class="to_ope_cell"><input type="button" onClick="" value="лМ╪спбне"/></td>
+    <td width="20%" class="to_ope_cell"><input type="button" onClick="" value="О©╫О©╫О©╫О©╫О©╫О©╫О©╫"/></td>
     <td><table border="0" cellpadding="0" cellspacing="0" width="100%" height="100%">
       <tr>
-        <td class="head_title_3" width="80px"><span class="menu_font_small">╡Ия╞лУ╪Ч</span></td>
+        <td class="head_title_3" width="80px"><span class="menu_font_small">О©╫О©╫Ф╥╩Е┼═Ф√╟И≈╩</span></td>
         <td class="td_center" width="120px">
-		<select><option value="NEWS_ID=">пбнеID╣хсз</option>
-		<option value="NEWS_TITLE LIKE">пбне╠ЙлБжпсп</option>
-		<option value="NEWS_PUBLISH_TIME >">╢╢╫╗хуфз╢Ссз</option>
-		<option value="NEWS_PUBLISH_TIME =">╢╢╫╗хуфз╣хсз</option>
-		<option value="NEWS_PUBLISH_TIME <">╢╢╫╗хуфзп║сз</option>
+		<select><option value="NEWS_ID=">Ф√╟И≈╩idГ╜┴Д╨▌</option>
+		<option value="NEWS_TITLE LIKE">О©╫О©╫О©╫е╠О©╫О©╫О©╫О©╫О©╫О©╫О©╫Ф√╟И≈╩Д╦╜Е╜≈Ф╝╣Ф°┴</option>
+		<option value="NEWS_PUBLISH_TIME >">О©╫О©╫О©╫О©╫О©╫О©╫О©╫Е┬⌡Е╩╨Ф≈╤И≈╢Е╓╖Д╨▌О©╫О©╫О©╫</option>
+		<option value="NEWS_PUBLISH_TIME =">О©╫О©╫О©╫О©╫О©╫О©╫О©╫Е┬⌡Е╩╨Ф≈╤И≈╢Г╜┴Д╨▌</option>
+		<option value="NEWS_PUBLISH_TIMEЕ╟▐Д╨▌">О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫п║О©╫О©╫Е┬⌡Е╩╨Ф≈╤И≈╢Е╟▐Д╨▌</option>
 		</select>
 		</td>
-        <td class="head_title_3" width="20px"><span class="menu_font_small">ж╣</span></td>
+        <td class="head_title_3" width="20px"><span class="menu_font_small">Е─╪</span></td>
 		<td class="td_v_border"></td>
         <td valign="middle"><input class="input_text_query" type="text"/>
-		<span class="note_font_red">хуфзгК╟╢╦Яй╫лНп╢хГё╨2009-01-01</span>
+		<span class="note_font_red">О©╫О©╫О©╫О©╫О©╫Ф≈╔Ф°÷Ф═╪Е╪▐О╪ 2009-01-01</span>
 		</td>
-		<td class="head_title_3" width="50px"><input type="submit" value="╡Ия╞"/></td>
+		<td class="head_title_3" width="50px"><input type="submit" value="О©╫О©╫Ф÷╔Х╞╒"/></td>
       </tr>
     </table></td>
   </tr>
@@ -40,7 +40,7 @@
 <table width="90%"  border="1" align="center" cellpadding="0" cellspacing="0" bordercolor="#000066">
   <tr>
     <td colspan="2" scope="col" bgcolor="#000066" class="head_title_2">
-	<span class="menu_font_big">пбнеап╠М</span>
+	<span class="menu_font_big">О©╫О©╫О©╫О©╫О©╫п╠О©╫Ф√╟И≈╩Д©║Ф│╞Е┬≈Х║╗</span>
 	</td>
   </tr>
   <tr>
@@ -50,19 +50,19 @@
         <td colspan="6" class="td_forborder"></td>
         </tr>
       <tr>
-        <td class="head_title_3" width="20%"><span class="menu_font_small">пбнеID╨е</span></td>
-        <td class="head_title_3" width="20%"><span class="menu_font_small">пбне╠ЙлБ</span></td>
-        <td class="head_title_3" width="20%"><span class="menu_font_small">╢╢╫╗хуфз</span></td>
-        <td class="head_title_3" width="20%"><span class="menu_font_small">пч╦дхуфз</span></td>
-        <td class="head_title_3" width="20%" colspan="2"><span class="menu_font_small">╡ывВ</span></td>
+        <td class="head_title_3" width="20%"><span class="menu_font_small">О©╫О©╫О©╫О©╫IDО©╫О©╫Ф√╟И≈╩ID</span></td>
+        <td class="head_title_3" width="20%"><span class="menu_font_small">О©╫О©╫О©╫е╠О©╫О©╫О©╫Ф√╟И≈╩Ф═┤И╒≤</span></td>
+        <td class="head_title_3" width="20%"><span class="menu_font_small">О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫Е┬⌡Е╩╨Ф≈╤И≈╢</span></td>
+        <td class="head_title_3" width="20%"><span class="menu_font_small">О©╫ч╦О©╫О©╫О©╫О©╫О©╫Д©╝Ф■╧Ф≈╤И≈╢</span></td>
+        <td class="head_title_3" width="20%" colspan="2"><span class="menu_font_small">Ф⌠█Д╫°О©╫О©╫О©╫О©╫</span></td>
         </tr>
 		      <tr>
-        <td class="td_cell" width="20%"><span class="cell_font">пбнеID╨е</span></td>
-        <td class="td_cell"width="20%"><span class="cell_font">пбне╠ЙлБ</span></td>
-        <td class="td_cell"width="20%"><span class="cell_font">╢╢╫╗хуфз</span></td>
-        <td class="td_cell"width="20%"><span class="cell_font">пч╦дхуфз</span></td>
-        <td class="to_ope_cell" width="10%"><a href="#"><span class="menu_font_small">пч╦д</span></a></td>
-		<td class="to_ope_cell" width="10%"><a href="#"><span class="menu_font_small">и╬ЁЩ</span></a></td>
+        <td class="td_cell" width="20%"><span class="cell_font">О©╫О©╫О©╫О©╫IDО©╫О©╫1</span></td>
+        <td class="td_cell"width="20%"><span class="cell_font">О©╫О©╫О©╫е╠О©╫О©╫О©╫xxxx</span></td>
+        <td class="td_cell"width="20%"><span class="cell_font">О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫</span></td>
+        <td class="td_cell"width="20%"><span class="cell_font">О©╫ч╦О©╫О©╫О©╫О©╫О©╫</span></td>
+        <td class="to_ope_cell" width="10%"><a href="#"><span class="menu_font_small">Е┬═И≥╓О©╫ч╦О©╫</span></a></td>
+		<td class="to_ope_cell" width="10%"><a href="#"><span class="menu_font_small">Д©╝Ф■╧</span></a></td>
         </tr>
       <tr>
         <td colspan="6" class="td_forborder"></td>
@@ -70,8 +70,8 @@
     </table></td>
   </tr>
   <tr>
-    <td class="td_forbottom_bg_blue"><a href="#"><span class="menu_font_small">иор╩рЁ</span></a></td>
-    <td class="td_forbottom_bg_blue"><a href="#"><span class="menu_font_small">обр╩рЁ</span></a></td>
+    <td class="td_forbottom_bg_blue"><a href="#"><span class="menu_font_small">Д╦┼Д╦─И║╣</span></a></td>
+    <td class="td_forbottom_bg_blue"><a href="#"><span class="menu_font_small">О©╫О©╫Д╦▀Д╦─И║╣</span></a></td>
   </tr>
 </table>
 </form>

@@ -22,7 +22,7 @@
 		<option value="CASE_PUBLISH_TIME >">创建日期大于</option>
 		<option value="CASE_CUSTOMER = ">用户名为</option>
 		<option value="CASE_PUBLISH_TIME =">创建日期等于</option>
-		<option value="CASE_PUBLISH_TIME <">创建日期小于</option>
+		<option value="CASE_PUBLISH_TIME小于">创建日期小于</option>
 		</select>
 		</td>
         <td class="head_title_3" width="20px"><span class="menu_font_small">值</span></td>
