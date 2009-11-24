@@ -1,5 +1,16 @@
 /* CSS Document */
-
+a:link {
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: none;
+}
+a:active {
+	text-decoration: none;
+}
 td{
 height:30px;
 vertical-align:middle;
@@ -16,6 +27,28 @@ cursor:pointer;
 vertical-align:middle;
 text-align:center;
 }
+.menu_font_small{
+font-size:12px;
+color:#FFFFFF;
+cursor:pointer;
+vertical-align:middle;
+text-align:center;
+}
+.menu_font{
+font-size:14px;
+color:#FFFFFF;
+cursor:pointer;
+vertical-align:middle;
+text-align:center;
+}
+.menu_font_big{
+font-size:18px;
+color:#FFFFFF;
+cursor:pointer;
+vertical-align:middle;
+text-align:center;
+}
+
 .head_title_2{
 font-size:18px;
 color:#FFFFFF;
@@ -23,21 +56,84 @@ font-family:Arial, Helvetica, sans-serif;
 font-weight:bold;
 vertical-align:middle;
 text-align:center;
+background-color:#000066;
+height:30px;
 }
 
 .head_title_3{
+height:24px;
 font-size:14px;
 color:#FFFFFF;
 font-family:Arial, Helvetica, sans-serif;
 font-weight:bold;
 vertical-align:middle;
 text-align:center;
+background-color:#000066;
 }
 
 .td_forborder{
 height:8px;
 }
+
+.td_v_border{
+width:20px;
+}
+
+.td_v_border_blue{
+width:20px;
+background-color:#000066£»
+}
+
+.td_forbottom{
+height:15px;
+text-align:center;
+vertical-align:middle;
+}
+
+.td_forbottom_bg_blue{
+height:15px;
+text-align:center;
+vertical-align:middle;
+background-color:#000066;
+}
+
 .input_text{
 width:420px;
 height:20px;
+}
+
+.input_text_query{
+width:150px;
+height:18px;
+}
+
+
+.td_cell{
+text-align:center;
+vertical-align:middle;
+height:20px;
+}
+
+.to_ope_cell{
+text-align:center;
+vertical-align:middle;
+background-color:#FF6600;
+}
+
+.cell_font{
+text-align:center;
+vertical-align:middle;
+font-size:12px;
+color:#000066;
+}
+
+.td_center{
+text-align:center;
+vertical-align:middle;
+}
+.note_font_red{
+text-align:center;
+vertical-align:middle;
+color:#FF0000;
+font-size:12px;
 }
