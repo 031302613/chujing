@@ -69,8 +69,10 @@ public class UserDao {
 		try {
 			TransManager.BeginTrans();
 			StringBuffer sql = new StringBuffer(
-					"select * from t_user_info where USERNAME=");
+					"select * from t_user_info where USERNAME='");
 			sql.append(userID);
+			sql.append("'");
+System.out.println(sql.toString());
 			ResultSet rs = TransManager.excute(sql.toString());
 			if (rs.next()) {
 				result= true;
@@ -99,6 +101,7 @@ public class UserDao {
 			TransManager.BeginTrans();
 			String sql="select * from t_user_info where USERNAME=\'";
 			sql=sql+userId+"\' and PASSWORD =\'"+pwd+"\'";
+System.out.println(sql);
 			ResultSet rs = TransManager.excute(sql.toString());
 			if (rs.next()) {
 				result= true;
