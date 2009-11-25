@@ -41,6 +41,7 @@ public class LoginServlet extends HttpServlet {
 		String PassWord=request.getParameter("PassWord").toString();
 		HttpSession session=request.getSession(true);
 		PrintWriter out= response.getWriter();
+		response.setCharacterEncoding("utf8");
 		UserDao user=new UserDao();
 		if(user.isExistsUser(UserId)){
 			if(user.isPassWordValite(UserId, PassWord)){
