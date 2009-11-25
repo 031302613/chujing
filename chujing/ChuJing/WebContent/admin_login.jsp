@@ -22,7 +22,7 @@ background-color:#000066;
 </head>
 <body>
 <div align="center" id="center">
-<form>
+<form method="post" name="login" action="LoginServlet">
   <table width="300" border="1" cellspacing="0" cellpadding="0">
     <tr>
       <td align="center" valign="middle"><span style="font-size:18px; color:#ffffff; font-weight:bold">触景科技网站维护后台入口</span></td>
@@ -31,11 +31,11 @@ background-color:#000066;
       <td><table width="300" border="0">
         <tr>
           <td width="20%" align="center" valign="middle"><span style="font-size:14px; color:#ffffff; font-weight:bold">用户名</span></td>
-          <td width="80%"><input type="text" maxlength="20" /></td>
+          <td width="80%"><input type="text" maxlength="20" name="UserId" /></td>
         </tr>
         <tr>
           <td align="center" valign="middle"><span style="font-size:14px; color:#ffffff; font-weight:bold">密码</span></td>
-          <td><input type="password" maxlength="20" /></td>
+          <td><input type="password" maxlength="20" name="PassWord" /></td>
         </tr>
       </table></td>
     </tr>

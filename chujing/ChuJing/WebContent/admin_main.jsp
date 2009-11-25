@@ -24,10 +24,10 @@ width:12.5%;
     <td height="100px">
       <table border="1" width="100%" height="100%" bordercolor="#FFFFFF" cellspacing="0px">
         <tr>
-          <td height="70" colspan="8" background="images/admin_header.gif">&nbsp;</td>
+          <td height="70px" colspan="8" background="images/admin_header.gif">&nbsp;</td>
         </tr>
-        <tr>
-          <td><span class="menu_font">案例介绍模块</span></td>
+     <tr>
+          <td height="25px"><span class="menu_font">案例介绍模块</span></td>
           <td><span class="menu_font">新闻发布模块</span></td>
           <td><span class="menu_font">招聘人员模块</span></td>
           <td><span class="menu_font">公司简历模块</span></td>
@@ -36,7 +36,8 @@ width:12.5%;
           <td><span class="menu_font">&nbsp;</span></td>
           <td><span class="menu_font">&nbsp;</span></td>
         </tr>
-      </table></td>
+      </table>
+      </td>
   </tr>
   <tr>
     <td valign="top"><iframe align="middle" width="100%" height="700px" name="maintd" hspace="0px"
