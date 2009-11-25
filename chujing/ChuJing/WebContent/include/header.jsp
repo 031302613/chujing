@@ -23,6 +23,8 @@ var arrUrl=strUrl.split("/");
 var strPage=arrUrl[arrUrl.length-1];
 var arrPage = strPage.split(".");
 var flag = arrPage[0];
+if(flag == "")
+	flag = "index";
 if(flag == "caseContent")
 	flag = "case";
 if(flag == "jobContent")

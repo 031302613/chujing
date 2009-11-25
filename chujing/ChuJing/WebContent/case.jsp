@@ -1,4 +1,4 @@
-<%@ page language="java" import="com.javaBean.Case,com.Dao.impl.CaseDao,java.util.List" contentType="text/html; charset=UTF-8"
+<%@ page language="java" import="com.javaBean.Case,com.Dao.impl.CaseDao,java.util.List,com.util.Pagination" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -9,13 +9,18 @@
 <meta name="description" content="" />
 <link href="css/style.css" rel="stylesheet" type="text/css" media="screen" />
 <link href="css/common.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="css/pagination.css" rel="stylesheet" type="text/css"
+	media="screen" />
 <script language='javascript' src='js/common.js'></script>
 </head>
 <body>
 <% 
 	CaseDao dao = new CaseDao();
-	String sql = "select * from t_case LIMIT 8";
-	List list = dao.getListBySQL(sql);
+	String currentPage = request.getParameter("page");
+	int pageSize = 8;
+	List list = dao.getListByPage(currentPage, pageSize);
+	//String sql = "select * from t_case LIMIT 8";
+	//List list = dao.getListBySQL(sql);
 	Case _case;
 %>
 <jsp:include page="include/header.jsp" />
@@ -47,6 +52,7 @@
 	        	</div>
 	        </div>
 		</div>
+		<div class="pagination"><%=Pagination.getURL("case.jsp") %></div>
 	</div>
 	<!-- end #content -->
 <jsp:include page="include/sidebar.jsp" /> 

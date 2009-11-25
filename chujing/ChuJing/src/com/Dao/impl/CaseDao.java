@@ -7,7 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.javaBean.Case;
+import com.javaBean.News;
 import com.jdbc.impl.TransManager;
+import com.util.Pagination;
 
 public class CaseDao {
 	public List<Case> getListBySQL(String sql) {
@@ -47,6 +49,53 @@ public class CaseDao {
 		return list;
 	}
 
+	public List<Case> getListByPage(String currentPage,int PageSize) {
+		List<Case> list = new ArrayList<Case>();
+		try {
+			String sql = "select count(*) from t_case";
+			TransManager.BeginTrans();
+			ResultSet rs = TransManager.excute(sql);
+			if(rs.next()){
+				Pagination.init(currentPage,rs.getInt(1),PageSize);
+			}else
+				return null;
+			StringBuffer pageSQL = new StringBuffer("select * from t_case limit ");
+			pageSQL.append(Pagination.beginIndex);
+			pageSQL.append(",");
+			pageSQL.append(Pagination.pageSize);
+			ResultSet rsByPage = TransManager.excute(pageSQL.toString());
+			while (rsByPage.next()) {
+				Case Case = new Case();
+				Case.setCase3DPath(rsByPage.getString("CASE_3D_PATH"));
+				Case.setCase3DSize(rsByPage.getString("CASE_3D_SIZE"));//
+				Case.setCaseScreenshot1(rsByPage.getString("CASE_SCREENSHOT1"));
+				Case.setCaseScreenshot2(rsByPage.getString("CASE_SCREENSHOT2"));
+				Case.setCaseScreenshot3(rsByPage.getString("CASE_SCREENSHOT3"));
+				Case.setCaseScreenshot4(rsByPage.getString("CASE_SCREENSHOT4"));
+				Case.setCaseScreenshot5(rsByPage.getString("CASE_SCREENSHOT5"));
+				Case.setCaseCustomer(rsByPage.getString("CASE_CUSTOMER"));
+				Case.setCaseId(String.valueOf(rsByPage.getInt("Case_ID")));
+				Case.setCaseIntroduction(rsByPage.getString("CASE_INTRODUCTION"));
+				Case.setCasePublishTime(rsByPage.getDate("CASE_PUBLISH_TIME"));
+				Case.setCaseRARPath(rsByPage.getString("CASE_RAR_PATH"));
+				Case.setCaseRARSize(rsByPage.getString("CASE_RAR_SIZE"));
+				Case.setCaseTitle(rsByPage.getString("CASE_TITLE"));
+				Case.setCaseStar(rsByPage.getInt("CASE_STAR"));
+				list.add(Case);
+			}
+			TransManager.Commit();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			TransManager.Rollback();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			TransManager.Rollback();
+		} finally {
+			TransManager.close();
+		}
+		return list;
+	}
+	
 	public Case getByID(String ID) {
 		Case Case = new Case();
 		try {
