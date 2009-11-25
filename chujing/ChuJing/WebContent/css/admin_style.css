@@ -11,10 +11,7 @@ a:hover {
 a:active {
 	text-decoration: none;
 }
-td{
-height:30px;
-vertical-align:middle;
-}
+
 th{
 vertical-align:middle;
 text-align:center;

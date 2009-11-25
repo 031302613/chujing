@@ -60,4 +60,62 @@ public class UserDao {
 		}
 		return user;
 	}
+	
+	public boolean isExistsUser(String userID){
+		if(userID==null){
+			return false;
+		}
+		boolean result=false;
+		try {
+			TransManager.BeginTrans();
+			StringBuffer sql = new StringBuffer(
+					"select * from t_user_info where USERNAME=");
+			sql.append(userID);
+			ResultSet rs = TransManager.excute(sql.toString());
+			if (rs.next()) {
+				result= true;
+			}
+			
+			TransManager.Commit();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			TransManager.Rollback();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			TransManager.Rollback();
+		} finally {
+			TransManager.close();
+			return result;
+		}
+		
+	}
+	
+	public boolean isPassWordValite(String userId,String pwd){
+		if(userId==null||pwd==null){
+			return false;
+		}
+		boolean result=false;
+		try {
+			TransManager.BeginTrans();
+			String sql="select * from t_user_info where USERNAME=\'";
+			sql=sql+userId+"\' and PASSWORD =\'"+pwd+"\'";
+			ResultSet rs = TransManager.excute(sql.toString());
+			if (rs.next()) {
+				result= true;
+			}
+			
+			TransManager.Commit();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			TransManager.Rollback();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			TransManager.Rollback();
+		} finally {
+			TransManager.close();
+			return result;
+		}
+			
+	}
+	
 }

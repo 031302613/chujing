@@ -26,6 +26,10 @@ public class MyConnection implements DBConnection {
 	public ResultSet excute(String sql) throws SQLException{
 		return this.stmt.executeQuery(sql);
 	}
+	
+	public int Update(String sql) throws SQLException{
+		return this.stmt.executeUpdate(sql);
+	}
 	@Override
 	public void BeginTransaction(Object obj) throws SQLException {
 		try {
@@ -33,7 +37,7 @@ public class MyConnection implements DBConnection {
 				this.conn.setAutoCommit(false);
 			}
 		} catch (SQLException e) {
-			throw new SQLException("¿ªÊ¼ÊÂÎñÊ§°Ü"+obj.getClass().getName()+e);
+			throw new SQLException("ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½"+obj.getClass().getName()+e);
 		}
 	}
 
@@ -45,7 +49,7 @@ public class MyConnection implements DBConnection {
 				this.isClosed = true;
 			}
 		}catch(SQLException e){
-			throw new SQLException("¹Ø±ÕÊý¾Ý¿âÁ¬½ÓÊ§°Ü"+obj.getClass().getName()+e);
+			throw new SQLException("ï¿½Ø±ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½"+obj.getClass().getName()+e);
 		}
 	}
 
@@ -56,7 +60,7 @@ public class MyConnection implements DBConnection {
 				this.conn.commit();
 			}
 		}catch(SQLException e){
-			throw new SQLException("Ìá½»ÊÂÎñÊ§°Ü" + this.objId.getClass().getName()+e);
+			throw new SQLException("ï¿½á½»ï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½" + this.objId.getClass().getName()+e);
 		}
 	}
 
@@ -71,7 +75,7 @@ public class MyConnection implements DBConnection {
 				this.stmt = this.conn.createStatement();
 			}
 		} catch (SQLException e) {
-			throw new SQLException("»ñÈ¡Êý¾Ý¿âÁ¬½ÓÊ§°Ü"+obj.getClass().getName() + e);
+			throw new SQLException("ï¿½ï¿½È¡ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½"+obj.getClass().getName() + e);
 		}
 		return ;
 	}
@@ -83,7 +87,7 @@ public class MyConnection implements DBConnection {
 				this.conn.rollback();
 			}
 		}catch(SQLException e){
-			throw new SQLException("ÊÂÎñ»Ø¹öÊ§°Ü"+obj.getClass().getName()+e);
+			throw new SQLException("ï¿½ï¿½ï¿½ï¿½Ø¹ï¿½Ê§ï¿½ï¿½"+obj.getClass().getName()+e);
 		}
 	}
 

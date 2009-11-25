@@ -2,10 +2,11 @@
     pageEncoding="UTF-8"%>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf8" />
 <title>触景科技网站后台</title>
 <link href="css/admin_style.css" rel="stylesheet" type="text/css" media="screen" />
 <style type="text/css">
+
 table{
 background-color:#000066;
 }
@@ -13,7 +14,6 @@ td{
 vertical-align:middle;
 text-align:center;
 width:12.5%;
-
 }
 </style>
 </head>
@@ -26,11 +26,11 @@ width:12.5%;
         <tr>
           <td height="70px" colspan="8" background="images/admin_header.gif">&nbsp;</td>
         </tr>
-     <tr>
-          <td height="25px"><span class="menu_font">案例介绍模块</span></td>
-          <td><span class="menu_font">新闻发布模块</span></td>
-          <td><span class="menu_font">招聘人员模块</span></td>
-          <td><span class="menu_font">公司简历模块</span></td>
+        <tr>
+          <td><span class="menu_font">案例介绍模块</span></td>
+          <td><span class="menu_font">人才招聘模块</span></td>
+          <td><span class="menu_font">公司简介编辑</span></td>
+          <td><span class="menu_font">新闻公告模块</span></td>
           <td><span class="menu_font">维护人员模块</span></td>
           <td><span class="menu_font">维护人员登出</span></td>
           <td><span class="menu_font">&nbsp;</span></td>
