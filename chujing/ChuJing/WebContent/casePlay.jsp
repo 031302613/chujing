@@ -5,11 +5,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script language='javascript' src='js/detect.js'></script>
+<script language='VBScript'  src='js/detectVB.js'></script>
 </head>
+<script language='javascript'>
+
+</script>
 <body>
 <%
 	String resourceName = (String) request.getParameter("resourceName");
 %>
+<Button id="message"></Button>
 <object id="UnityObject" classid="clsid:444785F1-DE89-4295-863A-D46C3A781394"
     width="600" height="450"
     codebase="http://webplayer.unity3d.com/download_webplayer/UnityWebPlayer.cab#version=2,0,0,0">

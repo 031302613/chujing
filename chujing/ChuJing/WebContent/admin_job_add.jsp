@@ -25,7 +25,7 @@
 			<tr>
 				<th width="20%" bgcolor="#000066"><span class="head_title_3">招聘标题</span></th>
 				<td width="20px"></td>
-				<td align="left"><input type="text" class='input_text' onclick="WdatePicker()" /></td>
+				<td align="left"><input type="text" class='input_text' /></td>
 			</tr>
 		</table>
 		</td>

@@ -27,8 +27,7 @@
 <div id="page">
 	<div id="content">
         <div class="post">
-        	<div class="title">案例介绍</div> 
-	        <div class="case">
+        		<div class="title">案例介绍</div>
 	        	<div class="case_list">
 	        		<br/>
 	        		<% 
@@ -50,7 +49,6 @@
 						}
 					%>
 	        	</div>
-	        </div>
 		</div>
 		<div class="pagination"><%=Pagination.getURL("case.jsp") %></div>
 	</div>

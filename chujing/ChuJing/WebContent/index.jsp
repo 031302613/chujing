@@ -26,7 +26,7 @@
 <div id="page">
 <div id="content">
 <div class="post">
-<div class="title">公司新闻<a href="#">more</a></div>
+<div class="title">公司新闻<a href="news.jsp">更多</a></div>
 <div class="entry">
 <div class="flash"><object
 	classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000"
@@ -64,27 +64,34 @@
 </div>
 </div>
 <div class="post">
-<div class="title">案例介绍<a href="#">more</a></div>
-					<% 
-	        		for(int i=0;i<caseList.size();i++){
-	    				_case = (Case)caseList.get(i);
-	    				int introLength = _case.getCaseIntroduction().length();
-	    				int length = introLength>120 ? 120 : introLength;
-					%>
+<div class="title">案例介绍<a href="case.jsp">更多</a></div>
+<%
+	for (int i = 0; i < caseList.size(); i++) {
+		_case = (Case) caseList.get(i);
+		int introLength = _case.getCaseIntroduction().length();
+		int length = introLength > 120 ? 120 : introLength;
+%>
 <div class="case">
-<div class="case_image"><a href="caseContent.jsp?caseID=<%=_case.getCaseId() %>"><img
-	src="images/<%=_case.getCaseScreenshot1() %>" alt="" border="0" height="93" width="138" /></a></div>
-<div class="case_content"><span class="case_star"><%for(int j=0;j<_case.getCaseStar();j++) out.print("★"); for(int j=0;j<5-_case.getCaseStar();j++) out.print("☆"); %></span> <span
-	class="case_title"><a href="caseContent.jsp?caseID=<%=_case.getCaseId() %>"><%=_case.getCaseTitle() %></a></span> <br />
-<span class="case_intro">&nbsp;&nbsp;&nbsp;&nbsp;<%=_case.getCaseIntroduction().substring(0,length) %>..</span>
+<div class="case_image"><a
+	href="caseContent.jsp?caseID=<%=_case.getCaseId()%>"><img
+	src="images/<%=_case.getCaseScreenshot1()%>" alt="" border="0"
+	height="93" width="138" /></a></div>
+<div class="case_content"><span class="case_star"> <%
+ 	for (int j = 0; j < _case.getCaseStar(); j++)
+ 			out.print("★");
+ 		for (int j = 0; j < 5 - _case.getCaseStar(); j++)
+ 			out.print("☆");
+ %> </span> <span class="case_title"><a
+	href="caseContent.jsp?caseID=<%=_case.getCaseId()%>"><%=_case.getCaseTitle()%></a></span>
 <br />
-<span class="case_author">客户:<%=_case.getCaseCustomer() %>
-</span> <span class="case_hits"> 文件大小：</font><%=_case.getCase3DSize() %>MB</span></div>
+<span class="case_intro">&nbsp;&nbsp;&nbsp;&nbsp;<%=_case.getCaseIntroduction().substring(0,
+										length)%>..</span> <br />
+<span class="case_author">客户:<%=_case.getCaseCustomer()%> </span> <span
+	class="case_hits"> 文件大小：</font><%=_case.getCase3DSize()%>MB</span></div>
 </div>
-					<%
-						}
-					%>
-
+<%
+	}
+%>
 </div>
 </div>
 <!-- end #content --> <jsp:include page="include/sidebar.jsp" /></div>
