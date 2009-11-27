@@ -16,6 +16,7 @@ text-align:center;
 width:12.5%;
 }
 </style>
+
 </head>
 
 <body>
@@ -41,7 +42,7 @@ width:12.5%;
   </tr>
   <tr>
     <td valign="top"><iframe align="middle" width="100%" height="700px" name="maintd" hspace="0px"
-	 vspace="0px" marginheight="0px" marginwidth="0px" ></iframe></td>
+	 vspace="0px" marginheight="0px" marginwidth="0px" src="admin_new_list.jsp"></iframe></td>
   </tr>
   <tr>
     <td bgcolor="#FFFFFF">&nbsp;</td>

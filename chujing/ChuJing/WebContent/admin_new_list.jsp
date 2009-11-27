@@ -5,13 +5,20 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>新闻列表</title>
 <link href="css/admin_style.css" rel="stylesheet" type="text/css" media="screen" />
+<script type="text/javascript">
+function link_news_add(){
+window.location="admin_news_add.jsp";
+}
+</script>
 </head>
 
 <body>
+&nbsp;
 <form>
-<table border="1" align="center" cellpadding="0" cellspacing="0" bordercolor="#000066" width="90%">
+
+<table border="1" align="center" cellpadding="0" cellspacing="0" bordercolor="#000066" width="95%">
   <tr>
-    <td width="20%" class="to_ope_cell"><input type="button" onClick="" value="新增新闻"/></td>
+    <td width="20%" class="to_ope_cell"><input type="button"  value="新增新闻" onClick="link_news_add()"/></td>
     <td><table border="0" cellpadding="0" cellspacing="0" width="100%" height="100%">
       <tr>
         <td class="head_title_3" width="80px"><span class="menu_font_small">添加新闻</span></td>
@@ -37,7 +44,7 @@
   </tr>
 </table>
 
-<table width="90%"  border="1" align="center" cellpadding="0" cellspacing="0" bordercolor="#000066">
+<table width="95%"  border="1" align="center" cellpadding="0" cellspacing="0" bordercolor="#000066">
   <tr>
     <td colspan="2" scope="col" bgcolor="#000066" class="head_title_2">
 	<span class="menu_font_big">新闻信息列表</span>

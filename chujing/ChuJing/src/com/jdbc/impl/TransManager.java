@@ -41,4 +41,8 @@ public class TransManager {
 	public static ResultSet excute(String sql) throws SQLException{
 		return conn.excute(sql);
 	}
+	
+	public static int update(String sql) throws SQLException{
+		return conn.update(sql);
+	}
 }

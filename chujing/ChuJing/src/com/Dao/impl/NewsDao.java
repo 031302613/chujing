@@ -101,4 +101,33 @@ public class NewsDao {
 		}
 		return news;
 	}
+	
+	public boolean AddNews(String title,String content){
+		if(title==null||content==null||title.length()==0||content.length()==0){
+			return false;
+		}
+		boolean result=true;
+		String sql="INSERT INTO T_NEWS(NEWS_TITLE,NEWS_CONTENT,NEWS_PUBLISH_TIME)" +
+				"VALUES( \'"+title+"\',\'"+content+"\',NOW())";
+		System.out.println(sql);
+		try{
+			TransManager.BeginTrans();
+			if(TransManager.update(sql)==0){
+				result=false;
+			}else{
+				TransManager.Commit();
+			}
+		}catch (SQLException e) {
+			e.printStackTrace();
+			TransManager.Rollback();
+			result=false;
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			TransManager.Rollback();
+			result=false;
+		} finally {
+			TransManager.close();
+			return result;
+		}
+	}
 }

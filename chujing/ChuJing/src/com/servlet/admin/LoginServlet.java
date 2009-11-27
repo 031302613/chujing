@@ -37,11 +37,13 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		request.setCharacterEncoding("utf-8");
+		response.setCharacterEncoding("gb2312");
 		String UserId=request.getParameter("UserId").toString();
 		String PassWord=request.getParameter("PassWord").toString();
 		HttpSession session=request.getSession(true);
 		PrintWriter out= response.getWriter();
-		response.setCharacterEncoding("utf8");
+
 		UserDao user=new UserDao();
 		if(user.isExistsUser(UserId)){
 			if(user.isPassWordValite(UserId, PassWord)){

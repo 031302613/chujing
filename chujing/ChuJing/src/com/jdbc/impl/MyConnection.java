@@ -27,7 +27,7 @@ public class MyConnection implements DBConnection {
 		return this.stmt.executeQuery(sql);
 	}
 	
-	public int Update(String sql) throws SQLException{
+	public int update(String sql) throws SQLException{
 		return this.stmt.executeUpdate(sql);
 	}
 	@Override

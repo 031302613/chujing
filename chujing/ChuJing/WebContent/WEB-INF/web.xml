@@ -19,4 +19,14 @@
     <servlet-name>LoginServlet</servlet-name>
     <url-pattern>/LoginServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>NewsOpeServlet</display-name>
+    <servlet-name>NewsOpeServlet</servlet-name>
+    <servlet-class>com.servlet.admin.NewsOpeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>NewsOpeServlet</servlet-name>
+    <url-pattern>/NewsOpeServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
