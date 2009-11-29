@@ -29,4 +29,14 @@
     <servlet-name>NewsOpeServlet</servlet-name>
     <url-pattern>/NewsOpeServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CaseOpeServlet</display-name>
+    <servlet-name>CaseOpeServlet</servlet-name>
+    <servlet-class>com.servlet.admin.CaseOpeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CaseOpeServlet</servlet-name>
+    <url-pattern>/CaseOpeServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

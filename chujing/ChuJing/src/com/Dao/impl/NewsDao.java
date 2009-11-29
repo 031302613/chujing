@@ -102,6 +102,7 @@ public class NewsDao {
 		return news;
 	}
 	
+	@SuppressWarnings("finally")
 	public boolean AddNews(String title,String content){
 		if(title==null||content==null||title.length()==0||content.length()==0){
 			return false;

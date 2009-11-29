@@ -134,4 +134,37 @@ public class CaseDao {
 		}
 		return Case;
 	}
+	
+	@SuppressWarnings("finally")
+	public boolean AddCase(String title,String content,String customer){
+		boolean result=true;
+		StringBuffer sql= new StringBuffer("INSERT INTO T_CASE(CASE_TITLE,CASE_INTRODUCTION,CASE_CUSTOMER)");
+		sql.append("VALUES( \'");
+		sql.append(title);
+		sql.append("\',\'");
+		sql.append(content);
+		sql.append("\',\'");
+		sql.append(customer);
+		sql.append("\')");
+		System.out.println(sql.toString());
+		try{
+			TransManager.BeginTrans();
+			if(TransManager.update(sql.toString())==0){
+				result=false;
+			}else{
+				TransManager.Commit();
+			}
+		}catch (SQLException e) {
+			e.printStackTrace();
+			TransManager.Rollback();
+			result=false;
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			TransManager.Rollback();
+			result=false;
+		} finally {
+			TransManager.close();
+			return result;
+		}
+	}
 }
