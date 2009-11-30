@@ -136,15 +136,35 @@ public class CaseDao {
 	}
 	
 	@SuppressWarnings("finally")
-	public boolean AddCase(String title,String content,String customer){
+	public boolean AddCase(String title,String content,String customer,int star,List<String> filenames,int RARSize,int Unity3DSize){
 		boolean result=true;
-		StringBuffer sql= new StringBuffer("INSERT INTO T_CASE(CASE_TITLE,CASE_INTRODUCTION,CASE_CUSTOMER)");
+		StringBuffer sql= new StringBuffer("INSERT INTO T_CASE(CASE_TITLE,CASE_INTRODUCTION,CASE_CUSTOMER,CASE_STAR,CASE_3D_SIZE,CASE_RAR_SIZE,CASE_3D_PATH,CASE_RAR_PATH,CASE_SCREENSHOT1,CASE_SCREENSHOT2,CASE_SCREENSHOT3,CASE_SCREENSHOT4,CASE_SCREENSHOT5)");
 		sql.append("VALUES( \'");
 		sql.append(title);
 		sql.append("\',\'");
 		sql.append(content);
 		sql.append("\',\'");
 		sql.append(customer);
+		sql.append("\',");
+		sql.append(star);
+		sql.append(",");
+		sql.append(Unity3DSize);
+		sql.append(",");
+		sql.append(RARSize);
+		sql.append(",\'");
+		sql.append(filenames.get(0));
+		sql.append("\',\'");
+		sql.append(filenames.get(1));
+		sql.append("\',\'");
+		sql.append(filenames.get(2));
+		sql.append("\',\'");
+		sql.append(filenames.get(3));
+		sql.append("\',\'");
+		sql.append(filenames.get(4));
+		sql.append("\',\'");
+		sql.append(filenames.get(5));
+		sql.append("\',\'");
+		sql.append(filenames.get(6));
 		sql.append("\')");
 		System.out.println(sql.toString());
 		try{

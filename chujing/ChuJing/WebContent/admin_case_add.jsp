@@ -10,14 +10,51 @@
 </head>
 
 <body>
-<form name="case_add_form" action="CaseOpeServlet" method="post">
+<form name="case_add_form" action="CaseOpeServlet" method="post" ENCTYPE="multipart/form-data">
 <table width="95%" border="1" align="center" cellpadding="0"
 	cellspacing="0" bordercolor="#000066">
 	<tr>
 		<td colspan="2">
 		<table width="100%" border="0" cellpadding="0" cellspacing="0">
 			<tr>
-				<td class="head_title_2"><span class="menu_font">案例增加</span></td>
+				<td class="head_title_2" colspan="4"><span class="menu_font">案例增加</span></td>
+			</tr>
+			<tr>
+				<td class="td_forborder"></td>
+			</tr>
+			<tr>
+				<td>
+				<table width="100%" border="1" cellpadding="0" cellspacing="0"
+					bordercolor="#000066">
+					<tr>
+						<td class="head_title_3" width="150px">客户名称</td>
+						<td>
+						<table width="100%" border="0">
+							<tr>
+								<td class="td_v_border">&nbsp;</td>
+								<td><input type="text" name="customer" class="input_text" /></td>
+							</tr>
+						</table>
+						</td>
+					</tr>
+				</table>
+				</td>
+				<td>
+				<table width="100%" border="1" cellpadding="0" cellspacing="0"
+					bordercolor="#000066">
+					<tr>
+						<td class="head_title_3" width="150px">案例星级</td>
+						<td>
+						<table width="100%" border="0">
+							<tr>
+								<td class="td_v_border">&nbsp;</td>
+								<td><input type="text" name="star" class="input_text" /></td>
+							</tr>
+						</table>
+						</td>
+					</tr>
+				</table>
+				</td>
 			</tr>
 			<tr>
 				<td class="td_forborder"></td>
@@ -43,32 +80,12 @@
 			<tr>
 				<td class="td_forborder"></td>
 			</tr>
+			
 			<tr>
-				<td>
-				<table width="100%" border="1" cellpadding="0" cellspacing="0"
-					bordercolor="#000066">
-					<tr>
-						<td class="head_title_3" width="150px">客户名称</td>
-						<td>
-						<table width="100%" border="0">
-							<tr>
-								<td class="td_v_border">&nbsp;</td>
-								<td><input type="text" name="customer" class="input_text" /></td>
-							</tr>
-						</table>
-						</td>
-					</tr>
-				</table>
-				</td>
+				<td class="head_title_3" colspan="4">案例简介</td>
 			</tr>
 			<tr>
-				<td class="td_forborder"></td>
-			</tr>
-			<tr>
-				<td class="head_title_3">案例简介</td>
-			</tr>
-			<tr>
-				<td height="400px">
+				<td height="400px" colspan="4">
 				<div align="left"><%@ include file="admin_fckeditor.jsp"%>
 				<%
 					out.println(oFCKeditor.create());
