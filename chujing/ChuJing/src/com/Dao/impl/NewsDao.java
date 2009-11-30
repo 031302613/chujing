@@ -62,9 +62,52 @@ public class NewsDao {
 			}
 			TransManager.Commit();
 		} catch (SQLException e) {
+			list=null;
 			e.printStackTrace();
 			TransManager.Rollback();
 		} catch (ClassNotFoundException e) {
+			list=null;
+			e.printStackTrace();
+			TransManager.Rollback();
+		} finally {
+			TransManager.close();
+		}
+		return list;
+	}
+	
+	
+	public List<News> getListByPageAndCond(String cond,String currentPage,int PageSize) {
+		List<News> list = new ArrayList<News>();
+		try {
+			String sql = "select count(*) from t_news where 1=2 "+cond;
+			TransManager.BeginTrans();
+			ResultSet rs = TransManager.excute(sql);
+			if(rs.next()){
+				Pagination.init(currentPage,rs.getInt(1),PageSize);//size = 5
+			}else
+				return null;
+			
+			StringBuffer pageSQL = new StringBuffer("select * from t_news where 1=2 "+cond+ " limit ");
+			pageSQL.append(Pagination.beginIndex);
+			pageSQL.append(",");
+			pageSQL.append(Pagination.pageSize);
+			ResultSet rsByPage = TransManager.excute(pageSQL.toString());
+			while (rsByPage.next()) {
+				News news = new News();
+				news.setNewsContent(rsByPage.getString("NEWS_CONTENT"));
+				news.setNewsId(String.valueOf(rsByPage.getInt("NEWS_ID")));
+				news.setNewsTitle(rsByPage.getString("NEWS_TITLE"));
+				news.setNewsModifiedTime(rsByPage.getDate("NEWS_MODIFIED_TIME"));
+				news.setNewsPublishTime(rsByPage.getDate("NEWS_PUBLISH_TIME"));
+				list.add(news);
+			}
+			TransManager.Commit();
+		} catch (SQLException e) {
+			list=null;
+			e.printStackTrace();
+			TransManager.Rollback();
+		} catch (ClassNotFoundException e) {
+			list=null;
 			e.printStackTrace();
 			TransManager.Rollback();
 		} finally {

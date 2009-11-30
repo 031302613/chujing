@@ -14,7 +14,7 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="C:/Documents and Settings/huod/Desktop/MyDocuments/触景科技宣传网站/SVN/Source/ChuJing/WebContent/WEB-INF/lib/mysql-connector-java-5.1.8-bin.jar"/>
-	<classpathentry kind="lib" path="C:/Documents and Settings/huod/Desktop/MyDocuments/触景科技宣传网站/SVN/Source/ChuJing/WebContent/WEB-INF/lib/FCKeditor-2.3.jar"/>
+	<classpathentry kind="lib" path="F:/workplace/ChuJing/WebContent/WEB-INF/lib/FCKeditor-2.3.jar"/>
+	<classpathentry kind="lib" path="F:/workplace/ChuJing/WebContent/WEB-INF/lib/mysql-connector-java-5.1.8-bin.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

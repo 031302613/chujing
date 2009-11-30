@@ -15,8 +15,7 @@ window.location="admin_news_add.jsp";
 
 <body>
 &nbsp;
-<form>
-
+<form name="query_cond_form" method="post" action="NewsOpeServlet">
 <table border="1" align="center" cellpadding="0" cellspacing="0" bordercolor="#000066" width="95%">
   <tr>
     <td width="20%" class="to_ope_cell"><input type="button"  value="新增新闻" onClick="link_news_add()"/></td>
@@ -24,19 +23,24 @@ window.location="admin_news_add.jsp";
       <tr>
         <td class="head_title_3" width="80px"><span class="menu_font_small">添加新闻</span></td>
         <td class="td_center" width="120px">
-		<select><option value="NEWS_ID=">新闻id等于</option>
-		<option value="NEWS_TITLE LIKE">新闻中字段有</option>
-		<option value="NEWS_PUBLISH_TIME >">创建时间大于</option>
-		<option value="NEWS_PUBLISH_TIME =">创建时间等于</option>
-		<option value="NEWS_PUBLISH_TIME小于">创建时间小于</option>
+        <select name="query_cond_value">
+		<option value="NEWS_ID">新闻id等于</option>
+		<option value="NEWS_TITLE_LIKE">新闻标题中字段有</option>
+		<option value="NEWS_PUBLISH_TIME_MORE">创建时间大于</option>
+		<option value="NEWS_PUBLISH_TIME_EQUAL">创建时间等于</option>
+		<option value="NEWS_PUBLISH_TIME_LESS">创建时间小于</option>
 		</select>
 		</td>
         <td class="head_title_3" width="20px"><span class="menu_font_small">值</span></td>
 		<td class="td_v_border"></td>
-        <td valign="middle"><input class="input_text_query" type="text"/>
+        <td valign="middle"><input class="input_text_query" type="text" name="query_cond_text"/>
 		<span class="note_font_red">日期格式：2009-01-01</span>
 		</td>
-		<td class="head_title_3" width="50px"><input type="submit" value="查询"/></td>
+		<td class="head_title_3" width="50px">
+		<input type="submit" value="查询"/>
+		<input type="hidden" name="news_method" value="query_cond"/>
+		<input type="hidden" name="currentpage" value="1"/>
+		</td>
       </tr>
     </table></td>
   </tr>
