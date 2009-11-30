@@ -40,8 +40,9 @@ public class NewsOpeServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("gb2312");
 		NewsDao newsdao=new NewsDao();
+		System.out.println("tttttttt");
 		String type=request.getParameter("news_method").toString();
-		System.out.println("type:"+type+"  length:"+type.length());
+		System.out.println("type ffffff:"+type+"  length:"+type.length());
 		if(type.equals("add")){
 			System.out.println("dddddddddd!!");
 			if(this.AddNews(request, newsdao)){
@@ -78,7 +79,7 @@ public class NewsOpeServlet extends HttpServlet {
 	}
 	
 	protected boolean QueryNews(HttpServletRequest request,NewsDao newsdao){
-		List<News> newslist=newsdao.getListByPage(request.getParameter("currentpage"), 10);
+		List<News> newslist=newsdao.getListByPage(request.getParameter("currentpage"), 2);
 		if(newslist==null){
 			return false;
 		}else{
@@ -106,14 +107,14 @@ public class NewsOpeServlet extends HttpServlet {
 		}
 		
 		if(query_cond_value.equals("NEWS_PUBLISH_TIME_MORE")){
-			cond="AND NEWS_PUBLISH_TIME > to_date(\'"+query_cond+"\',\'YYYY/MM/DD/HH24/MI/SS\')";
+			cond="AND NEWS_PUBLISH_TIME > date(\'"+query_cond+"\')";
 		}
 		if(query_cond_value.equals("NEWS_PUBLISH_TIME_EQUAL")){
-			cond="AND NEWS_PUBLISH_TIME = to_date(\'"+query_cond+"\',\'YYYY/MM/DD/HH24/MI/SS\')";
+			cond="AND NEWS_PUBLISH_TIME = date(\'"+query_cond+"\')";
 		}
 		
 		if(query_cond_value.equals("NEWS_PUBLISH_TIME_LESS")){
-			cond="AND NEWS_PUBLISH_TIME < to_date(\'"+query_cond+"\',\'YYYY/MM/DD/HH24/MI/SS\')";
+			cond="AND NEWS_PUBLISH_TIME <date( \'"+query_cond+"\')";
 		}
 		
 		List<News> newslist=newsdao.getListByPageAndCond(cond, request.getParameter("currentpage"), 10);
