@@ -1,11 +1,3 @@
-HTMLElement labelMessage = document.getElementById("message");
-if (labelMessage != null) {
-if (DetectUnityWebPlayer()) 
-labelMessage.text = "success!";
-else 
-labelMessage.text = "failed!";
-}
-
 			function GetUnity () {
 				if (navigator.appVersion.indexOf("MSIE") != -1 && navigator.appVersion.toLowerCase().indexOf("win") != -1)
 					return document.getElementById("UnityObject");
