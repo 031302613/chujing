@@ -71,4 +71,48 @@ public class Pagination {
 		returnStr = returnStr.replaceAll("uiop", String.valueOf(next));
 		return returnStr.replaceAll("#", url);
 	}
+	
+	
+	public static String getBackURL(String url) {
+		StringBuffer paginationStr = new StringBuffer("<div class='badoo'>");
+		if(first)
+			paginationStr.append("<span class='disabled'>< 上一页</span>");
+		else
+			paginationStr.append("<a href='#&page=qwer'>< 上一页 </a>");
+		
+		for(int i=1;i<pageCount+1;i++){
+			if(currentPage == i){
+				paginationStr.append("<span class='current'>");
+				paginationStr.append(i);
+				paginationStr.append("</span>");
+			}else{
+				paginationStr.append("<a href='#&page=");
+				paginationStr.append(i);
+				paginationStr.append("'>");
+				paginationStr.append(i);
+				paginationStr.append("</a>");
+			}
+		}
+		paginationStr.append("");
+		
+		if(last)
+			paginationStr.append("<span class='disabled'>下一页 > </span>");
+		else
+			paginationStr.append("<a href='#&page=uiop'>下一页 > </a>");
+		paginationStr.append("</div>");
+		/*String str ="<div class='badoo'><span class='disabled'>< Prev</span><span
+		class='current'>1</span><a href='#?page=2' _fcksavedurl='#?page=2'>2</a><a
+		href='#?page=3' _fcksavedurl='#?page=3'>3</a><a href='#?page=4'
+		_fcksavedurl='#?page=4'>4</a><a href='#?page=5' _fcksavedurl='#?page=5'>5</a><a
+		href='#?page=6' _fcksavedurl='#?page=6'>6</a><a href='#?page=7'
+		_fcksavedurl='#?page=7'>7</a>...<a href='#?page=199'
+		_fcksavedurl='#?page=199'>199</a><a href='#?page=200'
+		_fcksavedurl='#?page=200'>200</a><a href='#?page=2'
+		_fcksavedurl='#?page=2'>Next > </a></div>";
+*/		
+		String returnStr = paginationStr.toString();
+		returnStr = returnStr.replaceAll("qwer", String.valueOf(prev));
+		returnStr = returnStr.replaceAll("uiop", String.valueOf(next));
+		return returnStr.replaceAll("#", url);
+	}
 }

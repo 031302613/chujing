@@ -79,7 +79,7 @@ public class NewsOpeServlet extends HttpServlet {
 	}
 	
 	protected boolean QueryNews(HttpServletRequest request,NewsDao newsdao){
-		List<News> newslist=newsdao.getListByPage(request.getParameter("currentpage"), 2);
+		List<News> newslist=newsdao.getListByPage(request.getParameter("page"), 2);
 		if(newslist==null){
 			return false;
 		}else{
@@ -117,7 +117,7 @@ public class NewsOpeServlet extends HttpServlet {
 			cond="AND NEWS_PUBLISH_TIME <date( \'"+query_cond+"\')";
 		}
 		
-		List<News> newslist=newsdao.getListByPageAndCond(cond, request.getParameter("currentpage"), 10);
+		List<News> newslist=newsdao.getListByPageAndCond(cond, request.getParameter("page"), 2);
 		if(newslist==null){
 			return false;
 		}else{

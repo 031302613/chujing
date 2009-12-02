@@ -47,7 +47,7 @@ List<News> newslist=(List<News>)request.getAttribute("NEWSLIST");
 		<td class="head_title_3" width="50px">
 		<input type="submit" value="查询"/>
 		<input type="hidden" name="news_method" value="query_cond"/>
-		<input type="hidden" name="currentpage" value="1"/>
+		<input type="hidden" name="page" value="1"/>
 		</td>
       </tr>
     </table></td>
@@ -94,8 +94,8 @@ List<News> newslist=(List<News>)request.getAttribute("NEWSLIST");
     </table></td>
   </tr>
   <tr>
-  <td colspan="2" class="td_forbottom_bg_blue"><%=Pagination.getURL("NewsOpeServlet?news_method="+request.getAttribute("NEWS_METHOD").toString()+
-		  "?query_cond_value="+request.getAttribute("QUERY_COND_VALUE")+"?query_cond_text="+request.getAttribute("QUERY_COND_TEXT")) %></td>
+  <td colspan="2" class="td_forbottom_bg_blue"><%=Pagination.getBackURL("NewsOpeServlet?news_method="+request.getAttribute("NEWS_METHOD").toString()+
+		  "&query_cond_value="+request.getAttribute("QUERY_COND_VALUE")+"&query_cond_text="+request.getAttribute("QUERY_COND_TEXT")) %></td>
   <!--
     <td class="td_forbottom_bg_blue"><a href="#"><span class="menu_font_small">上一页</span></a></td>
     <td class="td_forbottom_bg_blue"><a href="#"><span class="menu_font_small">下一页</span></a></td>
