@@ -79,7 +79,7 @@ public class NewsDao {
 	public List<News> getListByPageAndCond(String cond,String currentPage,int PageSize) {
 		List<News> list = new ArrayList<News>();
 		try {
-			String sql = "select count(*) from t_news where 1=1 "+cond;
+			String sql = "select count(*) from t_news where 1=2 "+cond;
 			TransManager.BeginTrans();
 			ResultSet rs = TransManager.excute(sql);
 			if(rs.next()){
@@ -87,11 +87,10 @@ public class NewsDao {
 			}else
 				return null;
 			
-			StringBuffer pageSQL = new StringBuffer("select * from t_news where 1=1 "+cond+ " limit ");
+			StringBuffer pageSQL = new StringBuffer("select * from t_news where 1=2 "+cond+ " limit ");
 			pageSQL.append(Pagination.beginIndex);
 			pageSQL.append(",");
 			pageSQL.append(Pagination.pageSize);
-			System.out.println(pageSQL);
 			ResultSet rsByPage = TransManager.excute(pageSQL.toString());
 			while (rsByPage.next()) {
 				News news = new News();
