@@ -1,6 +1,8 @@
 package com.servlet.admin;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -37,22 +39,26 @@ public class NewsOpeServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.setCharacterEncoding("utf-8");
-		response.setCharacterEncoding("gb2312");
+		//request.setCharacterEncoding("utf-8");
+		//response.setCharacterEncoding("utf-8");
+		response.setContentType("text/html;charset=utf-8"); 
+		request.setCharacterEncoding("utf-8"); 
 		NewsDao newsdao=new NewsDao();
+		PrintWriter out= response.getWriter();
 		System.out.println("tttttttt");
 		String type=request.getParameter("news_method").toString();
 		System.out.println("type ffffff:"+type+"  length:"+type.length());
 		if(type.equals("add")){
 			System.out.println("dddddddddd!!");
 			if(this.AddNews(request, newsdao)){
-				System.out.println("successful!!");
-				request.getRequestDispatcher("admin_new_list.jsp").forward(request, response);	
+				System.out.println("successful!!-------------------------");
+				request.getRequestDispatcher("NewsOpeServlet?news_method=query_all").forward(request, response);	
 			}
 		}
 		
 		if(type.equals("query_all")){
 			if(this.QueryNews(request, newsdao)){
+				System.out.println("query_all is successfull!");
 				request.getRequestDispatcher("admin_new_list.jsp").forward(request, response);	
 			}
 		}
@@ -62,6 +68,12 @@ public class NewsOpeServlet extends HttpServlet {
 		if(type.equals("query_cond")){
 			if(this.QueryNewsByCond(request, newsdao)){
 				request.getRequestDispatcher("admin_new_list.jsp").forward(request, response);	
+			}
+		}
+			
+		if(type.equals("news_delete")){
+			if(this.deleteNews(request, newsdao)){
+				out.println("<script language='javascript'>alert('操作成功');"+"window.location.href='NewsOpeServlet?news_method=query_all';</script>");	
 			}
 		}
 		
@@ -80,10 +92,12 @@ public class NewsOpeServlet extends HttpServlet {
 	
 	protected boolean QueryNews(HttpServletRequest request,NewsDao newsdao){
 		List<News> newslist=newsdao.getListByPage(request.getParameter("page"), 2);
+		System.out.println("=+=+==================we4q3w5423=====");
 		if(newslist==null){
 			return false;
 		}else{
 			request.setAttribute("NEWSLIST", newslist);
+			System.out.println("=+=+==:::"+newslist);
 			request.setAttribute("NEWS_METHOD", "query_all");
 			return true;
 		}
@@ -123,11 +137,16 @@ public class NewsOpeServlet extends HttpServlet {
 		}else{
 			request.setAttribute("NEWSLIST", newslist);
 			request.setAttribute("QUERY_COND_VALUE", query_cond_value);
-			request.setAttribute("QUERY_COND_TEXT",query_cond);
+			request.setAttribute("QUERY_COND_TEXT_APP",query_cond);
+			System.out.println("OUTPUT:::"+query_cond);
 			request.setAttribute("NEWS_METHOD", "query_cond");
 			return true;
 		}
 		
 	}
-
+	
+	protected boolean deleteNews(HttpServletRequest request,NewsDao newsdao){
+		String id=request.getParameter("news_id").toString();
+		return newsdao.DeleteNews(id);
+	}
 }

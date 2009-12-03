@@ -21,7 +21,11 @@ window.location="admin_news_add.jsp";
 
 <body>
 <%
+
 List<News> newslist=(List<News>)request.getAttribute("NEWSLIST");
+if(newslist==null){
+	System.out.println("is null !");
+}
 %>
 <form name="query_cond_form" method="post" action="NewsOpeServlet">
 <table border="1" align="center" cellpadding="0" cellspacing="0" bordercolor="#000066" width="95%">
@@ -84,8 +88,14 @@ List<News> newslist=(List<News>)request.getAttribute("NEWSLIST");
         <td class="td_cell"width="20%"><span class="cell_font"><%=news.getNewsTitle()%></span></td>
         <td class="td_cell"width="20%"><span class="cell_font"><%=news.getNewsPublishTime()%></span></td>
         <td class="td_cell"width="20%"><span class="cell_font"><%=news.getNewsModifiedTime()%></span></td>
-        <td class="to_ope_cell" width="10%"><a href="#"><span class="menu_font_small">删除</span></a></td>
-		<td class="to_ope_cell" width="10%"><a href="#"><span class="menu_font_small">修改</span></a></td>
+        <td class="to_ope_cell" width="10%">
+        <a href="NewsOpeServlet?news_method=news_delete&news_id=<%=news.getNewsId()%>">
+        <span class="menu_font_small">删除</span>
+        </a></td>
+		<td class="to_ope_cell" width="10%">
+		<a href=href="NewsOpeServlet?news_method=news_edit&news_id=<%=news.getNewsId()%>">
+		<span class="menu_font_small">修改</span>
+		</a></td>
         </tr>
         <%} %>
       <tr>
@@ -94,8 +104,17 @@ List<News> newslist=(List<News>)request.getAttribute("NEWSLIST");
     </table></td>
   </tr>
   <tr>
+  <%
+
+  System.out.println("<JSP>:::"+request.getAttribute("QUERY_COND_TEXT_APP"));
+
+	  
+  
+  %>
   <td colspan="2" class="td_forbottom_bg_blue"><%=Pagination.getBackURL("NewsOpeServlet?news_method="+request.getAttribute("NEWS_METHOD").toString()+
-		  "&query_cond_value="+request.getAttribute("QUERY_COND_VALUE")+"&query_cond_text="+request.getAttribute("QUERY_COND_TEXT")) %></td>
+		  "&query_cond_value="+request.getAttribute("QUERY_COND_VALUE")+"&query_cond_text="+request.getAttribute("QUERY_COND_TEXT_APP")) %></td>
+		  <%System.out.println("NewsOpeServlet?news_method="+request.getAttribute("NEWS_METHOD").toString()+
+				  "&query_cond_value="+request.getAttribute("QUERY_COND_VALUE")+"&query_cond_text="+request.getAttribute("QUERY_COND_TEXT_APP")) ; %>
   <!--
     <td class="td_forbottom_bg_blue"><a href="#"><span class="menu_font_small">上一页</span></a></td>
     <td class="td_forbottom_bg_blue"><a href="#"><span class="menu_font_small">下一页</span></a></td>
