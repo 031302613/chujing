@@ -203,4 +203,37 @@ public class NewsDao {
 			return result;
 		}
 	}
+	
+	public boolean EditNews(String id,String title,String content){
+		if(id==null||id.length()==0){
+			System.out.println("!!!!!!!!!!!!!!!!!!!!!");
+			return false;
+		}
+		boolean result=true;
+		String sql="UPDATE T_NEWS " +
+		"SET NEWS_TITLE=\'"+title+"\'"+
+		",NEWS_CONTENT=\'"+content+"\'"+
+		",NEWS_MODIFIED_TIME=NOW()"+
+				"WHERE NEWS_ID=\'" +id+"\'";
+		System.out.println("sql||||||::"+sql);
+		try{
+			TransManager.BeginTrans();
+			if(TransManager.update(sql)==0){
+				result=false;
+			}else{
+				TransManager.Commit();
+			}
+		}catch (SQLException e) {
+			e.printStackTrace();
+			TransManager.Rollback();
+			result=false;
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			TransManager.Rollback();
+			result=false;
+		} finally {
+			TransManager.close();
+			return result;
+		}
+	}
 }

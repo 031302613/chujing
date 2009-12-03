@@ -93,7 +93,7 @@ if(newslist==null){
         <span class="menu_font_small">删除</span>
         </a></td>
 		<td class="to_ope_cell" width="10%">
-		<a href=href="NewsOpeServlet?news_method=news_edit&news_id=<%=news.getNewsId()%>">
+		<a href="NewsOpeServlet?news_method=news_edit&news_id=<%=news.getNewsId()%>">
 		<span class="menu_font_small">修改</span>
 		</a></td>
         </tr>

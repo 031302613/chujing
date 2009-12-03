@@ -77,6 +77,18 @@ public class NewsOpeServlet extends HttpServlet {
 			}
 		}
 		
+		if(type.equals("news_edit")){
+			if(this.editNews(request, newsdao)){
+				request.getRequestDispatcher("admin_news_edit.jsp").forward(request, response);	
+			}
+		}
+		
+		if(type.equals("news_edit_submit")){
+			if(this.editNewsAndSubmit(request, newsdao)){
+				out.println("<script language='javascript'>alert('操作成功');"+"window.location.href='NewsOpeServlet?news_method=query_all';</script>");	
+			}
+		}
+		
 	}
 	
 	protected boolean AddNews(HttpServletRequest request,NewsDao newsdao){
@@ -148,5 +160,30 @@ public class NewsOpeServlet extends HttpServlet {
 	protected boolean deleteNews(HttpServletRequest request,NewsDao newsdao){
 		String id=request.getParameter("news_id").toString();
 		return newsdao.DeleteNews(id);
+	}
+	
+	protected boolean editNews(HttpServletRequest request,NewsDao newsdao){
+		String id=request.getParameter("news_id").toString();
+		News news=newsdao.getByID(id);
+		request.setAttribute("TheNews", news);
+		if(news==null){
+			return false;
+		}else{
+			return true;
+		}
+	}
+	
+	protected boolean editNewsAndSubmit(HttpServletRequest request,NewsDao newsdao){
+		String id=request.getParameter("news_id");
+		if(id==null){
+			return false;
+		}
+		String title=request.getParameter("news_title");
+		String content=request.getParameter("content");
+		if(title==null||content==null){
+			System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+		}
+		return newsdao.EditNews(id, title, content);
+		
 	}
 }
