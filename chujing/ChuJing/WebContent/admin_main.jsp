@@ -30,10 +30,10 @@ width:12.5%;
           <td height="70px" colspan="8" background="images/admin_header.gif">&nbsp;</td>
         </tr>
         <tr>
-          <td><span class="menu_font">案例介绍模块</span></td>
-          <td><span class="menu_font">人才招聘模块</span></td>
-          <td><span class="menu_font">公司简介编辑</span></td>
-          <td><span class="menu_font">新闻公告模块</span></td>
+          <td><a href="" target="maintd"><span class="menu_font">案例介绍模块</span></a></td>
+          <td><a href="" target="maintd"><span class="menu_font">人才招聘模块</span></a></td>
+          <td><a href="" target="maintd"><span class="menu_font">公司简介编辑</span></a></td>
+          <td><a href="NewsOpeServlet?news_method=query_all" target="maintd"><span class="menu_font">新闻公告模块</span></a></td>
           <td><span class="menu_font">维护人员模块</span></td>
           <td><span class="menu_font">维护人员登出</span></td>
           <td><span class="menu_font">&nbsp;</span></td>
