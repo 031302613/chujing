@@ -9,16 +9,14 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  
   <filter>
-  	<filter-name>charset</filter-name>
-  	<filter-class>com.util.CharsetFilter</filter-class>
+    <filter-name>charset</filter-name>
+    <filter-class>com.util.CharsetFilter</filter-class>
   </filter>
   <filter-mapping>
-  	<filter-name>charset</filter-name>
-  	<url-pattern>/*</url-pattern>
+    <filter-name>charset</filter-name>
+    <url-pattern>/*</url-pattern>
   </filter-mapping>
-  
   <servlet>
     <description></description>
     <display-name>LoginServlet</display-name>
@@ -58,4 +56,14 @@
     <filter-name>CharsetFilter</filter-name>
     <url-pattern>/CharsetFilter</url-pattern>
   </filter-mapping>
+  <servlet>
+    <description></description>
+    <display-name>JobsOpeServlet</display-name>
+    <servlet-name>JobsOpeServlet</servlet-name>
+    <servlet-class>com.servlet.admin.JobsOpeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>JobsOpeServlet</servlet-name>
+    <url-pattern>/JobsOpeServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

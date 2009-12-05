@@ -9,7 +9,7 @@
 </head>
 
 <body>
-&nbsp;
+
 <form method="post" name="add_news" action="NewsOpeServlet">
 <table width="95%" border="1" align="center" bordercolor="#000066"
 	cellspacing="0" cellpadding="0">

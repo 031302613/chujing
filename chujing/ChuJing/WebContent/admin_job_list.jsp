@@ -7,12 +7,16 @@
 <title>招聘信息列表</title>
 <link href="css/admin_style.css" rel="stylesheet" type="text/css" media="screen" />
 </head>
-
+<script type="text/javascript">
+function link_job_add(){
+window.location="admin_job_add.jsp";
+}
+</script>
 <body>
 <form>
 <table border="1" align="center" cellpadding="0" cellspacing="0" bordercolor="#000066" width="90%">
   <tr>
-    <td width="20%" class="to_ope_cell"><input type="button" onClick="" value="添加招聘"/></td>
+    <td width="20%" class="to_ope_cell"><input type="button" onClick="link_job_add()" value="添加招聘"/></td>
     <td><table border="0" cellpadding="0" cellspacing="0" width="100%" height="100%">
       <tr>
         <td class="head_title_3" width="80px"><span class="menu_font_small">查询条件</span></td>

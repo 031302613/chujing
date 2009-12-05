@@ -103,4 +103,34 @@ public class JobDao {
 		}
 		return job;
 	}
+	
+	public boolean AddJob(String title,String content,String date){
+		if(title==null||content==null||title.length()==0||content.length()==0
+				||date==null||date.length()==0){
+			return false;
+		}
+		boolean result=true;
+		String sql="INSERT INTO T_JOB(JOB_TITLE,JOB_CONTENT,JOB_PUBLISH_TIME,JOB_AVAILABLE_TIME)" +
+				"VALUES( \'"+title+"\',\'"+content+"\',NOW(),DATE(\'"+date+"\'))";
+		System.out.println(sql);
+		try{
+			TransManager.BeginTrans();
+			if(TransManager.update(sql)==0){
+				result=false;
+			}else{
+				TransManager.Commit();
+			}
+		}catch (SQLException e) {
+			e.printStackTrace();
+			TransManager.Rollback();
+			result=false;
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			TransManager.Rollback();
+			result=false;
+		} finally {
+			TransManager.close();
+			return result;
+		}
+	}
 }
