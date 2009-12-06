@@ -126,7 +126,7 @@ public class JobsOpeServlet extends HttpServlet {
 			cond="AND JOB_PUBLISH_TIME <date( \'"+query_cond+"\')";
 		}
 		
-		List<Job> joblist=jobdao.getListByPageAndCond(cond, request.getParameter("page"), 2);
+		List<Job> joblist=jobdao.getListByPageAndCond(cond, request.getParameter("page"), 12);
 		if(joblist==null){
 			return false;
 		}else{
@@ -142,13 +142,11 @@ public class JobsOpeServlet extends HttpServlet {
 	
 	
 	protected boolean QueryJob(HttpServletRequest request,JobDao jobdao){
-		List<Job> joblist=jobdao.getListByPage(request.getParameter("page"), 2);
-		System.out.println("=+=+==================we4q3w5423=====");
+		List<Job> joblist=jobdao.getListByPage(request.getParameter("page"), 12);
 		if(joblist==null){
 			return false;
 		}else{
 			request.setAttribute("JOBLIST", joblist);
-			System.out.println("=+=+==:::"+joblist);
 			request.setAttribute("JOB_METHOD", "query_all");
 			return true;
 		}
@@ -179,9 +177,6 @@ public class JobsOpeServlet extends HttpServlet {
 		String title=request.getParameter("job_title");
 		String content=request.getParameter("content");
 		String date=request.getParameter("job_deadline_date");
-		if(title==null||content==null||date==null){
-			System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-		}
 		return jobdao.EditJob(id, title, content, date);
 		
 	}

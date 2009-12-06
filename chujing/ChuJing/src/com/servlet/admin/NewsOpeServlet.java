@@ -103,8 +103,7 @@ public class NewsOpeServlet extends HttpServlet {
 	}
 	
 	protected boolean QueryNews(HttpServletRequest request,NewsDao newsdao){
-		List<News> newslist=newsdao.getListByPage(request.getParameter("page"), 2);
-		System.out.println("=+=+==================we4q3w5423=====");
+		List<News> newslist=newsdao.getListByPage(request.getParameter("page"), 12);
 		if(newslist==null){
 			return false;
 		}else{
@@ -143,7 +142,7 @@ public class NewsOpeServlet extends HttpServlet {
 			cond="AND NEWS_PUBLISH_TIME <date( \'"+query_cond+"\')";
 		}
 		
-		List<News> newslist=newsdao.getListByPageAndCond(cond, request.getParameter("page"), 2);
+		List<News> newslist=newsdao.getListByPageAndCond(cond, request.getParameter("page"), 12);
 		if(newslist==null){
 			return false;
 		}else{
@@ -180,9 +179,7 @@ public class NewsOpeServlet extends HttpServlet {
 		}
 		String title=request.getParameter("news_title");
 		String content=request.getParameter("content");
-		if(title==null||content==null){
-			System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-		}
+
 		return newsdao.EditNews(id, title, content);
 		
 	}

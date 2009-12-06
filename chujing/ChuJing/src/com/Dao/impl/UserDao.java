@@ -121,4 +121,35 @@ System.out.println(sql);
 			
 	}
 	
+	public boolean EditPwd(String name,String pwd){
+		if(name==null||name.length()==0||pwd==null||pwd.length()==0){
+			System.out.println("!!!!!!!!!!!!!!!!!!!!!");
+			return false;
+		}
+		boolean result=true;
+		String sql="UPDATE T_USER_INFO " +
+		"SET PASSWORD=\'"+pwd.trim()+"\'"+
+				"WHERE USERNAME=\'" +name.trim()+"\'";
+		System.out.println("sql||||||::"+sql);
+		try{
+			TransManager.BeginTrans();
+			if(TransManager.update(sql)==0){
+				result=false;
+			}else{
+				TransManager.Commit();
+			}
+		}catch (SQLException e) {
+			e.printStackTrace();
+			TransManager.Rollback();
+			result=false;
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			TransManager.Rollback();
+			result=false;
+		} finally {
+			TransManager.close();
+			return result;
+		}
+	}
+	
 }

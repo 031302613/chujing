@@ -66,4 +66,24 @@
     <servlet-name>JobsOpeServlet</servlet-name>
     <url-pattern>/JobsOpeServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UserOpeServlet</display-name>
+    <servlet-name>UserOpeServlet</servlet-name>
+    <servlet-class>com.servlet.admin.UserOpeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserOpeServlet</servlet-name>
+    <url-pattern>/UserOpeServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>LoginOutServlet</display-name>
+    <servlet-name>LoginOutServlet</servlet-name>
+    <servlet-class>com.servlet.admin.LoginOutServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginOutServlet</servlet-name>
+    <url-pattern>/LoginOutServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
