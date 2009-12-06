@@ -31,7 +31,7 @@ width:12.5%;
         </tr>
         <tr>
           <td><a href="" target="maintd"><span class="menu_font">案例介绍模块</span></a></td>
-          <td><a href="" target="maintd"><span class="menu_font">人才招聘模块</span></a></td>
+          <td><a href="JobsOpeServlet?job_method=query_all" target="maintd"><span class="menu_font">人才招聘模块</span></a></td>
           <td><a href="" target="maintd"><span class="menu_font">公司简介编辑</span></a></td>
           <td><a href="NewsOpeServlet?news_method=query_all" target="maintd"><span class="menu_font">新闻公告模块</span></a></td>
           <td><span class="menu_font">维护人员模块</span></td>

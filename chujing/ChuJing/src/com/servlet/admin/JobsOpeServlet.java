@@ -2,12 +2,15 @@ package com.servlet.admin;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.Dao.impl.*;
+import com.javaBean.Job;
+import com.javaBean.News;
 
 /**
  * Servlet implementation class JobsOpeServlet
@@ -45,42 +48,42 @@ public class JobsOpeServlet extends HttpServlet {
 			System.out.println("dddddddddd!!");
 			if(this.addJob(request, jobdao)){
 				System.out.println("successful!!-------------------------");
-				request.getRequestDispatcher("NewsOpeServlet?news_method=query_all").forward(request, response);	
+				out.println("<script language='javascript'>alert('添加成功');"+"window.location.href='JobsOpeServlet?job_method=query_all';</script>");	
 			}
 		}
 		
-/*		if(type.equals("query_all")){
-			if(this.QueryNews(request, newsdao)){
+		if(type.equals("query_all")){
+			if(this.QueryJob(request, jobdao)){
 				System.out.println("query_all is successfull!");
-				request.getRequestDispatcher("admin_new_list.jsp").forward(request, response);	
+				request.getRequestDispatcher("admin_job_list.jsp").forward(request, response);	
 			}
 		}
 		
 		
 		
 		if(type.equals("query_cond")){
-			if(this.QueryNewsByCond(request, newsdao)){
-				request.getRequestDispatcher("admin_new_list.jsp").forward(request, response);	
-			}
-		}
-			
-		if(type.equals("news_delete")){
-			if(this.deleteNews(request, newsdao)){
-				out.println("<script language='javascript'>alert('操作成功');"+"window.location.href='NewsOpeServlet?news_method=query_all';</script>");	
+			if(this.QueryJobByCond(request, jobdao)){
+				request.getRequestDispatcher("admin_job_list.jsp").forward(request, response);	
 			}
 		}
 		
-		if(type.equals("news_edit")){
-			if(this.editNews(request, newsdao)){
-				request.getRequestDispatcher("admin_news_edit.jsp").forward(request, response);	
+		if(type.equals("job_delete")){
+			if(this.deleteJob(request, jobdao)){
+				out.println("<script language='javascript'>alert('操作成功');"+"window.location.href='JobsOpeServlet?job_method=query_all';</script>");	
 			}
 		}
 		
-		if(type.equals("news_edit_submit")){
-			if(this.editNewsAndSubmit(request, newsdao)){
-				out.println("<script language='javascript'>alert('操作成功');"+"window.location.href='NewsOpeServlet?news_method=query_all';</script>");	
+		if(type.equals("job_edit")){
+			if(this.editJob(request, jobdao)){
+				request.getRequestDispatcher("admin_job_edit.jsp").forward(request, response);	
 			}
-		}*/
+		}
+		
+		if(type.equals("job_edit_submit")){
+			if(this.editJobAndSubmit(request, jobdao)){
+				out.println("<script language='javascript'>alert('操作成功');"+"window.location.href='JobsOpeServlet?job_method=query_all';</script>");	
+			}
+		}
 	}
 	protected boolean addJob(HttpServletRequest request,JobDao jobdao){
 		String title=request.getParameter("job_title");
@@ -92,6 +95,95 @@ public class JobsOpeServlet extends HttpServlet {
 			return false;
 		}
 		return jobdao.AddJob(title, content,date);
+	}
+	
+	protected boolean QueryJobByCond(HttpServletRequest request,JobDao jobdao){
+		String query_cond_value=request.getParameter("query_cond_value");
+		if(query_cond_value==null||query_cond_value.length()==0){
+			return false;
+		}
+		String query_cond=request.getParameter("query_cond_text");
+		String cond="";
+		if(query_cond==null||query_cond.length()==0){
+			cond="";
+		}
+		if(query_cond_value.equals("JOB_ID_EQUAL")){
+			cond="AND JOB_ID=\'"+query_cond+"\'";
+		}
+		
+		if(query_cond_value.equals("JOB_TITLE_LIKE")){
+			cond="AND JOB_TITLE like \'%"+query_cond+"%\'";
+		}
+		
+		if(query_cond_value.equals("JOB_PUBLISH_TIME_MORE")){
+			cond="AND JOB_PUBLISH_TIME > date(\'"+query_cond+"\')";
+		}
+		if(query_cond_value.equals("JOB_PUBLISH_TIME_EQUAL")){
+			cond="AND JOB_PUBLISH_TIME = date(\'"+query_cond+"\')";
+		}
+		
+		if(query_cond_value.equals("JOB_PUBLISH_TIME_LESS")){
+			cond="AND JOB_PUBLISH_TIME <date( \'"+query_cond+"\')";
+		}
+		
+		List<Job> joblist=jobdao.getListByPageAndCond(cond, request.getParameter("page"), 2);
+		if(joblist==null){
+			return false;
+		}else{
+			request.setAttribute("JOBLIST", joblist);
+			request.setAttribute("QUERY_COND_VALUE", query_cond_value);
+			request.setAttribute("QUERY_COND_TEXT_APP",query_cond);
+			System.out.println("OUTPUT:::"+query_cond);
+			request.setAttribute("JOB_METHOD", "query_cond");
+			return true;
+		}
+		
+	}
+	
+	
+	protected boolean QueryJob(HttpServletRequest request,JobDao jobdao){
+		List<Job> joblist=jobdao.getListByPage(request.getParameter("page"), 2);
+		System.out.println("=+=+==================we4q3w5423=====");
+		if(joblist==null){
+			return false;
+		}else{
+			request.setAttribute("JOBLIST", joblist);
+			System.out.println("=+=+==:::"+joblist);
+			request.setAttribute("JOB_METHOD", "query_all");
+			return true;
+		}
+	}
+	
+	protected boolean deleteJob(HttpServletRequest request,JobDao jobdao){
+		String id=request.getParameter("job_id").toString();
+		return jobdao.DeleteJob(id);
+	}
+	
+	
+	protected boolean editJob(HttpServletRequest request,JobDao jobdao){
+		String id=request.getParameter("job_id").toString();
+		Job job=jobdao.getByID(id);
+		request.setAttribute("TheJob", job);
+		if(job==null){
+			return false;
+		}else{
+			return true;
+		}
+	}
+	
+	protected boolean editJobAndSubmit(HttpServletRequest request,JobDao jobdao){
+		String id=request.getParameter("job_id");
+		if(id==null){
+			return false;
+		}
+		String title=request.getParameter("job_title");
+		String content=request.getParameter("content");
+		String date=request.getParameter("job_deadline_date");
+		if(title==null||content==null||date==null){
+			System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+		}
+		return jobdao.EditJob(id, title, content, date);
+		
 	}
 
 }

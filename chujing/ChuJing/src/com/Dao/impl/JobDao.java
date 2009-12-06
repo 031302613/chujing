@@ -133,4 +133,108 @@ public class JobDao {
 			return result;
 		}
 	}
+	
+	
+	public List<Job> getListByPageAndCond(String cond,String currentPage,int PageSize) {
+		List<Job> list = new ArrayList<Job>();
+		try {
+			String sql = "select count(*) from t_job where 1=1 "+cond;
+			TransManager.BeginTrans();
+			ResultSet rs = TransManager.excute(sql);
+			if(rs.next()){
+				Pagination.init(currentPage,rs.getInt(1),PageSize);//size = 5
+			}else
+				return null;
+			
+			StringBuffer pageSQL = new StringBuffer("select * from t_job where 1=1 "+cond+ " limit ");
+			pageSQL.append(Pagination.beginIndex);
+			pageSQL.append(",");
+			pageSQL.append(Pagination.pageSize);
+			System.out.println("PAGESQL:---:"+pageSQL);
+			ResultSet rsByPage = TransManager.excute(pageSQL.toString());
+			while (rsByPage.next()) {
+				Job job = new Job();
+				job.setJobContent(rsByPage.getString("JOB_CONTENT"));
+				job.setJobId(String.valueOf(rsByPage.getInt("JOB_ID")));
+				job.setJobTitle(rsByPage.getString("JOB_TITLE"));
+				job.setJobAvailableTime(rsByPage.getDate("JOB_AVAILABLE_TIME"));
+				job.setJobPublishTime(rsByPage.getDate("JOB_PUBLISH_TIME"));
+				list.add(job);
+			}
+			TransManager.Commit();
+		} catch (SQLException e) {
+			list=null;
+			e.printStackTrace();
+			TransManager.Rollback();
+		} catch (ClassNotFoundException e) {
+			list=null;
+			e.printStackTrace();
+			TransManager.Rollback();
+		} finally {
+			TransManager.close();
+		}
+		return list;
+	}
+	
+	
+	public boolean DeleteJob(String id){
+		if(id==null||id.length()==0){
+			return false;
+		}
+		boolean result=true;
+		String sql="DELETE FROM T_JOB WHERE JOB_ID=\'" +id+"\'";
+		System.out.println(sql);
+		try{
+			TransManager.BeginTrans();
+			if(TransManager.update(sql)==0){
+				result=false;
+			}else{
+				TransManager.Commit();
+			}
+		}catch (SQLException e) {
+			e.printStackTrace();
+			TransManager.Rollback();
+			result=false;
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			TransManager.Rollback();
+			result=false;
+		} finally {
+			TransManager.close();
+			return result;
+		}
+	}
+	
+	public boolean EditJob(String id,String title,String content,String date){
+		if(id==null||id.length()==0){
+			System.out.println("!!!!!!!!!!!!!!!!!!!!!");
+			return false;
+		}
+		boolean result=true;
+		String sql="UPDATE T_JOB " +
+		"SET JOB_TITLE=\'"+title+"\'"+
+		",JOB_CONTENT=\'"+content+"\'"+
+		",JOB_AVAILABLE_TIME=DATE(\'"+date+"\')"
+				+"WHERE JOB_ID=\'" +id+"\'";
+		System.out.println("sql||||||::"+sql);
+		try{
+			TransManager.BeginTrans();
+			if(TransManager.update(sql)==0){
+				result=false;
+			}else{
+				TransManager.Commit();
+			}
+		}catch (SQLException e) {
+			e.printStackTrace();
+			TransManager.Rollback();
+			result=false;
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			TransManager.Rollback();
+			result=false;
+		} finally {
+			TransManager.close();
+			return result;
+		}
+	}
 }

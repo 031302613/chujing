@@ -53,7 +53,7 @@ String content=news.getNewsContent();
   </tr>
   <tr>
     <td class="td_forborder"><input type="hidden" name="news_method" value="news_edit_submit"/>
-    <input type="hidden" name="news_id" value="<%=news.getNewsId()%>"></td>
+    <input type="hidden" name="news_id" value="<%=news.getNewsId()%>"/></td>
   </tr>
   <tr>
     <td><table width="100%" height="100%" cellpadding="0px" cellspacing="0px" border="0px"><tr>

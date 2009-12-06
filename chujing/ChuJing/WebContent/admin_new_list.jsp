@@ -64,7 +64,9 @@ if(newslist==null){
 <table width="95%"  border="1" align="center" cellpadding="0" cellspacing="0" bordercolor="#000066">
   <tr>
     <td colspan="2" scope="col" bgcolor="#000066" class="head_title_2">
+    <a href="NewsOpeServlet?news_method=query_all">
 	<span class="menu_font_big">新闻信息列表</span>
+	</a>
 	</td>
   </tr>
   <tr>
