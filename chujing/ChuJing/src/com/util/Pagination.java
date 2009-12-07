@@ -55,17 +55,7 @@ public class Pagination {
 			paginationStr.append("<span class='disabled'>下一页 > </span>");
 		else
 			paginationStr.append("<a href='#?page=uiop'>下一页 > </a>");
-		paginationStr.append("</div>");
-		/*String str ="<div class='badoo'><span class='disabled'>< Prev</span><span
-		class='current'>1</span><a href='#?page=2' _fcksavedurl='#?page=2'>2</a><a
-		href='#?page=3' _fcksavedurl='#?page=3'>3</a><a href='#?page=4'
-		_fcksavedurl='#?page=4'>4</a><a href='#?page=5' _fcksavedurl='#?page=5'>5</a><a
-		href='#?page=6' _fcksavedurl='#?page=6'>6</a><a href='#?page=7'
-		_fcksavedurl='#?page=7'>7</a>...<a href='#?page=199'
-		_fcksavedurl='#?page=199'>199</a><a href='#?page=200'
-		_fcksavedurl='#?page=200'>200</a><a href='#?page=2'
-		_fcksavedurl='#?page=2'>Next > </a></div>";
-*/		
+		paginationStr.append("</div>");	
 		String returnStr = paginationStr.toString();
 		returnStr = returnStr.replaceAll("qwer", String.valueOf(prev));
 		returnStr = returnStr.replaceAll("uiop", String.valueOf(next));
@@ -74,7 +64,7 @@ public class Pagination {
 	
 	
 	public static String getBackURL(String url) {
-		StringBuffer paginationStr = new StringBuffer("<div class='badoo'>");
+		StringBuffer paginationStr = new StringBuffer("<div class='manu'>");
 		if(first)
 			paginationStr.append("<span class='disabled'>< 上一页</span>");
 		else
@@ -100,15 +90,15 @@ public class Pagination {
 		else
 			paginationStr.append("<a href='#&page=uiop'>下一页 > </a>");
 		paginationStr.append("</div>");
-		/*String str ="<div class='badoo'><span class='disabled'>< Prev</span><span
-		class='current'>1</span><a href='#?page=2' _fcksavedurl='#?page=2'>2</a><a
-		href='#?page=3' _fcksavedurl='#?page=3'>3</a><a href='#?page=4'
-		_fcksavedurl='#?page=4'>4</a><a href='#?page=5' _fcksavedurl='#?page=5'>5</a><a
-		href='#?page=6' _fcksavedurl='#?page=6'>6</a><a href='#?page=7'
-		_fcksavedurl='#?page=7'>7</a>...<a href='#?page=199'
-		_fcksavedurl='#?page=199'>199</a><a href='#?page=200'
-		_fcksavedurl='#?page=200'>200</a><a href='#?page=2'
-		_fcksavedurl='#?page=2'>Next > </a></div>";
+		/*<div class="manu">
+    <span class="disabled">&lt; Prev</span>
+    <span class="current">1</span><a href="#?page=2" _fcksavedurl="#?page=2">2</a>
+    <a href="#?page=3" _fcksavedurl="#?page=3">3</a><a href="#?page=4" _fcksavedurl="#?page=4">4</a>
+    <a href="#?page=5" _fcksavedurl="#?page=5">5</a><a href="#?page=6" _fcksavedurl="#?page=6">6</a>
+    <a href="#?page=7" _fcksavedurl="#?page=7">7</a>...<a href="#?page=199" _fcksavedurl="#?page=199">
+    199</a><a href="#?page=200" _fcksavedurl="#?page=200">200</a><a href="#?page=2" _fcksavedurl="#?page=2">Next
+    &gt; </a></div>
+		";
 */		
 		String returnStr = paginationStr.toString();
 		returnStr = returnStr.replaceAll("qwer", String.valueOf(prev));

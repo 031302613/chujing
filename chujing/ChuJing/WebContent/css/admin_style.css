@@ -88,10 +88,10 @@ vertical-align:middle;
 }
 
 .td_forbottom_bg_blue{
-height:15px;
-text-align:center;
-vertical-align:middle;
-background-color:#000066;
+	height:15px;
+	text-align:center;
+	vertical-align:middle;
+	/*background-color:#000066;*/
 }
 
 .input_text{
