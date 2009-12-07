@@ -1,17 +1,15 @@
 <%@ page language="java" import="java.sql.*"
 	contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!--<%@ include file="admin_validate.jsp"%>
---><html xmlns="http://www.w3.org/1999/xhtml">
+<%@ include file="admin_validate.jsp"%>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>添加案例</title>
-<link href="css/admin_style.css" rel="stylesheet" type="text/css"
-	media="screen" />
+<link href="css/admin_style.css" rel="stylesheet" type="text/css" media="screen" />
 </head>
 
 <body>
 <form name="case_add_form" action="CaseOpeServlet" method="post" ENCTYPE="multipart/form-data">
-<table width="95%" border="1" align="center" cellpadding="0"
+<table width="50%" border="1" align="center" cellpadding="0"
 	cellspacing="0" bordercolor="#000066">
 	<tr>
 		<td colspan="2">
@@ -85,12 +83,19 @@
 				<td class="head_title_3" colspan="4">案例简介</td>
 			</tr>
 			<tr>
-				<td height="400px" colspan="4">
-				<div align="left"><%@ include file="admin_fckeditor.jsp"%>
-				<%
-					out.println(oFCKeditor.create());
-				%>
-				</div>
+				<td colspan="4">
+				<table border="0" cellpadding="0" cellspacing="0" width="100%" height="500">
+					<tr>
+						<td>
+							<div align="left">
+								<%@ include file="admin_fckeditor.jsp"%>
+								<%
+									out.println(oFCKeditor.create());
+								%>
+							</div>
+						</td>
+					</tr>
+				</table>
 				</td>
 			</tr>
 			<tr>

@@ -1,6 +1,7 @@
 package com.servlet.admin;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -14,6 +15,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.Dao.impl.CaseDao;
+import com.Dao.impl.NewsDao;
+import com.javaBean.Case;
+import com.javaBean.News;
 import com.jspsmart.upload.*;
 
 /**
@@ -57,26 +61,134 @@ public class CaseOpeServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
-		response.setCharacterEncoding("utf-8");
-
-		try {
-			if (upload(request, response)) {
-				request.getRequestDispatcher("admin_case_list.jsp").forward(
-						request, response);
+		response.setContentType("text/html;charset=utf-8"); 
+		request.setCharacterEncoding("utf-8"); 
+		PrintWriter out= response.getWriter();
+		String type=request.getParameter("case_method");
+		CaseDao casedao = new CaseDao();
+		if( type==null || type.equals("add") || type.equals("case_edit_submit")){
+			try {
+				if (upload(request, response)) {
+					request.getRequestDispatcher("CaseOpeServlet?case_method=query_all").forward(
+							request, response);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+				request.getRequestDispatcher("error.jsp")
+						.forward(request, response);
+			} catch (SmartUploadException e) {
+				e.printStackTrace();
+				request.getRequestDispatcher("error.jsp")
+						.forward(request, response);
 			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-			request.getRequestDispatcher("error.jsp")
-					.forward(request, response);
-		} catch (SmartUploadException e) {
-			e.printStackTrace();
-			request.getRequestDispatcher("error.jsp")
-					.forward(request, response);
 		}
+		if(type.equals("query_all")){
+			if(this.QueryCases(request, casedao)){
+				request.getRequestDispatcher("admin_case_list.jsp").forward(request, response);	
+			}
+		}
+		if(type.equals("case_delete")){
+			if(this.deleteCase(request, casedao)){
+				out.println("<script type='text/javascript'>alert('操作成功');"+"window.location.href='CaseOpeServlet?case_method=query_all';</script>");	
+			}
+		}
+		if(type.equals("query_cond")){
+			if(this.QueryCaseByCond(request, casedao)){
+				request.getRequestDispatcher("admin_case_list.jsp").forward(request, response);	
+			}
+		}
+/*		
+		if(type.equals("query_cond")){
+			if(this.QueryNewsByCond(request, newsdao)){
+				request.getRequestDispatcher("admin_new_list.jsp").forward(request, response);	
+			}
+		}
+			
+		if(type.equals("news_delete")){
+			if(this.deleteNews(request, newsdao)){
+				out.println("<script language='javascript'>alert('操作成功');"+"window.location.href='NewsOpeServlet?news_method=query_all';</script>");	
+			}
+		}
+		if(type.equals("news_edit_submit")){
+			if(this.editNewsAndSubmit(request, newsdao)){
+				out.println("<script language='javascript'>alert('操作成功');"+"window.location.href='NewsOpeServlet?news_method=query_all';</script>");	
+			}
+		}*/
 
 	}
-
+	
+	protected boolean editCase(HttpServletRequest request,CaseDao casedao){
+		String id=request.getParameter("case_id").toString();
+	    Case _case=casedao.getByID(id);
+		request.setAttribute("TheCase", _case);
+		if(_case==null){
+			return false;
+		}else{
+			return true;
+		}
+	}
+	
+	protected boolean QueryCaseByCond(HttpServletRequest request,CaseDao casedao){
+		String query_cond_value=request.getParameter("query_cond_value");
+		if(query_cond_value==null||query_cond_value.length()==0){
+			return false;
+		}
+		String query_cond=request.getParameter("query_cond_text");
+		String cond="";
+		if(query_cond==null||query_cond.length()==0){
+			cond="";
+		}
+		if(query_cond_value.equals("CASE_ID")){
+			cond="AND CASE_ID=\'"+query_cond+"\'";
+		}
+		
+		if(query_cond_value.equals("CASE_TITLE_LIKE")){
+			cond="AND CASE_TITLE like \'%"+query_cond+"%\'";
+		}
+		
+		if(query_cond_value.equals("CASE_PUBLISH_TIME_MORE")){
+			cond="AND CASE_PUBLISH_TIME > date(\'"+query_cond+"\')";
+		}
+		if(query_cond_value.equals("CASE_PUBLISH_TIME_EQUAL")){
+			cond="AND CASE_PUBLISH_TIME = date(\'"+query_cond+"\')";
+		}
+		
+		if(query_cond_value.equals("CASE_PUBLISH_TIME_LESS")){
+			cond="AND CASE_PUBLISH_TIME <date( \'"+query_cond+"\')";
+		}
+		
+		if(query_cond_value.equals("CASE_CUSTOMER_EQUAL")){
+			cond="AND CASE_CUSTOMER =( \'"+query_cond+"\')";
+		}
+		
+		List<Case> caselist=casedao.getListByPageAndCond(cond, request.getParameter("page"), 12);
+		if(caselist==null){
+			return false;
+		}else{
+			request.setAttribute("CASELIST", caselist);
+			request.setAttribute("QUERY_COND_VALUE", query_cond_value);
+			request.setAttribute("QUERY_COND_TEXT_APP",query_cond);
+			request.setAttribute("CASE_METHOD", "query_cond");
+			return true;
+		}
+		
+	}
+	
+	
+	protected boolean deleteCase(HttpServletRequest request,CaseDao casedao){
+		String id=request.getParameter("case_id").toString();
+		return casedao.DeleteCase(id);
+	}
+	protected boolean QueryCases(HttpServletRequest request,CaseDao casedao){
+		List<Case> caselist=casedao.getListByPage(request.getParameter("page"), 12);
+		if(caselist==null){
+			return false;
+		}else{
+			request.setAttribute("CASELIST", caselist);
+			request.setAttribute("CASE_METHOD", "query_all");
+			return true;
+		}
+	}
 	protected boolean AddCase(Request request, CaseDao CaseDao) {
 
 		String title = request.getParameter("case_title");
@@ -86,7 +198,6 @@ public class CaseOpeServlet extends HttpServlet {
 		
 		if (title == null || content == null || title.length() == 0
 				|| content.length() == 0) {
-			System.out.println("fail:" + content + " title:" + title);
 			return false;
 		}
 		return CaseDao.AddCase(title, content, customer,star,filenames,RARSize,Unity3DSize);
@@ -137,9 +248,12 @@ public class CaseOpeServlet extends HttpServlet {
 		}
 		Request requestSU = su.getRequest();
 		String type = requestSU.getParameter("case_method").toString();
+		CaseDao caseDao = new CaseDao();
 		if (type.equals("add")) {
-			CaseDao caseDao = new CaseDao();
 			AddCase(requestSU, caseDao);
+		}
+		if (type.equals("case_edit_submit")) {
+			//AddCase(requestSU, caseDao);
 		}
 		return true;
 	}

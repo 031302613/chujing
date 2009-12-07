@@ -49,6 +49,56 @@ public class CaseDao {
 		return list;
 	}
 
+	public List<Case> getListByPageAndCond(String cond,String currentPage,int PageSize) {
+		List<Case> list = new ArrayList<Case>();
+		try {
+			String sql = "select count(*) from t_case where 1=1 "+cond;
+			TransManager.BeginTrans();
+			ResultSet rs = TransManager.excute(sql);
+			if(rs.next()){
+				Pagination.init(currentPage,rs.getInt(1),PageSize);
+			}else
+				return null;
+			
+			StringBuffer pageSQL = new StringBuffer("select * from t_case where 1=1 "+cond+ " limit ");
+			pageSQL.append(Pagination.beginIndex);
+			pageSQL.append(",");
+			pageSQL.append(Pagination.pageSize);
+			ResultSet rsByPage = TransManager.excute(pageSQL.toString());
+			while (rsByPage.next()) {
+				Case Case = new Case();
+				Case.setCase3DPath(rsByPage.getString("CASE_3D_PATH"));
+				Case.setCase3DSize(rsByPage.getString("CASE_3D_SIZE"));//
+				Case.setCaseScreenshot1(rsByPage.getString("CASE_SCREENSHOT1"));
+				Case.setCaseScreenshot2(rsByPage.getString("CASE_SCREENSHOT2"));
+				Case.setCaseScreenshot3(rsByPage.getString("CASE_SCREENSHOT3"));
+				Case.setCaseScreenshot4(rsByPage.getString("CASE_SCREENSHOT4"));
+				Case.setCaseScreenshot5(rsByPage.getString("CASE_SCREENSHOT5"));
+				Case.setCaseCustomer(rsByPage.getString("CASE_CUSTOMER"));
+				Case.setCaseId(String.valueOf(rsByPage.getInt("CASE_ID")));
+				Case.setCaseIntroduction(rsByPage.getString("CASE_INTRODUCTION"));
+				Case.setCasePublishTime(rsByPage.getDate("CASE_PUBLISH_TIME"));
+				Case.setCaseRARPath(rsByPage.getString("CASE_RAR_PATH"));
+				Case.setCaseRARSize(rsByPage.getString("CASE_RAR_SIZE"));
+				Case.setCaseTitle(rsByPage.getString("CASE_TITLE"));
+				Case.setCaseStar(rsByPage.getInt("CASE_STAR"));
+				list.add(Case);
+			}
+			TransManager.Commit();
+		} catch (SQLException e) {
+			list=null;
+			e.printStackTrace();
+			TransManager.Rollback();
+		} catch (ClassNotFoundException e) {
+			list=null;
+			e.printStackTrace();
+			TransManager.Rollback();
+		} finally {
+			TransManager.close();
+		}
+		return list;
+	}
+	
 	public List<Case> getListByPage(String currentPage,int PageSize) {
 		List<Case> list = new ArrayList<Case>();
 		try {
@@ -74,7 +124,7 @@ public class CaseDao {
 				Case.setCaseScreenshot4(rsByPage.getString("CASE_SCREENSHOT4"));
 				Case.setCaseScreenshot5(rsByPage.getString("CASE_SCREENSHOT5"));
 				Case.setCaseCustomer(rsByPage.getString("CASE_CUSTOMER"));
-				Case.setCaseId(String.valueOf(rsByPage.getInt("Case_ID")));
+				Case.setCaseId(String.valueOf(rsByPage.getInt("CASE_ID")));
 				Case.setCaseIntroduction(rsByPage.getString("CASE_INTRODUCTION"));
 				Case.setCasePublishTime(rsByPage.getDate("CASE_PUBLISH_TIME"));
 				Case.setCaseRARPath(rsByPage.getString("CASE_RAR_PATH"));
@@ -94,6 +144,33 @@ public class CaseDao {
 			TransManager.close();
 		}
 		return list;
+	}
+	
+	public boolean DeleteCase(String id){
+		if(id==null||id.length()==0){
+			return false;
+		}
+		boolean result=true;
+		String sql="DELETE FROM T_CASE WHERE CASE_ID=\'" +id+"\'";
+		try{
+			TransManager.BeginTrans();
+			if(TransManager.update(sql)==0){
+				result=false;
+			}else{
+				TransManager.Commit();
+			}
+		}catch (SQLException e) {
+			e.printStackTrace();
+			TransManager.Rollback();
+			result=false;
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			TransManager.Rollback();
+			result=false;
+		} finally {
+			TransManager.close();
+			return result;
+		}
 	}
 	
 	public Case getByID(String ID) {

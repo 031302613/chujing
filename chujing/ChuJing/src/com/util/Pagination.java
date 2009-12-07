@@ -113,7 +113,6 @@ public class Pagination {
 		String returnStr = paginationStr.toString();
 		returnStr = returnStr.replaceAll("qwer", String.valueOf(prev));
 		returnStr = returnStr.replaceAll("uiop", String.valueOf(next));
-		System.out.println("returnStr："+returnStr);
 		return returnStr.replaceAll("#", url);
 	}
 }
