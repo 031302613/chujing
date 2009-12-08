@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.sql.*"
+<%@ page language="java" import="com.javaBean.Case"
 	contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="admin_validate.jsp"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -10,7 +10,11 @@
 </head>
 
 <body>
-<form name="case_edit_form" action="" method="post"
+<%
+Case _case=(Case)request.getAttribute("TheCase");
+String content=_case.getCaseIntroduction();
+%>
+<form name="case_edit_form" action="CaseOpeServlet" method="post"
 	enctype="multipart/form-data">
 <table width="95%" border="1" align="center" cellpadding="0"
 	cellspacing="0" bordercolor="#000066">
@@ -25,15 +29,17 @@
 			</tr>
 			<tr>
 				<td>
+					<input type="hidden" name="case_method" value="case_edit_submit"/>
+    				<input type="hidden" name="case_id" value="<%=_case.getCaseId()%>"/>
 				<table width="100%" border="1" cellpadding="0" cellspacing="0"
 					bordercolor="#000066">
 					<tr>
-						<td class="head_title_3" width="150px">案例标题</td>
+						<td class="head_title_3" width="150px">客户名称</td>
 						<td>
 						<table width="100%" border="0">
 							<tr>
 								<td class="td_v_border">&nbsp;</td>
-								<td><input type="text" name="title" class="input_text" /></td>
+								<td><input type="text" name="customer" value="<%=_case.getCaseCustomer()%>" class="input_text" /></td>
 							</tr>
 						</table>
 						</td>
@@ -49,16 +55,46 @@
 				<table width="100%" border="1" cellpadding="0" cellspacing="0"
 					bordercolor="#000066">
 					<tr>
-						<td class="head_title_3" width="150px">客户名称</td>
+						<td class="head_title_3" width="150px">案例星级</td>
 						<td>
 						<table width="100%" border="0">
 							<tr>
 								<td class="td_v_border">&nbsp;</td>
-								<td><input type="text" name="customer" class="input_text" /></td>
+								<td>
+									<select name="star">
+										<option <% if(_case.getCaseStar() == 5 ) out.print("selected='selected'"); %> value="5">五星级</option>
+										<option <% if(_case.getCaseStar() == 4 ) out.print("selected='selected'"); %> value="4">四星级</option>
+										<option <% if(_case.getCaseStar() == 3 ) out.print("selected='selected'"); %> value="3">三星级</option>
+										<option <% if(_case.getCaseStar() == 2 ) out.print("selected='selected'"); %> value="2">二星级</option>
+										<option <% if(_case.getCaseStar() == 1 ) out.print("selected='selected'"); %> value="1">一星级</option>
+									</select>
+								</td>
 							</tr>
 						</table>
 						</td>
 					</tr>
+				</table>
+				</td>
+			</tr>
+			<tr>
+				<td class="td_forborder"></td>
+			</tr>
+			<tr>
+				<td>
+				<table width="100%" border="1" cellpadding="0" cellspacing="0"
+					bordercolor="#000066">
+					<tr>
+						<td class="head_title_3" width="150px">案例标题</td>
+						<td>
+						<table width="100%" border="0">
+							<tr>
+								<td class="td_v_border">&nbsp;</td>
+								<td><input type="text" name="case_title" class="input_text" value="<%=_case.getCaseTitle()%>" /></td>
+							</tr>
+						</table>
+						</td>
+					</tr>
+					
 				</table>
 				</td>
 			</tr>
@@ -72,6 +108,7 @@
 				<td height="400px">
 				<div align="left"><%@ include file="admin_fckeditor.jsp"%>
 				<%
+					oFCKeditor.setValue(content);
 					out.println(oFCKeditor.create());
 				%>
 				</div>
@@ -102,7 +139,9 @@
 							<tr>
 								<td width="100px" class="head_title_3">3D文件</td>
 								<td class="td_v_border"></td>
-								<td width="150px"><input type="file" name="3d_file" /></td>
+								<td width="150px">
+									<input type="file" name="3d_file" />
+								</td>
 							</tr>
 						</table>
 						</td>

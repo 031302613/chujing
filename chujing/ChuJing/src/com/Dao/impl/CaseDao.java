@@ -215,7 +215,7 @@ public class CaseDao {
 	@SuppressWarnings("finally")
 	public boolean AddCase(String title,String content,String customer,int star,List<String> filenames,int RARSize,int Unity3DSize){
 		boolean result=true;
-		StringBuffer sql= new StringBuffer("INSERT INTO T_CASE(CASE_TITLE,CASE_INTRODUCTION,CASE_CUSTOMER,CASE_STAR,CASE_3D_SIZE,CASE_RAR_SIZE,CASE_3D_PATH,CASE_RAR_PATH,CASE_SCREENSHOT1,CASE_SCREENSHOT2,CASE_SCREENSHOT3,CASE_SCREENSHOT4,CASE_SCREENSHOT5)");
+		StringBuffer sql= new StringBuffer("INSERT INTO T_CASE(CASE_TITLE,CASE_INTRODUCTION,CASE_CUSTOMER,CASE_PUBLISH_TIME,CASE_STAR,CASE_3D_SIZE,CASE_RAR_SIZE,CASE_3D_PATH,CASE_RAR_PATH,CASE_SCREENSHOT1,CASE_SCREENSHOT2,CASE_SCREENSHOT3,CASE_SCREENSHOT4,CASE_SCREENSHOT5)");
 		sql.append("VALUES( \'");
 		sql.append(title);
 		sql.append("\',\'");
@@ -223,6 +223,8 @@ public class CaseDao {
 		sql.append("\',\'");
 		sql.append(customer);
 		sql.append("\',");
+		sql.append("NOW()");
+		sql.append(",");
 		sql.append(star);
 		sql.append(",");
 		sql.append(Unity3DSize);
@@ -247,6 +249,38 @@ public class CaseDao {
 		try{
 			TransManager.BeginTrans();
 			if(TransManager.update(sql.toString())==0){
+				result=false;
+			}else{
+				TransManager.Commit();
+			}
+		}catch (SQLException e) {
+			e.printStackTrace();
+			TransManager.Rollback();
+			result=false;
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			TransManager.Rollback();
+			result=false;
+		} finally {
+			TransManager.close();
+			return result;
+		}
+	}
+	
+	public boolean EditCase(String id,String title,String content,String customer,int star,List<String> filenames,int RARSize,int Unity3DSize){
+		if(id==null||id.length()==0){
+			return false;
+		}
+		boolean result=true;
+		String sql="UPDATE T_CASE " +
+		"SET CASE_TITLE=\'"+title+"\'"+
+		",CASE_CUSTOMER=\'"+customer+"\'"+
+		",CASE_STAR=\'"+star+"\'"+
+		",CASE_INTRODUCTION=\'"+content+"\'"+
+				"WHERE CASE_ID=\'" +id+"\'";
+		try{
+			TransManager.BeginTrans();
+			if(TransManager.update(sql)==0){
 				result=false;
 			}else{
 				TransManager.Commit();

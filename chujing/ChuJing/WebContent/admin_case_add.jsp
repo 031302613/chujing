@@ -9,7 +9,7 @@
 
 <body>
 <form name="case_add_form" action="CaseOpeServlet" method="post" ENCTYPE="multipart/form-data">
-<table width="50%" border="1" align="center" cellpadding="0"
+<table width="95%" border="1" align="center" cellpadding="0"
 	cellspacing="0" bordercolor="#000066">
 	<tr>
 		<td colspan="2">
@@ -37,6 +37,11 @@
 					</tr>
 				</table>
 				</td>
+			</tr>
+			<tr>
+				<td class="td_forborder"></td>
+			</tr>
+			<tr>
 				<td>
 				<table width="100%" border="1" cellpadding="0" cellspacing="0"
 					bordercolor="#000066">
@@ -46,13 +51,24 @@
 						<table width="100%" border="0">
 							<tr>
 								<td class="td_v_border">&nbsp;</td>
-								<td><input type="text" name="star" class="input_text" /></td>
+								<td>
+									<select name="star">
+										<option value="5">五星级</option>
+										<option value="4">四星级</option>
+										<option value="3">三星级</option>
+										<option value="2">二星级</option>
+										<option value="1">一星级</option>
+									</select>
+								</td>
 							</tr>
 						</table>
 						</td>
 					</tr>
 				</table>
 				</td>
+			</tr>
+			<tr>
+				<td class="td_forborder"></td>
 			</tr>
 			<tr>
 				<td class="td_forborder"></td>
@@ -78,7 +94,6 @@
 			<tr>
 				<td class="td_forborder"></td>
 			</tr>
-			
 			<tr>
 				<td class="head_title_3" colspan="4">案例简介</td>
 			</tr>
