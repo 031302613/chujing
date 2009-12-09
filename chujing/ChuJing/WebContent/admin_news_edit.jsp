@@ -77,6 +77,16 @@ String content=news.getNewsContent();
       <td width="20px"></td>
       <td><%=news.getNewsModifiedTime() %></td></tr></table></td>
   </tr>
+    <tr>
+    <td class="td_forborder"></td>
+  </tr>
+  <!-- //////////////////////////////////////////////////////////////////////////////////-->
+    <tr>
+    <td><table width="100%" height="100%" cellpadding="0px" cellspacing="0px" border="0px"><tr>
+      <th width="30%" bgcolor="#000066"><span class="head_title_3">这里添加checkbox如果有图片</span></th><td width="20px"></td>
+      <td align="left"><span class="head_title_3">这里添加上传控件，点中checkbox才显示，如果本身就有图片，就不要checkbox，直接显示文件控件</span></td></tr></table></td>
+  </tr>
+  <!-- //////////////////////////////////////////////////////////////////////////////////-->
   <tr>
     <td class="td_forborder"></td>
   </tr>
@@ -104,7 +114,7 @@ String content=news.getNewsContent();
     <td><table border="0" cellpadding="0" cellspacing="0" bgcolor="#000066" width="100%" height="100%">
   <tr>
     <td align="center"><input type="submit" value="保存" /></td>
-    <td align="center"><input type="button" value="取消" onclick="" /></td>
+    <td align="center"><input type="button" value="取消" onClick="" /></td>
   </tr>
 </table>
 </td>

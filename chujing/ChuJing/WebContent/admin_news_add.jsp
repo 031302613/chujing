@@ -36,6 +36,26 @@
 	<tr>
 		<td class="td_forborder"></td>
 	</tr>
+		<tr>
+		<td>
+		<table width="100%" height="100%" cellpadding="0px" cellspacing="0px"
+			border="0px">
+			<tr>
+				<th width="30%" bgcolor="#000066"><span class="head_title_3">
+				<input type="checkbox" value="has_image" name="news_img"/>是否上传新闻封面图片</span></th>
+				<td width="20px"></td>
+				<td align="left" bgcolor="#000066">
+				<!--
+				添加你要生成的的文件上传控件
+				-->
+				</td>
+			</tr>
+		</table>
+		</td>
+	</tr>
+	<tr>
+		<td class="td_forborder"></td>
+	</tr>
 	<tr>
 		<td bgcolor="#000066" align="center"><span class="head_title_3">新闻内容</span></td>
 	</tr>
