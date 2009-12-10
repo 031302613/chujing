@@ -112,7 +112,6 @@ public class JobDao {
 		boolean result=true;
 		String sql="INSERT INTO T_JOB(JOB_TITLE,JOB_CONTENT,JOB_PUBLISH_TIME,JOB_AVAILABLE_TIME)" +
 				"VALUES( \'"+title+"\',\'"+content+"\',NOW(),DATE(\'"+date+"\'))";
-		System.out.println(sql);
 		try{
 			TransManager.BeginTrans();
 			if(TransManager.update(sql)==0){
@@ -150,7 +149,6 @@ public class JobDao {
 			pageSQL.append(Pagination.beginIndex);
 			pageSQL.append(",");
 			pageSQL.append(Pagination.pageSize);
-			System.out.println("PAGESQL:---:"+pageSQL);
 			ResultSet rsByPage = TransManager.excute(pageSQL.toString());
 			while (rsByPage.next()) {
 				Job job = new Job();
@@ -183,7 +181,6 @@ public class JobDao {
 		}
 		boolean result=true;
 		String sql="DELETE FROM T_JOB WHERE JOB_ID=\'" +id+"\'";
-		System.out.println(sql);
 		try{
 			TransManager.BeginTrans();
 			if(TransManager.update(sql)==0){
@@ -207,7 +204,6 @@ public class JobDao {
 	
 	public boolean EditJob(String id,String title,String content,String date){
 		if(id==null||id.length()==0){
-			System.out.println("!!!!!!!!!!!!!!!!!!!!!");
 			return false;
 		}
 		boolean result=true;
@@ -216,7 +212,6 @@ public class JobDao {
 		",JOB_CONTENT=\'"+content+"\'"+
 		",JOB_AVAILABLE_TIME=DATE(\'"+date+"\')"
 				+"WHERE JOB_ID=\'" +id+"\'";
-		System.out.println("sql||||||::"+sql);
 		try{
 			TransManager.BeginTrans();
 			if(TransManager.update(sql)==0){

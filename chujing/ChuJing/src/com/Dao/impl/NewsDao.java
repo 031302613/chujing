@@ -91,7 +91,6 @@ public class NewsDao {
 			pageSQL.append(Pagination.beginIndex);
 			pageSQL.append(",");
 			pageSQL.append(Pagination.pageSize);
-			System.out.println("PAGESQL:---:"+pageSQL);
 			ResultSet rsByPage = TransManager.excute(pageSQL.toString());
 			while (rsByPage.next()) {
 				News news = new News();
@@ -154,7 +153,6 @@ public class NewsDao {
 		boolean result=true;
 		String sql="INSERT INTO T_NEWS(NEWS_TITLE,NEWS_CONTENT,NEWS_PUBLISH_TIME)" +
 				"VALUES( \'"+title+"\',\'"+content+"\',NOW())";
-		System.out.println(sql);
 		try{
 			TransManager.BeginTrans();
 			if(TransManager.update(sql)==0){
@@ -182,7 +180,6 @@ public class NewsDao {
 		}
 		boolean result=true;
 		String sql="DELETE FROM T_NEWS WHERE NEWS_ID=\'" +id+"\'";
-		System.out.println(sql);
 		try{
 			TransManager.BeginTrans();
 			if(TransManager.update(sql)==0){
@@ -206,7 +203,6 @@ public class NewsDao {
 	
 	public boolean EditNews(String id,String title,String content){
 		if(id==null||id.length()==0){
-			System.out.println("!!!!!!!!!!!!!!!!!!!!!");
 			return false;
 		}
 		boolean result=true;
@@ -215,7 +211,6 @@ public class NewsDao {
 		",NEWS_CONTENT=\'"+content+"\'"+
 		",NEWS_MODIFIED_TIME=NOW()"+
 				"WHERE NEWS_ID=\'" +id+"\'";
-		System.out.println("sql||||||::"+sql);
 		try{
 			TransManager.BeginTrans();
 			if(TransManager.update(sql)==0){

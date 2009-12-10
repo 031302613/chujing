@@ -105,8 +105,6 @@ if(jobslist==null){
   <tr>
     <td colspan="2" class="td_forbottom_bg_blue"><%=Pagination.getBackURL("JobsOpeServlet?job_method="+request.getAttribute("JOB_METHOD").toString()+
 		  "&query_cond_value="+request.getAttribute("QUERY_COND_VALUE")+"&query_cond_text="+request.getAttribute("QUERY_COND_TEXT_APP")) %></td>
-		  <%System.out.println("JobsOpeServlet?job_method="+request.getAttribute("JOB_METHOD").toString()+
-				  "&query_cond_value="+request.getAttribute("QUERY_COND_VALUE")+"&query_cond_text="+request.getAttribute("QUERY_COND_TEXT_APP")) ; %>
    <!--
    <td class="td_forbottom_bg_blue"><a href="#"><span class="menu_font_small">上一页</span></a></td>
     <td class="td_forbottom_bg_blue"><a href="#"><span class="menu_font_small">下一页</span></a></td>

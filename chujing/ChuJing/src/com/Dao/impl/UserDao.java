@@ -101,7 +101,6 @@ System.out.println(sql.toString());
 			TransManager.BeginTrans();
 			String sql="select * from t_user_info where USERNAME=\'";
 			sql=sql+userId+"\' and PASSWORD =\'"+pwd+"\'";
-System.out.println(sql);
 			ResultSet rs = TransManager.excute(sql.toString());
 			if (rs.next()) {
 				result= true;
@@ -123,14 +122,12 @@ System.out.println(sql);
 	
 	public boolean EditPwd(String name,String pwd){
 		if(name==null||name.length()==0||pwd==null||pwd.length()==0){
-			System.out.println("!!!!!!!!!!!!!!!!!!!!!");
 			return false;
 		}
 		boolean result=true;
 		String sql="UPDATE T_USER_INFO " +
 		"SET PASSWORD=\'"+pwd.trim()+"\'"+
 				"WHERE USERNAME=\'" +name.trim()+"\'";
-		System.out.println("sql||||||::"+sql);
 		try{
 			TransManager.BeginTrans();
 			if(TransManager.update(sql)==0){

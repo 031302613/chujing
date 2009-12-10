@@ -45,20 +45,15 @@ public class NewsOpeServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8"); 
 		NewsDao newsdao=new NewsDao();
 		PrintWriter out= response.getWriter();
-		System.out.println("tttttttt");
 		String type=request.getParameter("news_method").toString();
-		System.out.println("type ffffff:"+type+"  length:"+type.length());
 		if(type.equals("add")){
-			System.out.println("dddddddddd!!");
 			if(this.AddNews(request, newsdao)){
-				System.out.println("successful!!-------------------------");
 				request.getRequestDispatcher("NewsOpeServlet?news_method=query_all").forward(request, response);	
 			}
 		}
 		
 		if(type.equals("query_all")){
 			if(this.QueryNews(request, newsdao)){
-				System.out.println("query_all is successfull!");
 				request.getRequestDispatcher("admin_new_list.jsp").forward(request, response);	
 			}
 		}
@@ -94,9 +89,7 @@ public class NewsOpeServlet extends HttpServlet {
 	protected boolean AddNews(HttpServletRequest request,NewsDao newsdao){
 		String title=request.getParameter("news_title");
 		String content=request.getParameter("content");
-		System.out.println("content:"+content+" title:"+title);
 		if(title==null||content==null||title.length()==0||content.length()==0){
-			System.out.println("fail:"+content+" title:"+title);
 			return false;
 		}
 		return newsdao.AddNews(title, content);
@@ -108,7 +101,6 @@ public class NewsOpeServlet extends HttpServlet {
 			return false;
 		}else{
 			request.setAttribute("NEWSLIST", newslist);
-			System.out.println("=+=+==:::"+newslist);
 			request.setAttribute("NEWS_METHOD", "query_all");
 			return true;
 		}

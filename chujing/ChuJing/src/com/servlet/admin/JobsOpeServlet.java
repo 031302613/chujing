@@ -45,16 +45,13 @@ public class JobsOpeServlet extends HttpServlet {
 		PrintWriter out= response.getWriter();
 		String type=request.getParameter("job_method").toString();
 		if(type.equals("job_add")){
-			System.out.println("dddddddddd!!");
 			if(this.addJob(request, jobdao)){
-				System.out.println("successful!!-------------------------");
 				out.println("<script language='javascript'>alert('添加成功');"+"window.location.href='JobsOpeServlet?job_method=query_all';</script>");	
 			}
 		}
 		
 		if(type.equals("query_all")){
 			if(this.QueryJob(request, jobdao)){
-				System.out.println("query_all is successfull!");
 				request.getRequestDispatcher("admin_job_list.jsp").forward(request, response);	
 			}
 		}
@@ -89,9 +86,7 @@ public class JobsOpeServlet extends HttpServlet {
 		String title=request.getParameter("job_title");
 		String content=request.getParameter("content");
 		String date=request.getParameter("job_deadline_date");
-		System.out.println("content:"+content+" title:"+title);
 		if(title==null||content==null||title.length()==0||content.length()==0||date==null||date.length()==0){
-			System.out.println("fail:"+content+" title:"+title);
 			return false;
 		}
 		return jobdao.AddJob(title, content,date);
@@ -133,7 +128,6 @@ public class JobsOpeServlet extends HttpServlet {
 			request.setAttribute("JOBLIST", joblist);
 			request.setAttribute("QUERY_COND_VALUE", query_cond_value);
 			request.setAttribute("QUERY_COND_TEXT_APP",query_cond);
-			System.out.println("OUTPUT:::"+query_cond);
 			request.setAttribute("JOB_METHOD", "query_cond");
 			return true;
 		}
