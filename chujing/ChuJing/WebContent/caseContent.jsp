@@ -36,20 +36,20 @@ function PhotoPreView(obj,action){
 	                	<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,0,0" width="350" height="250" align="middle"> 
 								<param name="allowScriptAccess" value="sameDomain" /> 
 								<param name="movie" value="images/PhotoPreView.swf?
-								picurl1=images/<%=_case.getCaseScreenshot1() %>&
-								picurl2=images/<%=_case.getCaseScreenshot2() %>&
-								picurl3=images/<%=_case.getCaseScreenshot3() %>&
-								picurl4=images/<%=_case.getCaseScreenshot4() %>&
-								picurl5=images/<%=_case.getCaseScreenshot5() %>&
+								picurl1=resource/<%=_case.getCaseScreenshot1() %>&
+								picurl2=resource/<%=_case.getCaseScreenshot2() %>&
+								picurl3=resource/<%=_case.getCaseScreenshot3() %>&
+								picurl4=resource/<%=_case.getCaseScreenshot4() %>&
+								picurl5=resource/<%=_case.getCaseScreenshot5() %>&
 								"/>
 								<param name="menu" value="false" />
 								<param name="quality" value="high" />
 								<param name="bgcolor" value="#333333" />
-								<embed src="images/PhotoPreView.swf?picurl1=images/<%=_case.getCaseScreenshot1() %>&
-								picurl2=images/<%=_case.getCaseScreenshot2() %>&
-								picurl3=images/<%=_case.getCaseScreenshot3() %>&
-								picurl4=images/<%=_case.getCaseScreenshot4() %>&
-								picurl5=images/<%=_case.getCaseScreenshot5() %>" menu="false" quality="high" bgcolor="#333333" width="350" height="250" wmode="Transparent" name="mainflash" 
+								<embed src="images/PhotoPreView.swf?picurl1=resource/<%=_case.getCaseScreenshot1() %>&
+								picurl2=resource/<%=_case.getCaseScreenshot2() %>&
+								picurl3=resource/<%=_case.getCaseScreenshot3() %>&
+								picurl4=resource/<%=_case.getCaseScreenshot4() %>&
+								picurl5=resource/<%=_case.getCaseScreenshot5() %>" menu="false" quality="high" bgcolor="#333333" width="350" height="250" wmode="Transparent" name="mainflash" 
 								
 								align="middle" allowScriptAccess="sameDomain" type="application/x-shockwave-flash" 
 								

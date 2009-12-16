@@ -35,7 +35,7 @@
 	    				_case = (Case)list.get(i);
 					%>
 	        		 <dl>
-						<a href="caseContent.jsp?caseID=<%=_case.getCaseId() %>" ><img src="images/<%=_case.getCaseScreenshot1() %>" alt="<%=_case.getCaseTitle() %>" height="93" width="138"></a>
+						<a href="caseContent.jsp?caseID=<%=_case.getCaseId() %>" ><img src="resource/<%=_case.getCaseScreenshot1() %>" alt="<%=_case.getCaseTitle() %>" height="93" width="138"></a>
 						<dt>
 						
 						<a href="caseContent.jsp?caseID=<%=_case.getCaseId() %>" title="<%=_case.getCaseTitle() %>"><%=_case.getCaseTitle() %></a>

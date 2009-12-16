@@ -7,10 +7,27 @@
 <title>编辑新闻</title>
 <link href="css/admin_style.css" rel="stylesheet" type="text/css" />
 </head>
-
+<script type='text/javascript'>
+function onChecked(){
+	var fileUpload = document.getElementById("news_img");
+	var newsImage = document.getElementById("news_image");
+	var form = document.getElementById("add_news");
+	var method = document.getElementById("news_method");
+	if(fileUpload.checked){
+		newsImage.className = "displayYes";
+		form.enctype="multipart/form-data";
+		method.value = "add_with_image";
+	}else{
+		newsImage.className = "displayNo";
+		form.enctype="text/form";
+		method.value = "add";
+	}
+	
+}
+</script>
 <body>
 
-<form method="post" name="add_news" action="NewsOpeServlet">
+<form id="add_news" method="post" name="add_news" action="NewsOpeServlet">
 <table width="95%" border="1" align="center" bordercolor="#000066"
 	cellspacing="0" cellpadding="0">
 	<tr>
@@ -42,12 +59,10 @@
 			border="0px">
 			<tr>
 				<th width="30%" bgcolor="#000066"><span class="head_title_3">
-				<input type="checkbox" value="has_image" name="news_img"/>是否上传新闻封面图片</span></th>
+				<input type="checkbox" id="news_img" onClick="onChecked()" name="news_img"/>是否上传新闻封面图片</span></th>
 				<td width="20px"></td>
-				<td align="left" bgcolor="#000066">
-				<!--
-				添加你要生成的的文件上传控件
-				-->
+				<td align="left">
+				<input id="news_image" class="displayNo" type="file" name="news_image" />
 				</td>
 			</tr>
 		</table>
@@ -83,7 +98,8 @@
 		<table border="0" cellpadding="0" cellspacing="0" bgcolor="#000066"
 			width="100%" height="100%">
 			<tr>
-				<td align="center"><input type="submit" value="保存" /><input
+				<td align="center"><input type="submit" value="保存" />
+				<input id="news_method"
 					type="hidden" name="news_method" value="add" /></td>
 				<td align="center"><input type="reset" value="重置" /></td>
 			</tr>

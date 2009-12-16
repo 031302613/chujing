@@ -17,7 +17,7 @@
 						<li>
                         	<div class="sidebar_content">
                                 <div class="sidebar_image">
-                                    <a href="caseContent.jsp?caseID=<%=_case.getCaseId() %>" ><img src="images/<%=_case.getCaseScreenshot1() %>" alt="<%=_case.getCaseTitle() %>" border="0" height="93" width="138" /></a>	
+                                    <a href="caseContent.jsp?caseID=<%=_case.getCaseId() %>" ><img src="resource/<%=_case.getCaseScreenshot1() %>" alt="<%=_case.getCaseTitle() %>" border="0" height="93" width="138" /></a>	
                                 </div>
                                 <a href="caseContent.jsp?caseID=<%=_case.getCaseId() %>" class="sidebar_title" ><%=_case.getCaseTitle() %></a>
                                 <br />

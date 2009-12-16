@@ -1,5 +1,6 @@
 package com.servlet.admin;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -224,12 +225,14 @@ public class CaseOpeServlet extends HttpServlet {
 
 		Random rd = new Random();
 		Calendar time = Calendar.getInstance();
+	
 		// 得到单个上传文件的信息
 		for (int i = 0; i < su.getFiles().getCount(); i++) {
 			com.jspsmart.upload.File file = su.getFiles().getFile(i);
 			if (file.isMissing())
 				continue;
 			// 定义上传后另存为的文件名
+			
 			String filename = String.valueOf(time.get(Calendar.YEAR))
 					+ String.valueOf(time.get(Calendar.MONTH))
 					+ String.valueOf(time.get(Calendar.DAY_OF_MONTH))
@@ -264,7 +267,7 @@ public class CaseOpeServlet extends HttpServlet {
 		if (id == null) {
 			return false;
 		}
-		String title = request.getParameter("news_title");
+		String title = request.getParameter("case_title");
 		String content = request.getParameter("content");
 		String customer = request.getParameter("customer");
 		int star = Integer.parseInt(request.getParameter("star"));

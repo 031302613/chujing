@@ -134,3 +134,11 @@ vertical-align:middle;
 color:#FF0000;
 font-size:12px;
 }
+.displayYes
+{
+	display: block;
+}
+.displayNo
+{
+	display: none;
+}

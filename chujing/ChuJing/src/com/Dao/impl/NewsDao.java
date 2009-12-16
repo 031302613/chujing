@@ -36,17 +36,19 @@ public class NewsDao {
 		}
 		return list;
 	}
-	public List<News> getListByPage(String currentPage,int PageSize) {
+
+	public List<News> getListByPage(String currentPage, int PageSize) {
 		List<News> list = new ArrayList<News>();
 		try {
 			String sql = "select count(*) from t_news";
 			TransManager.BeginTrans();
 			ResultSet rs = TransManager.excute(sql);
-			if(rs.next()){
-				Pagination.init(currentPage,rs.getInt(1),PageSize);//size = 5
-			}else
+			if (rs.next()) {
+				Pagination.init(currentPage, rs.getInt(1), PageSize);// size = 5
+			} else
 				return null;
-			StringBuffer pageSQL = new StringBuffer("select * from t_news limit ");
+			StringBuffer pageSQL = new StringBuffer(
+					"select * from t_news limit ");
 			pageSQL.append(Pagination.beginIndex);
 			pageSQL.append(",");
 			pageSQL.append(Pagination.pageSize);
@@ -56,17 +58,19 @@ public class NewsDao {
 				news.setNewsContent(rsByPage.getString("NEWS_CONTENT"));
 				news.setNewsId(String.valueOf(rsByPage.getInt("NEWS_ID")));
 				news.setNewsTitle(rsByPage.getString("NEWS_TITLE"));
-				news.setNewsModifiedTime(rsByPage.getDate("NEWS_MODIFIED_TIME"));
+				news
+						.setNewsModifiedTime(rsByPage
+								.getDate("NEWS_MODIFIED_TIME"));
 				news.setNewsPublishTime(rsByPage.getDate("NEWS_PUBLISH_TIME"));
 				list.add(news);
 			}
 			TransManager.Commit();
 		} catch (SQLException e) {
-			list=null;
+			list = null;
 			e.printStackTrace();
 			TransManager.Rollback();
 		} catch (ClassNotFoundException e) {
-			list=null;
+			list = null;
 			e.printStackTrace();
 			TransManager.Rollback();
 		} finally {
@@ -74,20 +78,21 @@ public class NewsDao {
 		}
 		return list;
 	}
-	
-	
-	public List<News> getListByPageAndCond(String cond,String currentPage,int PageSize) {
+
+	public List<News> getListByPageAndCond(String cond, String currentPage,
+			int PageSize) {
 		List<News> list = new ArrayList<News>();
 		try {
-			String sql = "select count(*) from t_news where 1=1 "+cond;
+			String sql = "select count(*) from t_news where 1=1 " + cond;
 			TransManager.BeginTrans();
 			ResultSet rs = TransManager.excute(sql);
-			if(rs.next()){
-				Pagination.init(currentPage,rs.getInt(1),PageSize);//size = 5
-			}else
+			if (rs.next()) {
+				Pagination.init(currentPage, rs.getInt(1), PageSize);// size = 5
+			} else
 				return null;
-			
-			StringBuffer pageSQL = new StringBuffer("select * from t_news where 1=1 "+cond+ " limit ");
+
+			StringBuffer pageSQL = new StringBuffer(
+					"select * from t_news where 1=1 " + cond + " limit ");
 			pageSQL.append(Pagination.beginIndex);
 			pageSQL.append(",");
 			pageSQL.append(Pagination.pageSize);
@@ -97,17 +102,19 @@ public class NewsDao {
 				news.setNewsContent(rsByPage.getString("NEWS_CONTENT"));
 				news.setNewsId(String.valueOf(rsByPage.getInt("NEWS_ID")));
 				news.setNewsTitle(rsByPage.getString("NEWS_TITLE"));
-				news.setNewsModifiedTime(rsByPage.getDate("NEWS_MODIFIED_TIME"));
+				news
+						.setNewsModifiedTime(rsByPage
+								.getDate("NEWS_MODIFIED_TIME"));
 				news.setNewsPublishTime(rsByPage.getDate("NEWS_PUBLISH_TIME"));
 				list.add(news);
 			}
 			TransManager.Commit();
 		} catch (SQLException e) {
-			list=null;
+			list = null;
 			e.printStackTrace();
 			TransManager.Rollback();
 		} catch (ClassNotFoundException e) {
-			list=null;
+			list = null;
 			e.printStackTrace();
 			TransManager.Rollback();
 		} finally {
@@ -131,7 +138,7 @@ public class NewsDao {
 				news.setNewsModifiedTime(rs.getDate("NEWS_MODIFIED_TIME"));
 				news.setNewsPublishTime(rs.getDate("NEWS_PUBLISH_TIME"));
 			}
-			
+
 			TransManager.Commit();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -144,88 +151,155 @@ public class NewsDao {
 		}
 		return news;
 	}
-	
+
 	@SuppressWarnings("finally")
-	public boolean AddNews(String title,String content){
-		if(title==null||content==null||title.length()==0||content.length()==0){
+	public boolean AddNews(String title, String content) {
+		if (title == null || content == null || title.length() == 0
+				|| content.length() == 0) {
 			return false;
 		}
-		boolean result=true;
-		String sql="INSERT INTO T_NEWS(NEWS_TITLE,NEWS_CONTENT,NEWS_PUBLISH_TIME)" +
-				"VALUES( \'"+title+"\',\'"+content+"\',NOW())";
-		try{
+		boolean result = true;
+		String sql = "INSERT INTO T_NEWS(NEWS_TITLE,NEWS_CONTENT,NEWS_PUBLISH_TIME)"
+				+ "VALUES( \'" + title + "\',\'" + content + "\',NOW())";
+		try {
 			TransManager.BeginTrans();
-			if(TransManager.update(sql)==0){
-				result=false;
-			}else{
+			if (TransManager.update(sql) == 0) {
+				result = false;
+			} else {
 				TransManager.Commit();
 			}
-		}catch (SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 			TransManager.Rollback();
-			result=false;
+			result = false;
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 			TransManager.Rollback();
-			result=false;
+			result = false;
 		} finally {
 			TransManager.close();
 			return result;
 		}
 	}
-	
-	public boolean DeleteNews(String id){
-		if(id==null||id.length()==0){
+
+	public boolean DeleteNews(String id) {
+		if (id == null || id.length() == 0) {
 			return false;
 		}
-		boolean result=true;
-		String sql="DELETE FROM T_NEWS WHERE NEWS_ID=\'" +id+"\'";
-		try{
+		boolean result = true;
+		String sql = "DELETE FROM T_NEWS WHERE NEWS_ID=\'" + id + "\'";
+		try {
 			TransManager.BeginTrans();
-			if(TransManager.update(sql)==0){
-				result=false;
-			}else{
+			if (TransManager.update(sql) == 0) {
+				result = false;
+			} else {
 				TransManager.Commit();
 			}
-		}catch (SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 			TransManager.Rollback();
-			result=false;
+			result = false;
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 			TransManager.Rollback();
-			result=false;
+			result = false;
 		} finally {
 			TransManager.close();
 			return result;
 		}
 	}
-	
-	public boolean EditNews(String id,String title,String content){
-		if(id==null||id.length()==0){
+
+	public boolean EditNews(String id, String title, String content) {
+		if (id == null || id.length() == 0) {
 			return false;
 		}
-		boolean result=true;
-		String sql="UPDATE T_NEWS " +
-		"SET NEWS_TITLE=\'"+title+"\'"+
-		",NEWS_CONTENT=\'"+content+"\'"+
-		",NEWS_MODIFIED_TIME=NOW()"+
-				"WHERE NEWS_ID=\'" +id+"\'";
-		try{
+		boolean result = true;
+		String sql = "UPDATE T_NEWS " + "SET NEWS_TITLE=\'" + title + "\'"
+				+ ",NEWS_CONTENT=\'" + content + "\'"
+				+ ",NEWS_MODIFIED_TIME=NOW()" + "WHERE NEWS_ID=\'" + id + "\'";
+		try {
 			TransManager.BeginTrans();
-			if(TransManager.update(sql)==0){
-				result=false;
-			}else{
+			if (TransManager.update(sql) == 0) {
+				result = false;
+			} else {
 				TransManager.Commit();
 			}
-		}catch (SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 			TransManager.Rollback();
-			result=false;
+			result = false;
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 			TransManager.Rollback();
-			result=false;
+			result = false;
+		} finally {
+			TransManager.close();
+			return result;
+		}
+	}
+
+	public boolean editNewsAndSubmitWithImage(String id, String title,
+			String content, String filename) {
+		if (id == null || id.length() == 0) {
+			return false;
+		}
+		boolean result = true;
+		String sql = "UPDATE T_NEWS " + "SET NEWS_TITLE=\'" + title + "\'"
+				+ ",NEWS_CONTENT=\'" + content + "\'" + ",FILENAME=\'"
+				+ filename + "\'" + ",NEWS_MODIFIED_TIME=NOW()"
+				+ "WHERE NEWS_ID=\'" + id + "\'";
+		try {
+			TransManager.BeginTrans();
+			if (TransManager.update(sql) == 0) {
+				result = false;
+			} else {
+				TransManager.Commit();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			TransManager.Rollback();
+			result = false;
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			TransManager.Rollback();
+			result = false;
+		} finally {
+			TransManager.close();
+			return result;
+		}
+	}
+
+	@SuppressWarnings("finally")
+	public boolean AddNewsWithImage(String title, String content,
+			String filename) {
+		if (title == null || content == null || title.length() == 0
+				|| content.length() == 0) {
+			return false;
+		}
+		boolean result = true;
+		String sql = "INSERT INTO T_NEWS(NEWS_TITLE,NEWS_CONTENT,FILENAME,NEWS_PUBLISH_TIME)"
+				+ "VALUES( \'"
+				+ title
+				+ "\',\'"
+				+ content
+				+ "\',\'"
+				+ filename
+				+ "\',NOW())";
+		try {
+			TransManager.BeginTrans();
+			if (TransManager.update(sql) == 0) {
+				result = false;
+			} else {
+				TransManager.Commit();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			TransManager.Rollback();
+			result = false;
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			TransManager.Rollback();
+			result = false;
 		} finally {
 			TransManager.close();
 			return result;

@@ -124,7 +124,7 @@ String content=_case.getCaseIntroduction();
 		<td colspan="2">
 		<table width="100%" border="0" cellpadding="0px" cellspacing="0px">
 			<tr>
-				<td class="head_title_3">上传资源</td>
+				<td class="head_title_3">上传资源(请将修改后的资源文件全部一起上传！)</td>
 			</tr>
 			<tr>
 				<td class="td_forborder"></td>
