@@ -82,9 +82,15 @@ String content=news.getNewsContent();
   </tr>
   <!-- //////////////////////////////////////////////////////////////////////////////////-->
     <tr>
-    <td><table width="100%" height="100%" cellpadding="0px" cellspacing="0px" border="0px"><tr>
-      <th width="30%" bgcolor="#000066"><span class="head_title_3">这里添加checkbox如果有图片</span></th><td width="20px"></td>
-      <td align="left"><span class="head_title_3">这里添加上传控件，点中checkbox才显示，如果本身就有图片，就不要checkbox，直接显示文件控件</span></td></tr></table></td>
+    <td><table width="100%" height="100%" cellpadding="0px" cellspacing="0px" border="0px">
+			<tr>
+				<th width="30%" bgcolor="#000066"><span class="head_title_3">
+				<input type="checkbox" id="news_img" onClick="onChecked()" name="news_img"/>是否上传新闻封面图片</span></th>
+				<td width="20px"></td>
+				<td align="left">
+				<input id="news_image" class="displayNo" type="file" name="news_image" />
+				</td>
+			</tr></table></td>
   </tr>
   <!-- //////////////////////////////////////////////////////////////////////////////////-->
   <tr>
