@@ -21,6 +21,10 @@
 	String caseSQL = "select * from t_case LIMIT 3";
 	List caseList = caseDao.getListBySQL(caseSQL);
 	Case _case;
+	String newsWithImageSQL = "select * from t_news where FILENAME is not null LIMIT 4";
+	List newsWithImageList = newsDao.getListBySQL(newsWithImageSQL);
+	News newsWithImage;
+	
 %>
 <jsp:include page="include/header.jsp" />
 <div id="page">
@@ -28,6 +32,32 @@
 <div class="post">
 <div class="title">公司新闻<a href="news.jsp">更多</a></div>
 <div class="entry">
+		<%
+			StringBuffer value = new StringBuffer("pics=");
+			for (int i = 0; i < newsWithImageList.size(); i++) {
+				newsWithImage = (News) newsWithImageList.get(i);
+				value.append("resource/");
+				value.append(newsWithImage.getFileName());
+				if(i!=newsWithImageList.size()-1)
+					value.append("|");
+			}
+			value.append("&amp;links=");
+			for (int i = 0; i < newsWithImageList.size(); i++) {
+				newsWithImage = (News) newsWithImageList.get(i);
+				value.append("newsContent.jsp?newsID=");
+				value.append(newsWithImage.getNewsId());
+				if(i!=newsWithImageList.size()-1)
+					value.append("||");
+			}
+			value.append("&amp;texts=");
+			for (int i = 0; i < newsWithImageList.size(); i++) {
+				newsWithImage = (News) newsWithImageList.get(i);
+				value.append(newsWithImage.getNewsTitle());
+				if(i!=newsWithImageList.size()-1)
+					value.append("|");
+			}
+			value.append("&amp;pic_width=280&amp;pic_height=198&amp;show_text=1&amp;txtcolor=000000&amp;bgcolor=DDDDDD&amp;button_pos=4&amp;stop_time=4000");
+		%>
 <div class="flash"><object
 	classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000"
 	codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cabversion=6,0,0,0"
@@ -36,10 +66,10 @@
 	<param name="quality" value="high">
 	<param name="wmode" value="opaque">
 	<param name="FlashVars"
-		value="pics=images/new_5.jpg|images/new_2.jpg|images/new_3.jpg|images/new_1.jpg&amp;links=http://bbs.vrplatform.com/thread-4437-1-1.html||http://www.vrplatform.com/zhuanti/2008/|http://bbs.vrplatform.com/thread-4382-1-1.html&amp;texts=标题 1|标题 2|标题 3|标题 4&amp;pic_width=280&amp;pic_height=198&amp;show_text=0&amp;txtcolor=000000&amp;bgcolor=DDDDDD&amp;button_pos=4&amp;stop_time=4000">
+		value="<%=value %>">
 	<embed lk_media="yes" lk_mediaid="lk_juiceapp_mediaPopup_1258185402000"
 		src="images/focus.swf" wmode="transparent"
-		flashvars="pics=images/new_5.jpg|images/new_2.jpg|images/new_3.jpg|images/new_1.jpg&amp;links=http://bbs.vrplatform.com/thread-4437-1-1.html||http://www.vrplatform.com/zhuanti/2008/|http://bbs.vrplatform.com/thread-4382-1-1.html&amp;texts=标题 1|标题 2|标题 3|标题 4&amp;pic_width=280&amp;pic_height=198&amp;show_text=0&amp;txtcolor=000000&amp;bgcolor=DDDDDD&amp;button_pos=4&amp;stop_time=4000"
+		flashvars="<%=value %>"
 		quality="high" allowscriptaccess="sameDomain"
 		type="application/x-shockwave-flash"
 		pluginspage="http://www.macromedia.com/go/getflashplayer" height="198"
@@ -74,7 +104,7 @@
 <div class="case">
 <div class="case_image"><a
 	href="caseContent.jsp?caseID=<%=_case.getCaseId()%>"><img
-	src="images/<%=_case.getCaseScreenshot1()%>" alt="" border="0"
+	src="resource/<%=_case.getCaseScreenshot1()%>" alt="" border="0"
 	height="93" width="138" /></a></div>
 <div class="case_content"><span class="case_star"> <%
  	for (int j = 0; j < _case.getCaseStar(); j++)

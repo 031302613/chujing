@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.javaBean.*;
-import com.jspsmart.upload.Request;
+import com.jspsmart.upload.SmartRequest;
 import com.jspsmart.upload.SmartUpload;
 import com.jspsmart.upload.SmartUploadException;
 import com.Dao.impl.*;
@@ -56,14 +56,12 @@ public class NewsOpeServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		// request.setCharacterEncoding("utf-8");
-		// response.setCharacterEncoding("utf-8");
-		response.setContentType("text/html;charset=utf-8");
-		request.setCharacterEncoding("utf-8");
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html;charset=UTF-8");
 		NewsDao newsdao = new NewsDao();
 		PrintWriter out = response.getWriter();
-		String type = request.getParameter("news_method").toString();
-
+		String type = request.getParameter("news_method");
 		if (type == null || type.equals("add_with_image")
 				|| type.equals("edit_with_image")) {
 			try {
@@ -82,7 +80,7 @@ public class NewsOpeServlet extends HttpServlet {
 						response);
 			}
 		} else {
-
+			type = type.toString();
 			if (type.equals("add")) {
 				if (this.AddNews(request, newsdao)) {
 					request.getRequestDispatcher(
@@ -141,9 +139,9 @@ public class NewsOpeServlet extends HttpServlet {
 		// 不允许上传文件类型
 		su.setDeniedFilesList("jsp,asp,php,aspx,html.htm");
 		// 单个文件最大限制
-		su.setMaxFileSize(10000000);
+		su.setMaxFileSize(100000);
 		// 总共上传文件限制
-		su.setTotalMaxFileSize(50000000);
+		su.setTotalMaxFileSize(500000);
 		// 开始上传,如果超过限制或者为不允许类型，抛出异常提示
 		su.setContentDisposition(null);
 		su.upload();
@@ -153,7 +151,7 @@ public class NewsOpeServlet extends HttpServlet {
 
 		// 得到单个上传文件的信息
 		for (int i = 0; i < su.getFiles().getCount(); i++) {
-			com.jspsmart.upload.File file = su.getFiles().getFile(i);
+			com.jspsmart.upload.SmartFile file = su.getFiles().getFile(i);
 			if (file.isMissing())
 				continue;
 			// 定义上传后另存为的文件名
@@ -169,9 +167,8 @@ public class NewsOpeServlet extends HttpServlet {
 			file.saveAs("/resource/" + filename);
 			this.filename = filename;
 		}
-		Request requestSU = su.getRequest();
+		SmartRequest requestSU = su.getRequest();
 		String type = requestSU.getParameter("news_method").toString();
-		System.out.println(type);
 		NewsDao newsDao = new NewsDao();
 		if (type.equals("add_with_image")) {
 			AddNewsWithImage(requestSU, newsDao);
@@ -182,7 +179,7 @@ public class NewsOpeServlet extends HttpServlet {
 		return true;
 	}
 
-	protected boolean AddNewsWithImage(Request request, NewsDao newsDao) {
+	protected boolean AddNewsWithImage(SmartRequest request, NewsDao newsDao) {
 		String title = request.getParameter("news_title");
 		String content = request.getParameter("content");
 		if (title == null || content == null || title.length() == 0
@@ -192,7 +189,7 @@ public class NewsOpeServlet extends HttpServlet {
 		return newsDao.AddNewsWithImage(title, content, this.filename);
 	}
 
-	protected boolean editNewsAndSubmitWithImage(Request request,
+	protected boolean editNewsAndSubmitWithImage(SmartRequest request,
 			NewsDao newsDao) {
 
 		String id = request.getParameter("news_id");
@@ -266,7 +263,6 @@ public class NewsOpeServlet extends HttpServlet {
 			request.setAttribute("NEWSLIST", newslist);
 			request.setAttribute("QUERY_COND_VALUE", query_cond_value);
 			request.setAttribute("QUERY_COND_TEXT_APP", query_cond);
-			System.out.println("OUTPUT:::" + query_cond);
 			request.setAttribute("NEWS_METHOD", "query_cond");
 			return true;
 		}

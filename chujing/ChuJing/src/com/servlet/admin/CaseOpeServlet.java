@@ -62,8 +62,9 @@ public class CaseOpeServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		response.setContentType("text/html;charset=utf-8");
-		request.setCharacterEncoding("utf-8");
+		//request.setCharacterEncoding("UTF-8");
+		//response.setCharacterEncoding("UTF-8");
+		//response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		String type = request.getParameter("case_method");
 		CaseDao casedao = new CaseDao();
@@ -190,7 +191,7 @@ public class CaseOpeServlet extends HttpServlet {
 		}
 	}
 
-	protected boolean AddCase(Request request, CaseDao CaseDao) {
+	protected boolean AddCase(SmartRequest request, CaseDao CaseDao) {
 
 		String title = request.getParameter("case_title");
 		String content = request.getParameter("content");
@@ -228,7 +229,7 @@ public class CaseOpeServlet extends HttpServlet {
 	
 		// 得到单个上传文件的信息
 		for (int i = 0; i < su.getFiles().getCount(); i++) {
-			com.jspsmart.upload.File file = su.getFiles().getFile(i);
+			com.jspsmart.upload.SmartFile file = su.getFiles().getFile(i);
 			if (file.isMissing())
 				continue;
 			// 定义上传后另存为的文件名
@@ -250,7 +251,7 @@ public class CaseOpeServlet extends HttpServlet {
 			}
 			filenames.add(filename);
 		}
-		Request requestSU = su.getRequest();
+		SmartRequest requestSU = su.getRequest();
 		String type = requestSU.getParameter("case_method").toString();
 		CaseDao caseDao = new CaseDao();
 		if (type.equals("add")) {
@@ -262,7 +263,7 @@ public class CaseOpeServlet extends HttpServlet {
 		return true;
 	}
 
-	protected boolean editCaseAndSubmit(Request request, CaseDao caseDao) {
+	protected boolean editCaseAndSubmit(SmartRequest request, CaseDao caseDao) {
 		String id = request.getParameter("case_id");
 		if (id == null) {
 			return false;

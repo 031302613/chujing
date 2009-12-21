@@ -34,8 +34,15 @@ public class News {
 	public void setNewsModifiedTime(Date newsModifiedTime) {
 		this.newsModifiedTime = newsModifiedTime;
 	}
+	public String getFileName() {
+		return fileName;
+	}
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
 	private String newsTitle;
 	private String newsContent;
 	private Date newsPublishTime;
 	private Date newsModifiedTime;
+	private String fileName;
 }

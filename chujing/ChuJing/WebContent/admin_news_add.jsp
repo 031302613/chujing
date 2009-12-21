@@ -15,11 +15,11 @@ function onChecked(){
 	var method = document.getElementById("news_method");
 	if(fileUpload.checked){
 		newsImage.className = "displayYes";
-		form.enctype="multipart/form-data";
+		form.encoding="multipart/form-data";
 		method.value = "add_with_image";
 	}else{
 		newsImage.className = "displayNo";
-		form.enctype="text/form";
+		form.encoding="text/form";
 		method.value = "add";
 	}
 	

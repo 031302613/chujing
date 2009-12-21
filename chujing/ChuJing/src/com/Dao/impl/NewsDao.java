@@ -20,6 +20,7 @@ public class NewsDao {
 				news.setNewsContent(rs.getString("NEWS_CONTENT"));
 				news.setNewsId(String.valueOf(rs.getInt("NEWS_ID")));
 				news.setNewsTitle(rs.getString("NEWS_TITLE"));
+				news.setFileName(rs.getString("FILENAME"));
 				news.setNewsModifiedTime(rs.getDate("NEWS_MODIFIED_TIME"));
 				news.setNewsPublishTime(rs.getDate("NEWS_PUBLISH_TIME"));
 				list.add(news);
@@ -58,9 +59,8 @@ public class NewsDao {
 				news.setNewsContent(rsByPage.getString("NEWS_CONTENT"));
 				news.setNewsId(String.valueOf(rsByPage.getInt("NEWS_ID")));
 				news.setNewsTitle(rsByPage.getString("NEWS_TITLE"));
-				news
-						.setNewsModifiedTime(rsByPage
-								.getDate("NEWS_MODIFIED_TIME"));
+				news.setFileName(rsByPage.getString("FILENAME"));
+				news.setNewsModifiedTime(rsByPage.getDate("NEWS_MODIFIED_TIME"));
 				news.setNewsPublishTime(rsByPage.getDate("NEWS_PUBLISH_TIME"));
 				list.add(news);
 			}
@@ -102,6 +102,7 @@ public class NewsDao {
 				news.setNewsContent(rsByPage.getString("NEWS_CONTENT"));
 				news.setNewsId(String.valueOf(rsByPage.getInt("NEWS_ID")));
 				news.setNewsTitle(rsByPage.getString("NEWS_TITLE"));
+				news.setFileName(rsByPage.getString("FILENAME"));
 				news
 						.setNewsModifiedTime(rsByPage
 								.getDate("NEWS_MODIFIED_TIME"));
@@ -135,6 +136,7 @@ public class NewsDao {
 				news.setNewsContent(rs.getString("NEWS_CONTENT"));
 				news.setNewsId(String.valueOf(rs.getInt("NEWS_ID")));
 				news.setNewsTitle(rs.getString("NEWS_TITLE"));
+				news.setFileName(rs.getString("FILENAME"));
 				news.setNewsModifiedTime(rs.getDate("NEWS_MODIFIED_TIME"));
 				news.setNewsPublishTime(rs.getDate("NEWS_PUBLISH_TIME"));
 			}

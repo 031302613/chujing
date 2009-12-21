@@ -40,6 +40,24 @@ background-color:#66CCFF;
 }
 </style>
 </head>
+<script type='text/javascript'>
+function onChecked(){
+	var fileUpload = document.getElementById("news_img");
+	var newsImage = document.getElementById("news_image");
+	var form = document.getElementById("edit_form_name");
+	var method = document.getElementById("news_method");
+	if(fileUpload.checked){
+		newsImage.className = "displayYes";
+		form.encoding="multipart/form-data";
+		method.value = "edit_with_image";
+	}else{
+		newsImage.className = "displayNo";
+		form.encoding="text/form";
+		method.value = "news_edit_submit";
+	}
+	
+}
+</script>
 <body>
 
 <%

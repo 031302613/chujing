@@ -245,7 +245,6 @@ public class CaseDao {
 		sql.append("\',\'");
 		sql.append(filenames.get(6));
 		sql.append("\')");
-		System.out.println(sql.toString());
 		try{
 			TransManager.BeginTrans();
 			if(TransManager.update(sql.toString())==0){
