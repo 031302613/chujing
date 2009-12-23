@@ -46,13 +46,24 @@ function onChecked(){
 	var newsImage = document.getElementById("news_image");
 	var form = document.getElementById("edit_form_name");
 	var method = document.getElementById("news_method");
+	var bool=1;
 	if(fileUpload.checked){
 		newsImage.className = "displayYes";
-		form.encoding="multipart/form-data";
+		if(form.encoding){
+			form.encoding="multipart/form-data";
+			bool=2;
+			}else{
+				form.enctype="multipart/form-data";
+			}
+		
 		method.value = "edit_with_image";
 	}else{
 		newsImage.className = "displayNo";
-		form.encoding="text/form";
+		if(bool==2){
+			form.encoding="text/form";
+		}else{
+			form.enctype="text/form";
+		}
 		method.value = "news_edit_submit";
 	}
 	
