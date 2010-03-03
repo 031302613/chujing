@@ -12,9 +12,9 @@ import com.jdbc.DBConnection;
 public class MyConnection implements DBConnection {
 	
 	String DBDIVER = "com.mysql.jdbc.Driver";
-	String DBUSER = "root";
-	String DBPASSWORD = "123456";
-	String DBURL = "jdbc:mysql://localhost:3306/chujing";
+	String DBUSER = "chujingkeji";
+	String DBPASSWORD = "15826159234";
+	String DBURL = "jdbc:mysql://localhost:3306/chujingkeji";
 	private Connection conn;
 	private Statement stmt;
 	private Object objId;

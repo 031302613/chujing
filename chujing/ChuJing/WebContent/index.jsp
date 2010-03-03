@@ -14,14 +14,14 @@
 <body>
 <%
 	NewsDao newsDao = new NewsDao();
-	String newsSQL = "select * from t_news limit 9";
+	String newsSQL = "select * from t_news order by NEWS_PUBLISH_TIME DESC limit 9 ";
 	List newsList = newsDao.getListBySQL(newsSQL);
 	News news;
 	CaseDao caseDao = new CaseDao();
-	String caseSQL = "select * from t_case LIMIT 3";
+	String caseSQL = "select * from t_case order by CASE_PUBLISH_TIME desc  LIMIT 3 ";
 	List caseList = caseDao.getListBySQL(caseSQL);
 	Case _case;
-	String newsWithImageSQL = "select * from t_news where FILENAME is not null LIMIT 4";
+	String newsWithImageSQL = "select * from t_news where FILENAME is not null order by NEWS_PUBLISH_TIME DESC LIMIT 4";
 	List newsWithImageList = newsDao.getListBySQL(newsWithImageSQL);
 	News newsWithImage;
 	

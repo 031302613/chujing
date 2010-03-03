@@ -18,8 +18,8 @@
 -- Create schema chujing
 --
 
-CREATE DATABASE IF NOT EXISTS chujing;
-USE chujing;
+CREATE DATABASE IF NOT EXISTS chujingkeji;
+USE chujingkeji;
 
 --
 -- Definition of table `t_case`

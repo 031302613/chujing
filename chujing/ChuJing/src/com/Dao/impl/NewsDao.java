@@ -96,6 +96,7 @@ public class NewsDao {
 			pageSQL.append(Pagination.beginIndex);
 			pageSQL.append(",");
 			pageSQL.append(Pagination.pageSize);
+			pageSQL.append(arg0);
 			ResultSet rsByPage = TransManager.excute(pageSQL.toString());
 			while (rsByPage.next()) {
 				News news = new News();
