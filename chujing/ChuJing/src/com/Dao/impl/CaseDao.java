@@ -60,7 +60,7 @@ public class CaseDao {
 			}else
 				return null;
 			
-			StringBuffer pageSQL = new StringBuffer("select * from t_case where 1=1 "+cond+ " limit ");
+			StringBuffer pageSQL = new StringBuffer("select * from t_case where 1=1 "+cond+ " order by case_publish_time desc limit ");
 			pageSQL.append(Pagination.beginIndex);
 			pageSQL.append(",");
 			pageSQL.append(Pagination.pageSize);
@@ -109,7 +109,7 @@ public class CaseDao {
 				Pagination.init(currentPage,rs.getInt(1),PageSize);
 			}else
 				return null;
-			StringBuffer pageSQL = new StringBuffer("select * from t_case limit ");
+			StringBuffer pageSQL = new StringBuffer("select * from t_case order by case_publish_time desc limit ");
 			pageSQL.append(Pagination.beginIndex);
 			pageSQL.append(",");
 			pageSQL.append(Pagination.pageSize);

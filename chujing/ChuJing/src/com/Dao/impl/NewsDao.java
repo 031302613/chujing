@@ -49,7 +49,7 @@ public class NewsDao {
 			} else
 				return null;
 			StringBuffer pageSQL = new StringBuffer(
-					"select * from t_news limit ");
+					"select * from t_news order by news_publish_time desc limit ");
 			pageSQL.append(Pagination.beginIndex);
 			pageSQL.append(",");
 			pageSQL.append(Pagination.pageSize);
@@ -92,11 +92,11 @@ public class NewsDao {
 				return null;
 
 			StringBuffer pageSQL = new StringBuffer(
-					"select * from t_news where 1=1 " + cond + " limit ");
+					"select * from t_news where 1=1 " + cond + " order by news_publish_time desc "+ " limit ");
 			pageSQL.append(Pagination.beginIndex);
 			pageSQL.append(",");
 			pageSQL.append(Pagination.pageSize);
-			pageSQL.append(arg0);
+			//pageSQL.append(arg0);
 			ResultSet rsByPage = TransManager.excute(pageSQL.toString());
 			while (rsByPage.next()) {
 				News news = new News();

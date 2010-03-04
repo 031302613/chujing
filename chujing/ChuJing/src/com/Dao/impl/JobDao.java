@@ -48,7 +48,7 @@ public class JobDao {
 				Pagination.init(currentPage,rs.getInt(1),PageSize);//size = 5
 			}else
 				return null;
-			StringBuffer pageSQL = new StringBuffer("select * from t_job limit ");
+			StringBuffer pageSQL = new StringBuffer("select * from t_job order by job_publish_time desc limit ");
 			pageSQL.append(Pagination.beginIndex);
 			pageSQL.append(",");
 			pageSQL.append(Pagination.pageSize);
@@ -145,7 +145,7 @@ public class JobDao {
 			}else
 				return null;
 			
-			StringBuffer pageSQL = new StringBuffer("select * from t_job where 1=1 "+cond+ " limit ");
+			StringBuffer pageSQL = new StringBuffer("select * from t_job where 1=1 "+cond+ " order by job_publish_time desc limit ");
 			pageSQL.append(Pagination.beginIndex);
 			pageSQL.append(",");
 			pageSQL.append(Pagination.pageSize);
