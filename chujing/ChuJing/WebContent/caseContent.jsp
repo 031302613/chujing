@@ -21,7 +21,7 @@ Case _case = dao.getByID(caseID);
 function PhotoPreView(obj,action){
 	var resourceName = document.getElementById('resourceName');
 	var source = 'casePlay.jsp?resourceName='+resourceName.value;
-	var DivWindow = new DivModelWindow('DivWindow','虚拟家居-互动看房',source,620,470,null);
+	var DivWindow = new DivModelWindow('DivWindow','在线观看',source,620,470,null);
 }
 </script>
 <jsp:include page="include/header.jsp" />
@@ -58,13 +58,13 @@ function PhotoPreView(obj,action){
 				</div>
 				<div class="case_flash_content">
                		<span class="case_star"><%for(int i=0;i<_case.getCaseStar();i++) out.print("★"); for(int i=0;i<5-_case.getCaseStar();i++) out.print("☆"); %> </span>
-                    <span class="case_title"><a href="#"  onclick="var DivWindow = new DivModelWindow('DivWindow','虚拟家居-互动看房','casePlay.jsp?resourceName=<%=_case.getCase3DPath() %>',620,470,null);" ><%=_case.getCaseTitle() %></a></span>
+                    <span class="case_title"><a href="#"  onclick="var DivWindow = new DivModelWindow('DivWindow','在线观看,'casePlay.jsp?resourceName=<%=_case.getCase3DPath() %>',620,470,null);" ><%=_case.getCaseTitle() %></a></span>
                     <br />
 					<span style="font-weight:bold;">作品介绍:</span>
 					<div class="case_intro">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=_case.getCaseIntroduction() %></div>
 					<input type="hidden" id="resourceName" value="<%=_case.getCase3DPath() %>"></input> 
 				</div>
-				<div class="case_commments"><a href="#"  onclick="var DivWindow = new DivModelWindow('DivWindow','虚拟家居-互动看房','casePlay.jsp?resourceName=<%=_case.getCase3DPath() %>',620,470,null);" >在线播放:<%=_case.getCase3DSize() %>MB</a></div>
+				<div class="case_commments"><a href="#"  onclick="var DivWindow = new DivModelWindow('DivWindow','在线观看','casePlay.jsp?resourceName=<%=_case.getCase3DPath() %>',620,470,null);" >在线播放:<%=_case.getCase3DSize() %>MB</a></div>
 				<div class="case_hits"><a href="resource/<%=_case.getCaseRARPath() %>" >下载:<%=_case.getCase3DSize() %>MB</a></div>
                 <div class="case_author">客户:<%=_case.getCaseCustomer() %> </div>
           </div>

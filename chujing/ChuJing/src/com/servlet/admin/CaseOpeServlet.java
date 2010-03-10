@@ -226,7 +226,9 @@ public class CaseOpeServlet extends HttpServlet {
 
 		Random rd = new Random();
 		Calendar time = Calendar.getInstance();
-	
+		
+		//清空filenames
+		filenames.clear();
 		// 得到单个上传文件的信息
 		for (int i = 0; i < su.getFiles().getCount(); i++) {
 			com.jspsmart.upload.SmartFile file = su.getFiles().getFile(i);
